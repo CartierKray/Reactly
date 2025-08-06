@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://www.alphaleasegroup.nl
+Host: https://www.reactly.nl
 
 # Sitemaps
-Sitemap: https://www.alphaleasegroup.nl/sitemap.xml
+Sitemap: https://www.reactly.nl/sitemap.xml
