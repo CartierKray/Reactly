@@ -112,8 +112,8 @@ export default function RootLayout({
       <body className="font-clashdisplay">
         <ThemeProvider
           attribute="class"
-          defaultTheme="default"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <noscript>

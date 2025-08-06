@@ -1,22 +1,17 @@
 import RubikOne from "@/components/Rubik/Rubik";
+import { Reviews } from "@/components/Reviews/Reviews";
 import FooterSectionSM from "@/components/Footer/SWFooter";
 import { CTAButton } from "@/components/CTAButtons/CTAButtonts";
 import RolexAdvies from "@/components/RolexSection/RolexAdvies";
 import FAQSectionTwo from "@/components/FaqSection/FaqSectionTwo";
 import CodeShowcase from "@/components/CodeShowCase/CodeShowCase";
+import LeaseOptionsGridTwo from "@/components/ImageText/ImageTextTen";
 import G2BadgeSection from "@/components/G2BadgeSection/G2BadgeSection";
+import CardComponentTwo from "@/components/CardComponent/CardComponentTwo";
 import VideoBannerEleven from "@/components/VideoBanner/VideoBannerEleven";
 import FadeInWhenVisible from "@/components/FadeInWhenVisible/FadeInWhenVisible";
-import InfinitiveMovingCardsIMG from "@/components/InfinitiveMovingCards/InfinitiveMovingCardsIMG";
-import ProductShowcase from "@/components/ProductShowCase/ProductShowCase";
-import CardComponentTwo from "@/components/CardComponent/CardComponentTwo";
-import RolexIntro from "@/components/RolexSection/RolexIntro";
-import DiagonalSlider from "@/components/CarLeaseSlider/CarLeaseSlider";
-import { CTA } from "@/components/CTAButtons/CTA";
-import { Reviews } from "@/components/Reviews/Reviews";
-import LeaseOptionsGridTwo from "@/components/ImageText/ImageTextTen";
-import ComponentHeader from "@/components/ComponentenLijst/ComponentHeader";
 import ComponentHeaderWebdesign from "@/components/ComponentenLijst/ComponentHeaderWebdesign";
+import InfinitiveMovingCardsIMG from "@/components/InfinitiveMovingCards/InfinitiveMovingCardsIMG";
 
 export default function Home() {
   return (
