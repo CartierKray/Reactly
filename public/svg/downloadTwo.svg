@@ -1,0 +1,12 @@
+<svg viewBox="0 0 800 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+  <style>
+    .text {
+      fill: white;
+      font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+      font-size: 64px;
+      font-weight: bold;
+      font-style: italic;
+    }
+  </style>
+  <text x="0" y="70" class="text">BeterLease.nl</text>
+</svg>

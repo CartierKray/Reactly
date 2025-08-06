@@ -1,0 +1,614 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 10 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: #e8e8e8;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* --------------------------------------- ClashDisplay Fonts --------------------------------- */
+
+/* ClashDisplay-Variable.ttf */
+@font-face {
+  font-family: "ClashDisplay";
+  src: url("/fonts/ClashDisplay-Variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ClashDisplay";
+  src: url("/fonts/ClashDisplay-Variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+}
+
+/* ----------------------------------- Banner ----------------------------------- */
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+/* ---------------------------- Custom Shadow for Text ------------------------ */
+
+.custom-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  /* Adjust the values (horizontal, vertical, blur, color) as needed */
+}
+
+.custom-shadow-small {
+  text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.1);
+  /* Adjust the values (horizontal, vertical, blur, color) as needed */
+}
+
+/* ---------------------------- Underline Animation BLACK ------------------------ */
+
+/* Stijl voor de hoverable link/tekst */
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #000;
+  text-decoration: none;
+}
+
+/* Voegt een pseudo-element toe onder de tekst */
+.hover-underline-animation::after {
+  content: "";
+  border-radius: 30px;
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+/* Animeer het pseudo-element wanneer er gehoverd wordt */
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Optioneel: Voeg een fade-out effect toe wanneer de muis weg beweegt */
+.hover-underline-animation::after {
+  transition: transform 0.25s ease-in;
+}
+
+/* ------------------------------------- Underline Nav -----------------------------------*/
+
+.xl-nav-link {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  display: inline-block;
+}
+
+/* Styles for the underline animation in normal mode */
+.xl-nav-link::before {
+  content: "";
+  border-radius: 30px;
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* Set initial left position to the middle */
+  width: 0;
+  height: 2px;
+  background-color: #fff;
+  transition: width 0.2s ease-in, left 0.2s ease-in, right 0.2s ease-in,
+    background-color 0.2s ease-in;
+}
+
+.xl-nav-link:hover::before {
+  left: 0; /* Move left position to 0 */
+  right: 0; /* Move right position to 0 */
+  width: 100%;
+  background-color: #fff; /* Change to your desired underline color in normal mode */
+}
+
+/* Dark mode styles */
+.dark.xl-nav-link::before {
+  background-color: #fff; /* Default underline color in dark mode */
+}
+
+.dark.xl-nav-link:hover::before {
+  background-color: #fff; /* Change to your desired underline color in dark mode */
+}
+
+/* ------------------------------------- Underline Nav -----------------------------------*/
+
+.xl-nav-link-black {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  display: inline-block;
+}
+
+/* Styles for the underline animation in normal mode */
+.xl-nav-link-black::before {
+  content: "";
+  border-radius: 30px;
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* Set initial left position to the middle */
+  width: 0;
+  height: 2px;
+  background-color: #000;
+  transition: width 0.2s ease-in, left 0.2s ease-in, right 0.2s ease-in,
+    background-color 0.2s ease-in;
+}
+
+.xl-nav-link-black:hover::before {
+  left: 0; /* Move left position to 0 */
+  right: 0; /* Move right position to 0 */
+  width: 100%;
+  background-color: #000; /* Change to your desired underline color in normal mode */
+}
+
+/* Dark mode styles */
+.dark.xl-nav-link-black::before {
+  background-color: #000; /* Default underline color in dark mode */
+}
+
+.dark.xl-nav-link-black:hover::before {
+  background-color: #000; /* Change to your desired underline color in dark mode */
+}
+
+/* ------------------------------------- Underline Nav AMBER -----------------------------------*/
+
+.xl-nav-link-amber {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  display: inline-block;
+}
+
+/* Styles for the underline animation in normal mode */
+.xl-nav-link-amber::before {
+  content: "";
+  border-radius: 30px;
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* Set initial left position to the middle */
+  width: 0;
+  height: 2px;
+  background-color: #fff;
+  transition: width 0.2s ease-in, left 0.2s ease-in, right 0.2s ease-in,
+    background-color 0.2s ease-in;
+}
+
+.xl-nav-link-amber:hover::before {
+  left: 0; /* Move left position to 0 */
+  right: 0; /* Move right position to 0 */
+  width: 100%;
+  background-color: #c2b293; /* Change to your desired underline color in normal mode */
+}
+
+/* Dark mode styles */
+.dark.xl-nav-link-amber::before {
+  background-color: #c2b293; /* Default underline color in dark mode */
+}
+
+.dark.xl-nav-link-amber:hover::before {
+  background-color: #c2b293; /* Change to your desired underline color in dark mode */
+}
+
+/* ----------------- IMG Enlarge ------------- */
+
+.image-container {
+  overflow: hidden;
+  display: flex;
+}
+
+.image-enlarge {
+  transition: transform 8s ease-out; /* Duur aangepast naar 5 seconden */
+}
+
+.image-container:hover .image-enlarge {
+  transform: scale(1.2); /* Pas dit aan naar gewenste schaal */
+}
+
+/* ----------------- Cookie Switch ------------- */
+/* CSS for the toggle switches */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f39821;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #07b60a;
+}
+
+input:checked + .slider:before {
+  transform: translateX(14px);
+}
+
+/* Accordion styles */
+.accordion {
+  cursor: pointer;
+  transition: max-height 0.2s ease-out;
+}
+
+/* globals.css */
+
+/* Voeg dit toe om de scrollbaarheid van de modal inhoud te verbeteren */
+.modal-content {
+  max-height: calc(100vh - 4rem); /* Past aan naar de beschikbare hoogte */
+  overflow-y: auto; /* Scrollbaarheid */
+}
+
+/* ----------------------------------- Carousel INFI --------------------------------------- */
+
+.carousel-container {
+  display: flex;
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0px 0;
+}
+
+.carousel {
+  display: flex;
+  background-color: transparent;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  margin-bottom: 50px;
+  background-color: transparent;
+  will-change: transform;
+  animation: scroll var(--animation-duration, 40s) linear infinite
+    var(--animation-direction, normal);
+  animation-play-state: var(--animation-play-state, running);
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  background-color: transaprent;
+  width: 650px;
+  margin: 0;
+  text-align: center;
+  position: relative;
+}
+
+.carousel-item img {
+  cursor: pointer;
+  width: 650px;
+  height: 450px;
+  object-fit: cover;
+  background-color: transparent;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Media query voor kleinere schermen */
+@media (max-width: 768px) {
+  .carousel-item img {
+    height: 265px;
+  }
+  .carousel-item {
+    width: 375px;
+  }
+}
+
+.carousel-item img.back {
+  position: absolute;
+  top: 0;
+  background-color: transparent;
+  left: 0;
+  opacity: 0;
+}
+
+.carousel-item:hover img.front {
+  opacity: 0;
+}
+
+.carousel-item:hover img.back {
+  opacity: 1;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+  height: 2px;
+  background: #e8e8e8;
+  padding: 0 0px;
+}
+
+.progress {
+  height: 100%;
+  border-radius: 30px;
+  background: #7e7e7e;
+  animation: progress var(--animation-duration, 40s) linear infinite
+    var(--animation-direction, normal);
+  animation-play-state: var(--animation-play-state, running);
+}
+
+@keyframes progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* ---------------------------- End & Footer ------------------------ */
+
+.end-bg-color {
+  background-color: #2d3033;
+}
+
+.footer-bg-color {
+  background-color: #191c1f;
+}
+
+.footer-bg-color-input {
+  background-color: #2d3033;
+}
+
+.footer-text-color {
+  color: #b1b9c5;
+}
+
+/* ---------------------------- BG Header------------------------ */
+
+.custom-bg-image {
+  background-image: url("/images/bg-aspect.jpg");
+}
+
+.custom-bg-image-diensten {
+  background-image: url("/images/bg-header-diensten.jpg");
+}
+
+/* ---------------------------- Car Selector Side Buttons ------------------------ */
+
+.slick-prev,
+.slick-next {
+  display: none !important;
+}
+
+.slick-track div {
+  display: grid;
+  align-items: center; /* Zorgt ervoor dat de items verticaal gecentreerd blijven */
+  height: min-content; /* Minimaliseert de hoogte tot wat nodig is */
+  overflow: hidden; /* Voorkomt onnodige ruimte */
+}
+
+/* ------------------------ Custom Pagination Bullets --------------------------- */
+
+.swiper-pagination-custom {
+  padding-top: 50px;
+  position: relative;
+  bottom: -20px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.swiper-pagination-custom .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(154, 152, 152, 0.6);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-custom .swiper-pagination-bullet-active {
+  background-color: #f6b400; /* Matches your green theme */
+  transform: scale(1.2);
+}
+
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-down {
+  animation: fadeDown 0.5s ease-out;
+}
+
+/* ------------------------  STARZ  --------------------------- */
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+}
+
+.animate-twinkle {
+  animation-name: twinkle;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.star-glow {
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.3),
+    0 0 12px rgba(255, 255, 255, 0.2), 0 0 24px rgba(255, 255, 255, 0.1);
+  transition: opacity 1s ease-in-out;
+}
+
+/* ------------------------  --------------------------- */
+
+/* @layer utilities {
+  .bg-dot-pattern {
+    background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 0);
+    background-size: 10px 10px;
+    background-position: center;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .bg-dot-pattern {
+      background-image: radial-gradient(
+        rgba(255, 255, 255, 0.08) 1px,
+        transparent 0
+      );
+    }
+  }
+} */
+
+/* ------------------------  --------------------------- */
+
+@layer utilities {
+  .bg-dot-pattern {
+    background-image: radial-gradient(rgba(0, 0, 0, 0.12) 1px, transparent 0);
+    background-size: 10px 10px;
+    background-position: center;
+  }
+
+  .dark .bg-dot-pattern {
+    background-image: radial-gradient(
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 0
+    );
+  }
+}

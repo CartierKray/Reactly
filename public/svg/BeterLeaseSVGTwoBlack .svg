@@ -1,0 +1,14 @@
+<svg viewBox="0 0 800 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+  <style>
+    .text {
+      fill: black;
+      font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+      font-size: 100px;
+      font-weight: bold;
+      font-style: italic;
+      dominant-baseline: middle;
+      text-anchor: middle;
+    }
+  </style>
+  <text x="400" y="50" class="text">Reactly</text>
+</svg>

@@ -1,0 +1,33 @@
+<svg role="img" viewBox="0 0 251 46" xmlns="http://www.w3.org/2000/svg" style="height: 100%; width: 100%;">
+  <title lang="nl-NL">4.0 van 5 sterren op Trustpilot</title>
+
+  <!-- ⭐ Star 1 -->
+  <g class="tp-star">
+    <path fill="#00B67A" d="M0 46.33h46.38V0H0z"></path>
+    <path fill="#FFF" d="M39.53 19.71L13.23 38.8l3.84-11.8L7.02 19.71h12.42L23.28 7.91l3.84 11.8h12.42zM23.28 31.51l7.18-1.51 2.86 8.8L23.28 31.51z"></path>
+  </g>
+
+  <!-- ⭐ Star 2 -->
+  <g class="tp-star">
+    <path fill="#00B67A" d="M51.25 46.33h46.38V0H51.25z"></path>
+    <path fill="#FFF" d="M74.99 31.33L81.15 30 84 39l-9.66-7.2L64.3 39l3.9-11.84L58 19.84h12.61L74.5 8l3.9 11.84H91L74.99 31.33z"></path>
+  </g>
+
+  <!-- ⭐ Star 3 -->
+  <g class="tp-star">
+    <path fill="#00B67A" d="M102.53 46.33h46.38V0h-46.38z"></path>
+    <path fill="#FFF" d="M142.07 19.71L115.76 38.8l3.84-11.8-10.05-7.29h12.42l3.84-11.8 3.84 11.8h12.42zM125.81 31.51l7.18-1.51 2.86 8.8-10.05-7.29z"></path>
+  </g>
+
+  <!-- ⭐ Star 4 -->
+  <g class="tp-star">
+    <path fill="#00B67A" d="M153.82 46.33h46.38V0h-46.38z"></path>
+    <path fill="#FFF" d="M193.35 19.71L167.05 38.8l3.84-11.8-10.05-7.29h12.42l3.84-11.8 3.84 11.8h12.42zM177.09 31.51l7.18-1.51 2.86 8.8-10.05-7.29z"></path>
+  </g>
+
+  <!-- ⭐ Star 5 (grijs) -->
+  <g class="tp-star">
+    <path fill="#DCDCE6" d="M205.06 46.33h46.38V0h-46.38z"></path>
+    <path fill="#FFF" d="M244.6 19.71l-26.3 19.09 3.84-11.8-10.05-7.29h12.42l3.84-11.8 3.84 11.8h12.42zm-16.26 11.8l7.18-1.51 2.86 8.8-10.05-7.29z"></path>
+  </g>
+</svg>

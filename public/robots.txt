@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.alphaleasegroup.nl
+
+# Sitemaps
+Sitemap: https://www.alphaleasegroup.nl/sitemap.xml

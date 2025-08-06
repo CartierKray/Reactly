@@ -1,0 +1,20 @@
+<svg
+  viewBox="0 0 800 100"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  className="absolute top-5 left-0 w-full h-auto z-0 pointer-events-none"
+>
+  <path
+    d="M0 50 C200 0, 600 100, 800 50"
+    stroke="#000"
+    strokeWidth="3"
+    fill="none"
+    markerEnd="url(#arrowhead)"
+  />
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7"
+      refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000" />
+    </marker>
+  </defs>
+</svg>

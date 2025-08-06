@@ -1,0 +1,15 @@
+<svg width="50" height="50" viewBox="0 0 98 92" xmlns="http://www.w3.org/2000/svg">
+  <!-- ALPHA Tekst -->
+  <text x="50%" y="40%" text-anchor="middle" font-size="29" font-weight="bold" fill="black">
+    ALPHA
+  </text>
+  
+  <!-- LEASE GROUP Tekst -->
+  <text x="50%" y="67%" text-anchor="middle" font-size="14" font-weight="bold" fill="black">
+    LEASE GROUP
+  </text>
+  
+  <!-- Lijn -->
+  <line x1="39" y1="50" x2="54" y2="50" stroke="white" stroke-width="1"/>
+</svg>
+

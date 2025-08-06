@@ -1,0 +1,19 @@
+.gallery {
+  height: 50vh; /* Adjust as needed */
+  background: white;
+  overflow: hidden;
+  position: relative;
+}
+
+.fullImageContainer {
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  top: 0;
+  left: 0;
+  margin-top: -200px;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+  }
+}
