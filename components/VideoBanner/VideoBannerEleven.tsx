@@ -35,7 +35,7 @@ const VideoBannerEleven: React.FC = () => {
       </video>
 
       {/* Donkere overlay */}
-      <div className="absolute inset-0 bg-black/75 z-0 pointer-events-none" />
+      <div className="absolute inset-0 bg-black/60 z-0 pointer-events-none" />
 
       {/* Overlay content */}
       <div className="absolute inset-0 flex flex-col text-center items-center justify-center lg:items-start lg:justify-center lg:text-start max-w-7xl mx-auto px-6 z-10 text-white">

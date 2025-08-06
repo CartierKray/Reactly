@@ -44,10 +44,13 @@ export default function Home() {
       </FadeInWhenVisible> */}
 
       <div className="pt-20 pb-">
-        <h2 className="text-center text-4xl font-medium tracking-tight text-neutral-600 md:text-5xl dark:text-neutral-50">
-          Website design op maat
+        <h2
+          id="reviews-title"
+          className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"
+        >
+          Webdesign op maat voor jouw bedrijf
         </h2>
-        <p className="mx-auto max-w-lg pt-4 font-light text-center text-base text-neutral-600 dark:text-neutral-50">
+        <p className="mt-2 text-md md:text-lg max-w-xs md:max-w-xl mx-auto text-neutral-600 text-center dark:text-neutral-200">
           We staan voor je klaar om je te helpen met al je vragen. Kun je niet
           vinden wat je zoekt? Neem contact met ons op via &nbsp;
           <a href="mailto:info@reactly.nl" className="text-blue-500 underline">
