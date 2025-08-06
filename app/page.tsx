@@ -14,6 +14,7 @@ import RolexIntro from "@/components/RolexSection/RolexIntro";
 import DiagonalSlider from "@/components/CarLeaseSlider/CarLeaseSlider";
 import { CTA } from "@/components/CTAButtons/CTA";
 import { Reviews } from "@/components/Reviews/Reviews";
+import LeaseOptionsGridTwo from "@/components/ImageText/ImageTextTen";
 
 export default function Home() {
   return (
@@ -48,7 +49,7 @@ export default function Home() {
         </h2>
         <p className="mx-auto max-w-lg pt-4 font-light text-center text-base text-neutral-600 dark:text-neutral-50">
           We staan voor je klaar om je te helpen met al je vragen. Kun je niet
-          vinden wat je zoekt? Neemcontact met ons op via &nbsp;
+          vinden wat je zoekt? Neem contact met ons op via &nbsp;
           <a href="mailto:info@reactly.nl" className="text-blue-500 underline">
             info@reactly.nl
           </a>
@@ -93,13 +94,16 @@ export default function Home() {
         {/* <div className="relative bg-gradient-to-b w-full from-[#FFF] via-[#e9eeff] to-[#FFF]"> */}
         {/* <RolexIntro /> */}
         {/* <ProductShowcase /> */}
-        <div className="pt-20 pb-">
-          <h2 className="text-center text-4xl font-medium tracking-tight text-neutral-600 md:text-5xl dark:text-neutral-50">
-            Offerte op maat
+        <div className="">
+          <h2
+            id="reviews-title"
+            className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"
+          >
+            Offerte op maat voor jouw project
           </h2>
-          <p className="mx-auto max-w-lg pt-4 font-light text-center text-base text-neutral-600 dark:text-neutral-50">
+          <p className="mt-2 text-md md:text-lg max-w-xs md:max-w-xl mx-auto text-neutral-600 text-center dark:text-neutral-200">
             We staan voor je klaar om je te helpen met al je vragen. Kun je niet
-            vinden wat je zoekt? Neemcontact met ons op via &nbsp;
+            vinden wat je zoekt? Neem contact met ons op via &nbsp;
             <a
               href="mailto:info@reactly.nl"
               className="text-blue-500 underline"
@@ -116,6 +120,10 @@ export default function Home() {
         <div className="w-full flex items-center justify-center mb-10 pt-20 lg:pt-14 pb-20">
           <G2BadgeSection />
         </div>
+      </FadeInWhenVisible>
+
+      <FadeInWhenVisible delay={0.1}>
+        <LeaseOptionsGridTwo />
       </FadeInWhenVisible>
 
       <FadeInWhenVisible delay={0.1}>
