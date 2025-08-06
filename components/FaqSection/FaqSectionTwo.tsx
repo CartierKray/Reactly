@@ -178,7 +178,7 @@ export default function FAQSectionTwo() {
 
           {/* Fade overlay */}
           {!showAll && faqs.length > initialVisibleCount && (
-            <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-[#fff] dark:from-[#121212]  dark:via-[#121212]/80 to-transparent flex justify-center items-end pb-6 pointer-events-none z-10">
+            <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-[#fff] dark:from-[#000]  dark:via-[#000]/80 to-transparent flex justify-center items-end pb-6 pointer-events-none z-10">
               <button
                 onClick={() => setShowAll(true)}
                 className="pointer-events-auto bg-black text-white dark:bg-white dark:text-black px-8 py-2 rounded-lg shadow-md text-sm font-medium transition hover:scale-105"

@@ -15,6 +15,8 @@ import DiagonalSlider from "@/components/CarLeaseSlider/CarLeaseSlider";
 import { CTA } from "@/components/CTAButtons/CTA";
 import { Reviews } from "@/components/Reviews/Reviews";
 import LeaseOptionsGridTwo from "@/components/ImageText/ImageTextTen";
+import ComponentHeader from "@/components/ComponentenLijst/ComponentHeader";
+import ComponentHeaderWebdesign from "@/components/ComponentenLijst/ComponentHeaderWebdesign";
 
 export default function Home() {
   return (
@@ -37,13 +39,17 @@ export default function Home() {
         </div>
       </FadeInWhenVisible>
 
+      <div className="pt-10 lg:pt-20 pb-10 dark:bg-black">
+        <ComponentHeaderWebdesign />
+      </div>
+
       {/* <FadeInWhenVisible delay={0.1}>
         <div className="hidden pt-20 md:pt-20 py-10 md:flex">
           <DiagonalSlider />
         </div>
       </FadeInWhenVisible> */}
 
-      <div className="pt-20 pb-">
+      {/* <div className="pt-20 pb-">
         <h2
           id="reviews-title"
           className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"
@@ -57,7 +63,7 @@ export default function Home() {
             info@reactly.nl
           </a>
         </p>
-      </div>
+      </div> */}
 
       <CodeShowcase />
 

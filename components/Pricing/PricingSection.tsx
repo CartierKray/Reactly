@@ -16,11 +16,11 @@ const contactOptions = [
 const compactOptions = ["Start", "Groei", "Pro", "Boost", "Premium"];
 
 const pricingByContacts: { [key: string]: string } = {
-  Starter: "999",
-  Groei: "€1499",
-  Professioneel: "€2199",
+  Starter: "1499",
+  Groei: "€1999",
+  Professioneel: "€2499",
   "AI & SEO Boost": "€2749",
-  "All-in Premium": "3749",
+  "All-in Premium": "4749",
 };
 
 const getVisibleFeatures = (index: number, features: string[]) => {
@@ -51,7 +51,7 @@ export default function PricingSection() {
   const tiers = [
     {
       name: "Start",
-      basePrice: "999",
+      basePrice: "1499",
       emails: "Basis website met 1 pagina\nInclusief mobielvriendelijk design",
       features: [
         "Responsief design",
@@ -198,7 +198,7 @@ export default function PricingSection() {
                       </p>
                       <span className="text-xs text-neutral-600 dark:text-neutral-200">
                         {tier.name === "Start"
-                          ? "499 pakket"
+                          ? "1499 pakket"
                           : tier.name === "Enterprise"
                           ? "Maatwerk Offerte"
                           : "Eenmalige betaling"}
@@ -215,7 +215,7 @@ export default function PricingSection() {
                         <span className="text-5xl font-medium text-neutral-800 dark:text-neutral-50">
                           {tier.basePrice.replace("€", "")}
                         </span>
-                        {tier.basePrice !== "499" &&
+                        {tier.basePrice !== "1499" &&
                           tier.basePrice !== "Custom" && (
                             <span className="text-xl font-normal text-gray-500 line-through dark:text-neutral-200">
                               €{parseInt(tier.basePrice.replace("€", "")) + 400}
