@@ -18,7 +18,7 @@ const VideoBannerEleven: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[75vh] overflow-hidden">
+    <div className="relative w-full h-[100vh] overflow-hidden">
       {/* Sticky navbar */}
       <NavbarNewFour />
 
@@ -28,7 +28,7 @@ const VideoBannerEleven: React.FC = () => {
         loop
         muted
         playsInline
-        className="w-full h-[75vh] object-cover"
+        className="w-full h-[100vh] object-cover"
       >
         <source src="/video/Reactly.mp4" type="video/mp4" />
         Jouw browser ondersteunt deze video niet.

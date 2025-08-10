@@ -34,8 +34,29 @@ export default function Home() {
         </div>
       </FadeInWhenVisible>
 
-      <div className="pt-10 lg:pt-20 pb-10 dark:bg-black">
+      {/* <div className="pt-10 lg:pt-20 pb-10 dark:bg-black">
         <ComponentHeaderWebdesign />
+      </div> */}
+
+      <div className="pt-10 lg:pt-20 pb-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2
+            id="reviews-title"
+            className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"
+          >
+            Webdesign op maat voor jouw website
+          </h2>
+          <p className="mt-2 text-md md:text-lg max-w-xs md:max-w-xl mx-auto text-neutral-600 text-center dark:text-neutral-200">
+            We staan voor je klaar om je te helpen met al je vragen. Kun je niet
+            vinden wat je zoekt? Neem contact met ons op via &nbsp;
+            <a
+              href="mailto:info@reactly.nl"
+              className="text-blue-500 underline"
+            >
+              info@reactly.nl
+            </a>
+          </p>
+        </div>
       </div>
 
       {/* <FadeInWhenVisible delay={0.1}>

@@ -35,7 +35,7 @@ function NavbarNewFour() {
       <div
         className={`w-full transition-all duration-300 ${
           isWhiteBackground
-            ? "bg-white backdrop-blur-md dark:text-white dark:bg-[#111111] text-black"
+            ? "bg-white backdrop-blur-md dark:text-white dark:bg-[#000] text-black"
             : "bg-transparent text-white"
         }`}
       >

@@ -13,7 +13,7 @@ const Spline = dynamic(() => import("@splinetool/react-spline"), {
 
 export default function RubikOne() {
   return (
-    <div className="relative h-[75vh] bg-black text-white overflow-hidden">
+    <div className="relative h-[100vh] bg-black text-white overflow-hidden">
       {/* Navbar */}
       <NavbarNewFour />
 
@@ -71,9 +71,9 @@ export default function RubikOne() {
       </div>
 
       {/* Content (z-20) */}
-      <div className="relative z-20 h-[75vh] lg:pt-3">
-        <section className="mx-auto px-6 pb-8 h-[75vh] md:max-w-[1375px]">
-          <div className="flex h-[75vh] items-center justify-center lg:justify-between text-center lg:flex-row md:pb-12">
+      <div className="relative z-20 h-[100vh] lg:pt-3">
+        <section className="mx-auto px-6 pb-8 h-[100vh] md:max-w-[1375px]">
+          <div className="flex h-[100vh] items-center justify-center lg:justify-between text-center lg:flex-row md:pb-12">
             {/* Text Section */}
             <div className="text-center lg:text-left order-2 max-w-3xl animate-hero-text-slide-up-fade sm:shrink-0 md:order-1 lg:pl-16">
               <div className="uppercase tracking-wide text-4xl md:text-5xl lg:text-7xl font-semibold text-white">
