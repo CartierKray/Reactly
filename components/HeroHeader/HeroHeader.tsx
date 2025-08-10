@@ -35,7 +35,7 @@ export default function HeroHeader() {
   return (
     <div className="relative overflow-x-clip bg-[#000926] text-white flex flex-col items-center justify-start gap-12">
       {/* Smoke Layers */}
-      <div className="absolute inset-0 z-10 pointer-events-none">
+      {/* <div className="absolute inset-0 z-10 pointer-events-none">
         <Image
           src="/images/smoke1.png"
           alt="smoke1"
@@ -57,19 +57,19 @@ export default function HeroHeader() {
           height={10000}
           className="absolute opacity-50 animate-[wave_10s_linear_infinite] right-[-25%] top-[-15%] w-[2000px] max-w-none mix-blend-screen"
         />
-      </div>
+      </div> */}
       {/* NavBar */}
 
-      <NavbarNewFour />
+      {/* <NavbarNewFour /> */}
       {/* <NavbarNewFive /> */}
 
       {/* Titel */}
       <h1 className="text-center z-20 mt-10  text-4xl sm:text-5xl font-semibold leading-snug">
-        Uw partner in Premium <br className="hidden md:flex" />
+        Uw partner in premium <br className="hidden md:flex" />
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2ad2a3] to-[#1658ea]">
-          en Exclusieve
+          en exclusieve
         </span>{" "}
-        autos.
+        web analyse
       </h1>
 
       {/* Zoekbox voor mobile -md */}
@@ -174,9 +174,7 @@ export default function HeroHeader() {
       </div>
 
       <div className="inset-0 absolute w-full h-full bg-gradient-to-b from-transparent via-transparent to-[#000926] pointer-events-none"></div>
-      <div className="hidden md:block">
-        <Meteors number={20} />
-      </div>
+      <div className="hidden md:block">{/* <Meteors number={20} /> */}</div>
     </div>
   );
 }

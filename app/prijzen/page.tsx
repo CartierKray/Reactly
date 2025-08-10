@@ -5,18 +5,25 @@ import PricingSection from "@/components/Pricing/PricingSection";
 import VideoBannerEleven from "@/components/VideoBanner/VideoBannerEleven";
 import FadeInWhenVisible from "@/components/FadeInWhenVisible/FadeInWhenVisible";
 import { Reviews } from "@/components/Reviews/Reviews";
+import NavbarNewSix from "@/components/Navbar/NavbarSix";
+import ComponentHeaderPrijzen from "@/components/ComponentenLijst/ComponentHeaderPrijzen";
 
 function PrijzenPage() {
   return (
     <>
+      <NavbarNewSix />
+
+      <div className="pt-24 lg:pt-28 pb-10 dark:bg-black">
+        <ComponentHeaderPrijzen />
+      </div>
       {/* Alleen zichtbaar in light mode */}
-      <div className="block dark:hidden w-full">
+      {/* <div className="block dark:hidden w-full">
         <VideoBannerEleven />
-      </div>
+      </div> */}
       {/* Alleen zichtbaar in dark mode */}
-      <div className="hidden dark:block w-full">
+      {/* <div className="hidden dark:block w-full">
         <RubikOne />
-      </div>
+      </div> */}
 
       <FadeInWhenVisible delay={0.1}>
         <PricingSection />

@@ -5,203 +5,139 @@ import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
+/**
+ * Voor welke DIENSTEN-categorieën wil je een kaarten-grid tonen?
+ * Voeg hier de exacte categorienamen toe.
+ * Laat je een categorie weg -> dan kun je onderaan in de per-afdeling
+ * if-blokken je eigen content renderen (zoals op je andere pagina).
+ */
+const servicesGridCategories = new Set<string>([
+  "Website Pakketten",
+  "Growth Bundles", // haal weg als je hier geen grid wilt
+]);
+
 const tabs = [
+  /**
+   * WEB & DEVELOPMENT
+   */
   {
-    key: "app",
-    label: "Component Packs",
+    key: "web",
+    label: "Web & Development",
     categories: [
-      "Product Grid",
-      "Hero Sections",
-      "Logo Clouds",
-      "Bento Grids",
-      "CTA Sections",
-      "Testimonials",
-      "Feature sections",
-      "Pricing sections",
-      "Cards",
-      "Navbars",
-      "Footers",
-      "Login and Signup",
-      "Contact Sections",
-      "Blog Sections",
-      "Blog Content Sections",
-      "FAQs",
-      "Sidebars",
-      "Stats Sections",
-      "Animations",
-      "Integrations",
-      "Code Snippets",
-      "Newsletter Forms",
-      "Social Proof",
-      "Widgets",
-      "Modals",
-      "Tables",
-      "Data Grids",
-      "Pagination",
-      "Search Bars",
-      "Tags",
-      "Category Filters",
-      "Dropdown Menus",
-      "Tooltips",
-      "Avatars",
-      "Loaders",
-      "Image Galleries",
-      "Video Embeds",
-      "Media Blocks",
-      "Content Blocks",
-      "Tabs",
-      "Carousels",
-      "Announcements",
-      "Testimonials (Alt)",
-      "Checkout Sections",
-      "Error Pages",
-      "Password Resets",
-      "Onboarding Flows",
-      "Steps Components",
-      "Maps",
-      "404 Pages",
-      "Coming Soon Pages",
-      "Maintenance Pages",
+      "Website Pakketten",
+      "Webdesign (UX/UI)",
+      "Webdevelopment",
+      "E-commerce",
+      "Landing Pages",
+      "Technische SEO",
+      "Performance & Speed",
+      "Toegankelijkheid (WCAG)",
+      "Webcare & Onderhoud",
+      "Hosting & Domeinen",
+      "CMS / Headless CMS",
+      "Migratie & Replatforming",
+      "Integraties & API's",
+      "Web App / MVP",
+      "Security & Hardening",
+      "Analytics & Tracking",
+      "Privacy & Cookie Consent (CMP)",
+    ],
+    // Kaarten die we tonen wanneer de actieve categorie in servicesGridCategories zit
+    components: [
+      {
+        title: "Website Starter",
+        items: 1,
+        price: 995,
+        oldPrice: 1295,
+        image: "/images/5_other_image_17355647422135117692.jpg",
+        description:
+          "Snel live met een strakke one-pager. Inclusief basis SEO en analytics.",
+      },
+      {
+        title: "Business Site",
+        items: 1,
+        price: 2495,
+        oldPrice: 2895,
+        image: "/images/5_other_image_17355647422135117692.jpg",
+        description:
+          "Meerdere pagina's, blog, formulieren en on-brand componenten.",
+      },
+      {
+        title: "Pro / Headless",
+        items: 1,
+        price: 4995,
+        oldPrice: 5495,
+        image: "/images/5_other_image_17355647422135117692.jpg",
+        description:
+          "Next.js + headless CMS, performance-first, schaalbaar en future-proof.",
+      },
+    ],
+  },
+
+  /**
+   * MARKETING & GROWTH
+   */
+  {
+    key: "marketing",
+    label: "Marketing & Growth",
+    categories: [
+      "Growth Bundles",
+      "SEO (On-page)",
+      "Technische SEO",
+      "Lokale SEO",
+      "SEA / Google Ads",
+      "Social Ads (Meta/TikTok/LinkedIn)",
+      "Content Marketing",
+      "Copywriting",
+      "E-mail & Marketing Automation",
+      "CRO / A/B Testing",
+      "Analytics & Dashboarding",
+      "Social Media Management",
+      "Brand Strategy",
+      "Branding & Visual Identity",
+      "Foto & Video",
+      "PR & Linkbuilding",
+      "Influencer Marketing",
+      "Funnels & Lead Magnets",
+      "App Store Optimization (ASO)",
     ],
     components: [
       {
-        title: "Hero Sections",
-        items: 9,
-        price: 12,
-        oldPrice: 18,
+        title: "SEO Sprint",
+        items: 1,
+        price: 795,
+        oldPrice: 995,
         image: "/images/5_other_image_17355647422135117692.jpg",
         description:
-          "A collection of hero sections that are modern and stand out",
+          "Kansanalyse, on-page optimalisatie en content-roadmap voor 90 dagen.",
       },
       {
-        title: "Logo Clouds",
-        items: 3,
-        price: 10,
-        oldPrice: 16,
+        title: "Ads Accelerator",
+        items: 1,
+        price: 950,
+        oldPrice: 1200,
         image: "/images/5_other_image_17355647422135117692.jpg",
         description:
-          "A collection of logo clouds with micro interactions and minimal animations",
+          "Opzet + optimalisatie van Google & Social ads met conversietracking.",
       },
       {
-        title: "Feature Sections",
-        items: 4,
-        price: 9,
-        oldPrice: 14,
+        title: "Content Engine",
+        items: 1,
+        price: 680,
+        oldPrice: 850,
         image: "/images/5_other_image_17355647422135117692.jpg",
         description:
-          "A set of feature sections ranging from bento grids to simple layouts",
-      },
-      {
-        title: "Hero Sections",
-        items: 9,
-        price: 12,
-        oldPrice: 18,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "A collection of hero sections that are modern and stand out",
-      },
-      {
-        title: "Logo Clouds",
-        items: 3,
-        price: 10,
-        oldPrice: 16,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "A collection of logo clouds with micro interactions and minimal animations",
-      },
-      {
-        title: "Feature Sections",
-        items: 4,
-        price: 9,
-        oldPrice: 14,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "A set of feature sections ranging from bento grids to simple layouts",
-      },
-      {
-        title: "Backgrounds",
-        items: 8,
-        price: 9,
-        oldPrice: 15,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "A set of beautiful, creative backgrounds for landing pages",
-      },
-      {
-        title: "Bento Grids",
-        items: 3,
-        price: 12,
-        oldPrice: 18,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description: "A set of bento grids for various use cases",
-      },
-      {
-        title: "Blog Content Sections",
-        items: 2,
-        price: 9,
-        oldPrice: 15,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description: "Content sections for your single blog posts",
-      },
-      {
-        title: "Hero Sections",
-        items: 9,
-        price: 12,
-        oldPrice: 18,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "A collection of hero sections that are modern and stand out",
-      },
-      {
-        title: "Logo Clouds",
-        items: 3,
-        price: 10,
-        oldPrice: 16,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "A collection of logo clouds with micro interactions and minimal animations",
-      },
-      {
-        title: "Feature Sections",
-        items: 4,
-        price: 9,
-        oldPrice: 14,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "A set of feature sections ranging from bento grids to simple layouts",
-      },
-      {
-        title: "Backgrounds",
-        items: 8,
-        price: 9,
-        oldPrice: 15,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "A set of beautiful, creative backgrounds for landing pages",
-      },
-      {
-        title: "Bento Grids",
-        items: 3,
-        price: 12,
-        oldPrice: 18,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description: "A set of bento grids for various use cases",
-      },
-      {
-        title: "Blog Content Sections",
-        items: 2,
-        price: 9,
-        oldPrice: 15,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description: "Content sections for your single blog posts",
+          "Maandelijkse contentkalender, copy, visuals en distributie.",
       },
     ],
   },
 ];
 
 export default function ComponentenLijstDiensten() {
-  const [activeTab] = useState("app");
-  const [activeCategory, setActiveCategory] = useState("Product Grid");
+  // begin bij Web & Development
+  const [activeTab, setActiveTab] = useState<"web" | "marketing">("web");
+  const [activeCategory, setActiveCategory] = useState("Website Pakketten");
+
   const activeContent = tabs.find((tab) => tab.key === activeTab);
 
   const currentIndex = activeContent?.categories.findIndex(
@@ -224,47 +160,86 @@ export default function ComponentenLijstDiensten() {
     }
   };
 
+  const shouldShowGrid =
+    activeContent != null &&
+    servicesGridCategories.has(activeCategory as string);
+
   return (
     <div className="dark:bg-black min-h-screen text-white lg:pt-10 pb-10 md:pb-20 lg:pb-40">
       <div className="flex max-w-7xl mx-auto">
-        <aside className="w-64 sticky top-0 h-screen overflow-y-auto p-6 hidden lg:block border-r border-black/10 dark:border-white/10">
-          <h2 className="text-[13.5px] text-black dark:text-white  font-normal mb-3">
-            Componenten
+        {/* sticky top-10 behouden */}
+        <aside className="w-64 sticky top-10 h-screen overflow-y-auto p-6 hidden lg:block border-r border-black/10 dark:border-white/10">
+          {/* WEB */}
+          <h2 className="text-[14px] text-black dark:text-white font-medium mb-3">
+            Web & Development
+          </h2>
+          <ul className="space-y-1.5 text-sm mb-6">
+            {tabs
+              .find((t) => t.key === "web")
+              ?.categories.map((cat, idx) => (
+                <li
+                  key={`web-${idx}`}
+                  onClick={() => {
+                    setActiveTab("web");
+                    setActiveCategory(cat);
+                  }}
+                  className={cn(
+                    "cursor-pointer transition",
+                    activeTab === "web" && activeCategory === cat
+                      ? "dark:text-white text-black font-medium text-[12.5px] hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out"
+                      : "dark:text-white/50 text-black/50 hover:text-black dark:hover:text-white text-[12.5px] hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out"
+                  )}
+                >
+                  {cat}
+                </li>
+              ))}
+          </ul>
+
+          {/* MARKETING */}
+          <h2 className="text-[14px] text-black dark:text-white font-medium mb-3">
+            Marketing & Growth
           </h2>
           <ul className="space-y-1.5 text-sm">
-            {activeContent?.categories.map((cat, idx) => (
-              <li
-                key={idx}
-                onClick={() => setActiveCategory(cat)}
-                className={cn(
-                  "cursor-pointer transition",
-                  activeCategory === cat
-                    ? "dark:text-white text-black font-medium text-[12.5px]"
-                    : "dark:text-white/50 text-black/50 hover:text-black dark:hover:text-white text-[12.5px]"
-                )}
-              >
-                {cat}
-              </li>
-            ))}
+            {tabs
+              .find((t) => t.key === "marketing")
+              ?.categories.map((cat, idx) => (
+                <li
+                  key={`mkt-${idx}`}
+                  onClick={() => {
+                    setActiveTab("marketing");
+                    setActiveCategory(cat);
+                  }}
+                  className={cn(
+                    "cursor-pointer transition",
+                    activeTab === "marketing" && activeCategory === cat
+                      ? "dark:text-white text-black font-medium text-[12.5px] hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out"
+                      : "dark:text-white/50 text-black/50 hover:text-black dark:hover:text-white text-[12.5px] hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out"
+                  )}
+                >
+                  {cat}
+                </li>
+              ))}
           </ul>
         </aside>
 
         <div className="grid">
           <div className="w-full text-black dark:text-white flex lg:hidden text-2xl mb-2 text-center justify-center">
-            {activeCategory}
+            {tabs.find((t) => t.key === activeTab)?.label}: {activeCategory}
           </div>
+
           <main className="flex-1 overflow-y-auto p-6">
-            {activeCategory === "Product Grid" && (
+            {/* GRID (alleen voor categorieën in servicesGridCategories) */}
+            {shouldShowGrid && (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {activeContent?.components?.map((component, idx) => (
+                {activeContent?.components?.map((card, idx) => (
                   <div
                     key={idx}
                     className="bg-[#f0f0f0] dark:bg-[#1a1a1a] rounded-2xl overflow-hidden shadow hover:shadow-lg transition duration-300 border border-black/10 dark:border-white/5"
                   >
                     <div className="relative aspect-[5/3]">
                       <Image
-                        src={component.image}
-                        alt={component.title}
+                        src={card.image}
+                        alt={card.title}
                         fill
                         className="object-cover rounded-2xl"
                       />
@@ -272,22 +247,22 @@ export default function ComponentenLijstDiensten() {
                     <div className="p-4">
                       <div className="flex mt-2.5 justify-between items-center mb-2">
                         <h3 className="text-black dark:text-white font-medium text-base">
-                          {component.title}
+                          {card.title}
                           <span className="text-[10px] dark:bg-[#444] px-1 py-0.5 rounded-3xl border border-[#707070] ml-1">
-                            {component.items}
+                            {card.items}
                           </span>
                         </h3>
                         <div className="text-sm space-x-1 text-right">
                           <span className="line-through text-[12px] text-black/40 dark:text-white/40 mr-1">
-                            €{component.oldPrice}
+                            €{card.oldPrice}
                           </span>
                           <span className="text-black dark:text-white">
-                            €{component.price}
+                            €{card.price}
                           </span>
                         </div>
                       </div>
-                      <p className="text-xs py-3  max-w-[300px] text-black/50 dark:text-white/60">
-                        {component.description}
+                      <p className="text-xs py-3 max-w-[300px] text-black/50 dark:text-white/60">
+                        {card.description}
                       </p>
                     </div>
                   </div>
@@ -295,175 +270,234 @@ export default function ComponentenLijstDiensten() {
               </div>
             )}
 
-            {activeCategory !== "Product Grid" && (
-              <p className="text-white text-xl font-medium">{activeCategory}</p>
+            {/* ------------ WEB & DEV: per-afdeling placeholders ------------ */}
+            {activeTab === "web" && !shouldShowGrid && (
+              <p className="text-white text-xl font-medium"></p>
             )}
+            {activeTab === "web" &&
+              !shouldShowGrid &&
+              activeCategory === "Webdesign (UX/UI)" && (
+                <p className="text-white text-xl font-medium">
+                  Webdesign (UX/UI)
+                </p>
+              )}
+            {activeTab === "web" &&
+              !shouldShowGrid &&
+              activeCategory === "Webdevelopment" && (
+                <p className="text-white text-xl font-medium">Webdevelopment</p>
+              )}
+            {activeTab === "web" &&
+              !shouldShowGrid &&
+              activeCategory === "E-commerce" && (
+                <p className="text-white text-xl font-medium">E-commerce</p>
+              )}
+            {activeTab === "web" &&
+              !shouldShowGrid &&
+              activeCategory === "Landing Pages" && (
+                <p className="text-white text-xl font-medium">Landing Pages</p>
+              )}
+            {activeTab === "web" &&
+              !shouldShowGrid &&
+              activeCategory === "Technische SEO" && (
+                <p className="text-white text-xl font-medium">Technische SEO</p>
+              )}
+            {activeTab === "web" &&
+              !shouldShowGrid &&
+              activeCategory === "Performance & Speed" && (
+                <p className="text-white text-xl font-medium">
+                  Performance & Speed
+                </p>
+              )}
+            {activeTab === "web" &&
+              !shouldShowGrid &&
+              activeCategory === "Toegankelijkheid (WCAG)" && (
+                <p className="text-white text-xl font-medium">
+                  Toegankelijkheid (WCAG)
+                </p>
+              )}
+            {activeTab === "web" &&
+              !shouldShowGrid &&
+              activeCategory === "Webcare & Onderhoud" && (
+                <p className="text-white text-xl font-medium">
+                  Webcare & Onderhoud
+                </p>
+              )}
+            {activeTab === "web" &&
+              !shouldShowGrid &&
+              activeCategory === "Hosting & Domeinen" && (
+                <p className="text-white text-xl font-medium">
+                  Hosting & Domeinen
+                </p>
+              )}
+            {activeTab === "web" &&
+              !shouldShowGrid &&
+              activeCategory === "CMS / Headless CMS" && (
+                <p className="text-white text-xl font-medium">
+                  CMS / Headless CMS
+                </p>
+              )}
+            {activeTab === "web" &&
+              !shouldShowGrid &&
+              activeCategory === "Migratie & Replatforming" && (
+                <p className="text-white text-xl font-medium">
+                  Migratie & Replatforming
+                </p>
+              )}
+            {activeTab === "web" &&
+              !shouldShowGrid &&
+              activeCategory === "Integraties & API's" && (
+                <p className="text-white text-xl font-medium">
+                  Integraties & API&apos;s
+                </p>
+              )}
+            {activeTab === "web" &&
+              !shouldShowGrid &&
+              activeCategory === "Web App / MVP" && (
+                <p className="text-white text-xl font-medium">Web App / MVP</p>
+              )}
+            {activeTab === "web" &&
+              !shouldShowGrid &&
+              activeCategory === "Security & Hardening" && (
+                <p className="text-white text-xl font-medium">
+                  Security & Hardening
+                </p>
+              )}
+            {activeTab === "web" &&
+              !shouldShowGrid &&
+              activeCategory === "Analytics & Tracking" && (
+                <p className="text-white text-xl font-medium">
+                  Analytics & Tracking
+                </p>
+              )}
+            {activeTab === "web" &&
+              !shouldShowGrid &&
+              activeCategory === "Privacy & Cookie Consent (CMP)" && (
+                <p className="text-white text-xl font-medium">
+                  Privacy & Cookie Consent (CMP)
+                </p>
+              )}
 
-            {activeCategory === "Hero Sections" && (
-              <p className="text-white text-xl font-medium">Hero Sections</p>
+            {/* ------------ MARKETING: per-afdeling placeholders ------------ */}
+            {activeTab === "marketing" && !shouldShowGrid && (
+              <p className="text-white text-xl font-medium"></p>
             )}
-            {activeCategory === "Logo Clouds" && (
-              <p className="text-white text-xl font-medium">Logo Clouds</p>
-            )}
-            {activeCategory === "Bento Grids" && (
-              <p className="text-white text-xl font-medium">Bento Grids</p>
-            )}
-            {activeCategory === "CTA Sections" && (
-              <p className="text-white text-xl font-medium">CTA Sections</p>
-            )}
-            {activeCategory === "Testimonials" && (
-              <p className="text-white text-xl font-medium">Testimonials</p>
-            )}
-            {activeCategory === "Feature sections" && (
-              <p className="text-white text-xl font-medium">Feature sections</p>
-            )}
-            {activeCategory === "Pricing sections" && (
-              <p className="text-white text-xl font-medium">Pricing sections</p>
-            )}
-            {activeCategory === "Cards" && (
-              <p className="text-white text-xl font-medium">Cards</p>
-            )}
-            {activeCategory === "Navbars" && (
-              <p className="text-white text-xl font-medium">Navbars</p>
-            )}
-            {activeCategory === "Footers" && (
-              <p className="text-white text-xl font-medium">Footers</p>
-            )}
-            {activeCategory === "Login and Signup" && (
-              <p className="text-white text-xl font-medium">Login and Signup</p>
-            )}
-            {activeCategory === "Contact Sections" && (
-              <p className="text-white text-xl font-medium">Contact Sections</p>
-            )}
-            {activeCategory === "Blog Sections" && (
-              <p className="text-white text-xl font-medium">Blog Sections</p>
-            )}
-            {activeCategory === "Blog Content Sections" && (
-              <p className="text-white text-xl font-medium">
-                Blog Content Sections
-              </p>
-            )}
-            {activeCategory === "FAQs" && (
-              <p className="text-white text-xl font-medium">FAQs</p>
-            )}
-            {activeCategory === "Sidebars" && (
-              <p className="text-white text-xl font-medium">Sidebars</p>
-            )}
-            {activeCategory === "Stats Sections" && (
-              <p className="text-white text-xl font-medium">Stats Sections</p>
-            )}
-            {activeCategory === "Animations" && (
-              <p className="text-white text-xl font-medium">Animations</p>
-            )}
-            {activeCategory === "Integrations" && (
-              <p className="text-white text-xl font-medium">Integrations</p>
-            )}
-            {activeCategory === "Code Snippets" && (
-              <p className="text-white text-xl font-medium">Code Snippets</p>
-            )}
-            {activeCategory === "Newsletter Forms" && (
-              <p className="text-white text-xl font-medium">Newsletter Forms</p>
-            )}
-            {activeCategory === "Social Proof" && (
-              <p className="text-white text-xl font-medium">Social Proof</p>
-            )}
-            {activeCategory === "Widgets" && (
-              <p className="text-white text-xl font-medium">Widgets</p>
-            )}
-            {activeCategory === "Modals" && (
-              <p className="text-white text-xl font-medium">Modals</p>
-            )}
-            {activeCategory === "Tables" && (
-              <p className="text-white text-xl font-medium">Tables</p>
-            )}
-            {activeCategory === "Data Grids" && (
-              <p className="text-white text-xl font-medium">Data Grids</p>
-            )}
-            {activeCategory === "Pagination" && (
-              <p className="text-white text-xl font-medium">Pagination</p>
-            )}
-            {activeCategory === "Search Bars" && (
-              <p className="text-white text-xl font-medium">Search Bars</p>
-            )}
-            {activeCategory === "Tags" && (
-              <p className="text-white text-xl font-medium">Tags</p>
-            )}
-            {activeCategory === "Category Filters" && (
-              <p className="text-white text-xl font-medium">Category Filters</p>
-            )}
-            {activeCategory === "Dropdown Menus" && (
-              <p className="text-white text-xl font-medium">Dropdown Menus</p>
-            )}
-            {activeCategory === "Tooltips" && (
-              <p className="text-white text-xl font-medium">Tooltips</p>
-            )}
-            {activeCategory === "Avatars" && (
-              <p className="text-white text-xl font-medium">Avatars</p>
-            )}
-            {activeCategory === "Loaders" && (
-              <p className="text-white text-xl font-medium">Loaders</p>
-            )}
-            {activeCategory === "Image Galleries" && (
-              <p className="text-white text-xl font-medium">Image Galleries</p>
-            )}
-            {activeCategory === "Video Embeds" && (
-              <p className="text-white text-xl font-medium">Video Embeds</p>
-            )}
-            {activeCategory === "Media Blocks" && (
-              <p className="text-white text-xl font-medium">Media Blocks</p>
-            )}
-            {activeCategory === "Content Blocks" && (
-              <p className="text-white text-xl font-medium">Content Blocks</p>
-            )}
-            {activeCategory === "Tabs" && (
-              <p className="text-white text-xl font-medium">Tabs</p>
-            )}
-            {activeCategory === "Carousels" && (
-              <p className="text-white text-xl font-medium">Carousels</p>
-            )}
-            {activeCategory === "Announcements" && (
-              <p className="text-white text-xl font-medium">Announcements</p>
-            )}
-            {activeCategory === "Testimonials (Alt)" && (
-              <p className="text-white text-xl font-medium">
-                Testimonials (Alt)
-              </p>
-            )}
-            {activeCategory === "Checkout Sections" && (
-              <p className="text-white text-xl font-medium">
-                Checkout Sections
-              </p>
-            )}
-            {activeCategory === "Error Pages" && (
-              <p className="text-white text-xl font-medium">Error Pages</p>
-            )}
-            {activeCategory === "Password Resets" && (
-              <p className="text-white text-xl font-medium">Password Resets</p>
-            )}
-            {activeCategory === "Onboarding Flows" && (
-              <p className="text-white text-xl font-medium">Onboarding Flows</p>
-            )}
-            {activeCategory === "Steps Components" && (
-              <p className="text-white text-xl font-medium">Steps Components</p>
-            )}
-            {activeCategory === "Maps" && (
-              <p className="text-white text-xl font-medium">Maps</p>
-            )}
-            {activeCategory === "404 Pages" && (
-              <p className="text-white text-xl font-medium">404 Pages</p>
-            )}
-            {activeCategory === "Coming Soon Pages" && (
-              <p className="text-white text-xl font-medium">
-                Coming Soon Pages
-              </p>
-            )}
-            {activeCategory === "Maintenance Pages" && (
-              <p className="text-white text-xl font-medium">
-                Maintenance Pages
-              </p>
-            )}
+            {activeTab === "marketing" &&
+              !shouldShowGrid &&
+              activeCategory === "SEO (On-page)" && (
+                <p className="text-white text-xl font-medium">SEO (On-page)</p>
+              )}
+            {activeTab === "marketing" &&
+              !shouldShowGrid &&
+              activeCategory === "Technische SEO" && (
+                <p className="text-white text-xl font-medium">Technische SEO</p>
+              )}
+            {activeTab === "marketing" &&
+              !shouldShowGrid &&
+              activeCategory === "Lokale SEO" && (
+                <p className="text-white text-xl font-medium">Lokale SEO</p>
+              )}
+            {activeTab === "marketing" &&
+              !shouldShowGrid &&
+              activeCategory === "SEA / Google Ads" && (
+                <p className="text-white text-xl font-medium">
+                  SEA / Google Ads
+                </p>
+              )}
+            {activeTab === "marketing" &&
+              !shouldShowGrid &&
+              activeCategory === "Social Ads (Meta/TikTok/LinkedIn)" && (
+                <p className="text-white text-xl font-medium">
+                  Social Ads (Meta/TikTok/LinkedIn)
+                </p>
+              )}
+            {activeTab === "marketing" &&
+              !shouldShowGrid &&
+              activeCategory === "Content Marketing" && (
+                <p className="text-white text-xl font-medium">
+                  Content Marketing
+                </p>
+              )}
+            {activeTab === "marketing" &&
+              !shouldShowGrid &&
+              activeCategory === "Copywriting" && (
+                <p className="text-white text-xl font-medium">Copywriting</p>
+              )}
+            {activeTab === "marketing" &&
+              !shouldShowGrid &&
+              activeCategory === "E-mail & Marketing Automation" && (
+                <p className="text-white text-xl font-medium">
+                  E-mail & Marketing Automation
+                </p>
+              )}
+            {activeTab === "marketing" &&
+              !shouldShowGrid &&
+              activeCategory === "CRO / A/B Testing" && (
+                <p className="text-white text-xl font-medium">
+                  CRO / A/B Testing
+                </p>
+              )}
+            {activeTab === "marketing" &&
+              !shouldShowGrid &&
+              activeCategory === "Analytics & Dashboarding" && (
+                <p className="text-white text-xl font-medium">
+                  Analytics & Dashboarding
+                </p>
+              )}
+            {activeTab === "marketing" &&
+              !shouldShowGrid &&
+              activeCategory === "Social Media Management" && (
+                <p className="text-white text-xl font-medium">
+                  Social Media Management
+                </p>
+              )}
+            {activeTab === "marketing" &&
+              !shouldShowGrid &&
+              activeCategory === "Brand Strategy" && (
+                <p className="text-white text-xl font-medium">Brand Strategy</p>
+              )}
+            {activeTab === "marketing" &&
+              !shouldShowGrid &&
+              activeCategory === "Branding & Visual Identity" && (
+                <p className="text-white text-xl font-medium">
+                  Branding & Visual Identity
+                </p>
+              )}
+            {activeTab === "marketing" &&
+              !shouldShowGrid &&
+              activeCategory === "Foto & Video" && (
+                <p className="text-white text-xl font-medium">Foto & Video</p>
+              )}
+            {activeTab === "marketing" &&
+              !shouldShowGrid &&
+              activeCategory === "PR & Linkbuilding" && (
+                <p className="text-white text-xl font-medium">
+                  PR & Linkbuilding
+                </p>
+              )}
+            {activeTab === "marketing" &&
+              !shouldShowGrid &&
+              activeCategory === "Influencer Marketing" && (
+                <p className="text-white text-xl font-medium">
+                  Influencer Marketing
+                </p>
+              )}
+            {activeTab === "marketing" &&
+              !shouldShowGrid &&
+              activeCategory === "Funnels & Lead Magnets" && (
+                <p className="text-white text-xl font-medium">
+                  Funnels & Lead Magnets
+                </p>
+              )}
+            {activeTab === "marketing" &&
+              !shouldShowGrid &&
+              activeCategory === "App Store Optimization (ASO)" && (
+                <p className="text-white text-xl font-medium">
+                  App Store Optimization (ASO)
+                </p>
+              )}
           </main>
 
+          {/* mobile nav */}
           <div className="flex justify-between items-center mt-6 px-6 lg:hidden w-[100vw]">
             <button
               onClick={goToPrevious}

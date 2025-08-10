@@ -80,8 +80,8 @@ export default function RubikOne() {
                 <FlipWordsTwo />
               </div>
               <p className="text-sm md:leading-[1.5] text-gray-300 font-normal mb-8 mt-5 max-w-[32rem] text-center leading-7 md:text-left">
-                Wij helpen bedrijven groeien met strategie, branding en digitale
-                innovatie. Van converterend webdesign tot marketing die
+                Reactly helpt bedrijven groeien met strategie, branding en
+                digitale innovatie. Van converterend webdesign tot marketing die
                 schaalbaar, slim en creatief is.
               </p>
               <div className="mt-6 flex flex-row gap-4 text-sm items-center md:items-start justify-center md:justify-start">
