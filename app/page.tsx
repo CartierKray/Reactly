@@ -81,7 +81,7 @@ export default function Home() {
         </div>
       </FadeInWhenVisible>
 
-      <div className="pb-10 lg:pt-16">
+      <div className="pb-10 lg:pt-10">
         <h2
           id="reviews-title"
           className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"

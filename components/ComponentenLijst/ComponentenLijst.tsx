@@ -6,6 +6,12 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import HeroHeader from "../HeroHeader/HeroHeader";
 import { HeroScrollDemo } from "../Hero/HeroScroll";
+import ProductGrid, {
+  ProductGridItem,
+  appItems,
+  templateItems,
+} from "../ProductGrid/ProductGrid";
+import TemplateGrid from "../TemplateGrid/TemplateGrid";
 
 /**
  * Kies hier voor welke TEMPLATE-categorieën je het kaarten-grid wilt tonen.
@@ -15,16 +21,7 @@ import { HeroScrollDemo } from "../Hero/HeroScroll";
  * Voorbeeld:
  * const templateGridCategories = new Set(["Landing Pages", "Portfolio"]);
  */
-const templateGridCategories = new Set<string>([
-  // "Landing Pages",
-  // "SaaS Templates",
-  // "Portfolio",
-  // "Agency",
-  // "Blog",
-  // "E-commerce",
-  // "Pricing Pages",
-  // "Auth Flows",
-]);
+const templateGridCategories = new Set<string>([]);
 
 const tabs = [
   // TEMPLATES sectie
@@ -40,36 +37,6 @@ const tabs = [
       "E-commerce",
       "Pricing Pages",
       "Auth Flows",
-    ],
-    // voorbeeld-kaarten; vul aan/aanpassen naar wens
-    components: [
-      {
-        title: "SaaS Landing – Nova",
-        items: 1,
-        price: 29,
-        oldPrice: 39,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "High-converting SaaS landing met sections, pricing en FAQs.",
-      },
-      {
-        title: "Portfolio – Minimal",
-        items: 1,
-        price: 19,
-        oldPrice: 29,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "Clean portfolio template met case grid, about en contact.",
-      },
-      {
-        title: "Agency – Grid",
-        items: 1,
-        price: 24,
-        oldPrice: 34,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "Agency layout met hero, services, work, testimonials en contact.",
-      },
     ],
   },
 
@@ -130,139 +97,6 @@ const tabs = [
       "404 Pages",
       "Coming Soon Pages",
       "Maintenance Pages",
-    ],
-    components: [
-      {
-        title: "Hero Sections",
-        items: 9,
-        price: 12,
-        oldPrice: 18,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "A collection of hero sections that are modern and stand out",
-      },
-      {
-        title: "Logo Clouds",
-        items: 3,
-        price: 10,
-        oldPrice: 16,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "A collection of logo clouds with micro interactions and minimal animations",
-      },
-      {
-        title: "Feature Sections",
-        items: 4,
-        price: 9,
-        oldPrice: 14,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "A set of feature sections ranging from bento grids to simple layouts",
-      },
-      {
-        title: "Hero Sections",
-        items: 9,
-        price: 12,
-        oldPrice: 18,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "A collection of hero sections that are modern and stand out",
-      },
-      {
-        title: "Logo Clouds",
-        items: 3,
-        price: 10,
-        oldPrice: 16,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "A collection of logo clouds with micro interactions and minimal animations",
-      },
-      {
-        title: "Feature Sections",
-        items: 4,
-        price: 9,
-        oldPrice: 14,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "A set of feature sections ranging from bento grids to simple layouts",
-      },
-      {
-        title: "Backgrounds",
-        items: 8,
-        price: 9,
-        oldPrice: 15,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "A set of beautiful, creative backgrounds for landing pages",
-      },
-      {
-        title: "Bento Grids",
-        items: 3,
-        price: 12,
-        oldPrice: 18,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description: "A set of bento grids for various use cases",
-      },
-      {
-        title: "Blog Content Sections",
-        items: 2,
-        price: 9,
-        oldPrice: 15,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description: "Content sections for your single blog posts",
-      },
-      {
-        title: "Hero Sections",
-        items: 9,
-        price: 12,
-        oldPrice: 18,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "A collection of hero sections that are modern and stand out",
-      },
-      {
-        title: "Logo Clouds",
-        items: 3,
-        price: 10,
-        oldPrice: 16,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "A collection of logo clouds with micro interactions and minimal animations",
-      },
-      {
-        title: "Feature Sections",
-        items: 4,
-        price: 9,
-        oldPrice: 14,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "A set of feature sections ranging from bento grids to simple layouts",
-      },
-      {
-        title: "Backgrounds",
-        items: 8,
-        price: 9,
-        oldPrice: 15,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description:
-          "A set of beautiful, creative backgrounds for landing pages",
-      },
-      {
-        title: "Bento Grids",
-        items: 3,
-        price: 12,
-        oldPrice: 18,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description: "A set of bento grids for various use cases",
-      },
-      {
-        title: "Blog Content Sections",
-        items: 2,
-        price: 9,
-        oldPrice: 15,
-        image: "/images/5_other_image_17355647422135117692.jpg",
-        description: "Content sections for your single blog posts",
-      },
     ],
   },
 ];
@@ -363,52 +197,17 @@ export default function ComponentenLijst() {
           </div>
 
           <main className="flex-1 overflow-y-auto p-6">
-            {/* GRID: Componenten -> alleen Product Grid, Templates -> zoals ingesteld in templateGridCategories */}
-            {shouldShowGrid && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {activeContent?.components?.map((component, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-[#f0f0f0] dark:bg-[#1a1a1a] rounded-2xl overflow-hidden shadow hover:shadow-lg transition duration-300 border border-black/10 dark:border-white/5"
-                  >
-                    <div className="relative aspect-[5/3]">
-                      <Image
-                        src={component.image}
-                        alt={component.title}
-                        fill
-                        className="object-cover rounded-2xl"
-                      />
-                    </div>
-                    <div className="p-4">
-                      <div className="flex mt-2.5 justify-between items-center mb-2">
-                        <h3 className="text-black dark:text-white font-medium text-base">
-                          {component.title}
-                          <span className="text-[10px] dark:bg-[#444] px-1 py-0.5 rounded-3xl border border-[#707070] ml-1">
-                            {component.items}
-                          </span>
-                        </h3>
-                        <div className="text-sm space-x-1 text-right">
-                          <span className="line-through text-[12px] text-black/40 dark:text-white/40 mr-1">
-                            €{component.oldPrice}
-                          </span>
-                          <span className="text-black dark:text-white">
-                            €{component.price}
-                          </span>
-                        </div>
-                      </div>
-                      <p className="text-xs py-3 max-w-[300px] text-black/50 dark:text-white/60">
-                        {component.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            {/* ----------------------------COMPONENTEN per-afdeling ------------------------ */}
+            {/* App -> Product Grid */}
+            {activeTab === "app" && activeCategory === "Product Grid" && (
+              <ProductGrid items={appItems} />
             )}
 
-            {/* PER-AFDELING blokken — Componenten (zoals je had) */}
-            {activeTab === "app" && activeCategory !== "Product Grid" && (
-              <p className="text-white text-xl font-medium"></p>
-            )}
+            {activeTab === "templates" &&
+              templateGridCategories.has(activeCategory as string) && (
+                <ProductGrid items={templateItems} />
+              )}
+
             {activeTab === "app" && activeCategory === "Hero Sections" && (
               <div className="h-full">
                 <HeroHeader />
@@ -576,15 +375,17 @@ export default function ComponentenLijst() {
               </p>
             )}
 
+            {/* ---------------------------- TEMPLATE per-afdeling ------------------------ */}
+
             {/* TEMPLATE per-afdeling blokken (nu werken ze 1-op-1 zoals bij Componenten) */}
-            {activeTab === "templates" && !shouldShowGrid && (
-              <p className="text-white text-xl font-medium"></p>
-            )}
+
             {activeTab === "templates" &&
               !shouldShowGrid &&
-              activeCategory === "Landing Pages" && (
-                <p className="text-white text-xl font-medium">Landing Pages</p>
-              )}
+              activeCategory === "Landing Pages" && <TemplateGrid />}
+            {activeTab === "templates" &&
+              !shouldShowGrid &&
+              activeCategory === "Landing Pages" && <div></div>}
+
             {activeTab === "templates" &&
               !shouldShowGrid &&
               activeCategory === "SaaS Templates" && (
