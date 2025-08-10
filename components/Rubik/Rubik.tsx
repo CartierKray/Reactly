@@ -79,7 +79,7 @@ export default function RubikOne() {
               <div className="uppercase tracking-wide text-4xl md:text-5xl lg:text-7xl font-semibold text-white">
                 <FlipWordsTwo />
               </div>
-              <p className="text-sm md:leading-[1.5] text-gray-300 font-normal mb-8 mt-5 max-w-[32rem] text-center leading-7 md:text-left">
+              <p className="text-sm md:leading-[1.5] text-white font-normal mb-8 mt-5 max-w-[32rem] text-center leading-7 md:text-left">
                 Reactly helpt bedrijven groeien met strategie, branding en
                 digitale innovatie. Van converterend webdesign tot marketing die
                 schaalbaar, slim en creatief is.

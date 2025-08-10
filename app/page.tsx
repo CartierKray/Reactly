@@ -34,11 +34,7 @@ export default function Home() {
         </div>
       </FadeInWhenVisible>
 
-      {/* <div className="pt-10 lg:pt-20 pb-10 dark:bg-black">
-        <ComponentHeaderWebdesign />
-      </div> */}
-
-      <div className="pt-10 lg:pt-20 pb-16">
+      {/* <div className="pt-10 lg:pt-20 pb-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2
             id="reviews-title"
@@ -57,43 +53,13 @@ export default function Home() {
             </a>
           </p>
         </div>
-      </div>
+      </div> */}
 
       {/* <FadeInWhenVisible delay={0.1}>
         <div className="hidden pt-20 md:pt-20 py-10 md:flex">
           <DiagonalSlider />
         </div>
       </FadeInWhenVisible> */}
-
-      {/* <div className="pt-20 pb-">
-        <h2
-          id="reviews-title"
-          className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"
-        >
-          Webdesign op maat voor jouw bedrijf
-        </h2>
-        <p className="mt-2 text-md md:text-lg max-w-xs md:max-w-xl mx-auto text-neutral-600 text-center dark:text-neutral-200">
-          We staan voor je klaar om je te helpen met al je vragen. Kun je niet
-          vinden wat je zoekt? Neem contact met ons op via &nbsp;
-          <a href="mailto:info@reactly.nl" className="text-blue-500 underline">
-            info@reactly.nl
-          </a>
-        </p>
-      </div> */}
-
-      <CodeShowcase />
-
-      <FadeInWhenVisible delay={0.1}>
-        <div className="pb-5">
-          <CTAButton />
-        </div>
-      </FadeInWhenVisible>
-
-      <FadeInWhenVisible delay={0.1}>
-        <div className="py-20 pt-24 flex">
-          <RolexAdvies />
-        </div>
-      </FadeInWhenVisible>
 
       <div className="pt-10 pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -110,8 +76,38 @@ export default function Home() {
       </div>
 
       <FadeInWhenVisible delay={0.1}>
-        <div className="pb-10 md:pb-20 lg:pb-32">
+        <div className="pb-10 md:pb-20">
           <Reviews />
+        </div>
+      </FadeInWhenVisible>
+
+      <div className="pb-10 lg:pt-16">
+        <h2
+          id="reviews-title"
+          className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"
+        >
+          Webdesign op maat voor jouw website?
+        </h2>
+        <p className="mt-2 text-md md:text-lg max-w-xs md:max-w-xl mx-auto text-neutral-600 text-center dark:text-neutral-200">
+          We staan voor je klaar om je te helpen met al je vragen. Kun je niet
+          vinden wat je zoekt? Neem contact met ons op via &nbsp;
+          <a href="mailto:info@reactly.nl" className="text-blue-500 underline">
+            info@reactly.nl
+          </a>
+        </p>
+      </div>
+
+      <CodeShowcase />
+
+      <FadeInWhenVisible delay={0.1}>
+        <div className="pb-5">
+          <CTAButton />
+        </div>
+      </FadeInWhenVisible>
+
+      <FadeInWhenVisible delay={0.1}>
+        <div className="py-20 pt-24 flex">
+          <RolexAdvies />
         </div>
       </FadeInWhenVisible>
 
