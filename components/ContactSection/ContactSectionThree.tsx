@@ -7,8 +7,6 @@ import {
   FiTwitter,
   FiYoutube,
 } from "react-icons/fi";
-import { useState } from "react";
-import emailjs from "@emailjs/browser";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -113,10 +111,17 @@ export default function ContactSectionThree() {
                   <FiClock className="text-xs" />
                   <span>{day}:</span>
                 </div>
-                <span>09:00 - 21:00</span>
+                <span>
+                  {day === "Zaterdag"
+                    ? "08:00 - 16:00"
+                    : day === "Zondag"
+                    ? "Gesloten"
+                    : "08:00 - 19:00"}
+                </span>
               </div>
             ))}
           </div>
+
           <p className="text-[12px] dark:text-white/50  pt-6 hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out">
             Wij zijn dagelijks geopend! Plan vooraf een afspraak om zeker te
             zijn van toegang en onnodig wachten te voorkomen.

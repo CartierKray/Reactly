@@ -44,7 +44,7 @@ const VideoBannerEleven: React.FC = () => {
         <div className="uppercase tracking-wide text-4xl md:text-5xl lg:text-7xl font-semibold text-white">
           <FlipWordsOne />
         </div>
-        <p className="text-sm md:leading-[1.5] mt-3 text-white font-normal max-w-[32rem] text-center leading-7 md:text-left">
+        <p className="text-sm lg:text-[16px] md:leading-[1.5] mt-3 text-white font-normal max-w-[32rem] text-center leading-7 hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out ">
           Reactly helpt bedrijven groeien met strategie, branding en digitale
           innovatie. Van converterend webdesign tot marketing die schaalbaar,
           slim en creatief is.

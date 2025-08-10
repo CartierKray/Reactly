@@ -22,6 +22,7 @@ const AIChatBot: React.FC<AIChatBotProps> = ({ isOpen, setIsOpen }) => {
   const now = new Date();
   const currentHour = now.getHours();
   const binnenOpeningstijden = currentHour >= 8 && currentHour < 21;
+  const [introPending, setIntroPending] = useState(false); // ⬅️ nieuw
   const [viewState, setViewState] = useState<"home" | "overview" | "chat">(
     "home"
   );
@@ -120,6 +121,24 @@ Stel gerust je vraag. Je kunt ook mailen naar [info@reactly.nl](mailto:info@reac
     }
     setViewState("chat");
   };
+
+  useEffect(() => {
+    // Alleen bij het openen van de chat en alleen als het echt de eerste bot-welkom is
+    if (
+      viewState === "chat" &&
+      messages.length === 1 &&
+      messages[0].from === "bot"
+    ) {
+      setIntroPending(true);
+      setIsTyping(true); // laat de bestaande spinner zien
+      const t = setTimeout(() => {
+        setIntroPending(false);
+        setIsTyping(false);
+      }, 1000); // ~1 seconde
+
+      return () => clearTimeout(t);
+    }
+  }, [viewState, messages]); // ⬅️ nieuw
 
   useEffect(() => {
     const style = document.createElement("style");
@@ -245,7 +264,7 @@ Stel gerust je vraag. Je kunt ook mailen naar [info@reactly.nl](mailto:info@reac
             >
               <div>
                 <div className="text-sm tracking-wide font-medium dark:text-white">
-                  Bel direct
+                  Bellen
                 </div>
                 <div className="font-normal text-gray-500 dark:text-white/50 text-xs text-black/50 tracking-wide flex items-center gap-1">
                   <span
@@ -255,7 +274,7 @@ Stel gerust je vraag. Je kunt ook mailen naar [info@reactly.nl](mailto:info@reac
                   />
                   <div className="pt-[0.9px]">
                     {binnenOpeningstijden
-                      ? "Bereikbaar van 08:00 t/m 21:00"
+                      ? "Bereikbaar van 08:00 t/m 19:00"
                       : "Momenteel gesloten"}
                   </div>
                 </div>
@@ -602,56 +621,58 @@ Stel gerust je vraag. Je kunt ook mailen naar [info@reactly.nl](mailto:info@reac
               </div>
             )}
             {/* <div
-              className={`rounded-xl px-4 py-2.5 max-w-[70%] whitespace-pre-line text-[13px] tracking-wide ${
-                msg.from === "bot"
-                  ? "bg-white dark:bg-neutral-800 text-black dark:text-white self-start shadow"
-                  : "bg-[#c2b293] dark:bg-[#6a6a6a] text-white self-end shadow"
-              }`}
-            >
-              {msg.text}
-            </div> */}
-            <div
-              className={`rounded-xl px-4 py-2.5 max-w-[70%] text-[13px] tracking-wide whitespace-pre-line ${
-                msg.from === "bot"
-                  ? "bg-white dark:bg-neutral-800 text-black dark:text-white self-start shadow"
-                  : "bg-[#c2b293] dark:bg-[#6a6a6a] text-white self-end shadow"
-              }`}
-            >
-              {msg.from === "bot" ? (
-                <ReactMarkdown
-                  components={{
-                    img: ({ src = "", alt }) => {
-                      if (!src) return null;
+            className={`rounded-xl px-4 py-2.5 max-w-[70%] whitespace-pre-line text-[13px] tracking-wide ${
+              msg.from === "bot"
+                ? "bg-white dark:bg-neutral-800 text-black dark:text-white self-start shadow"
+                : "bg-[#c2b293] dark:bg-[#6a6a6a] text-white self-end shadow"
+            }`}
+          >
+            {msg.text}
+          </div> */}
+            {!(introPending && index === 0 && msg.from === "bot") && (
+              <div
+                className={`rounded-xl px-4 py-2.5 max-w-[70%] text-[13px] tracking-wide whitespace-pre-line ${
+                  msg.from === "bot"
+                    ? "bg-white dark:bg-neutral-800 text-black dark:text-white self-start shadow"
+                    : "bg-[#c2b293] dark:bg-[#6a6a6a] text-white self-end shadow"
+                }`}
+              >
+                {msg.from === "bot" ? (
+                  <ReactMarkdown
+                    components={{
+                      img: ({ src = "", alt }) => {
+                        if (!src) return null;
 
-                      return (
-                        <Image
-                          src={src}
-                          alt={alt || "auto"}
-                          width={800}
-                          height={500}
-                          className="rounded-lg mb-2 w-full h-auto object-cover shadow-md"
+                        return (
+                          <Image
+                            src={src}
+                            alt={alt || "auto"}
+                            width={800}
+                            height={500}
+                            className="rounded-lg mb-2 w-full h-auto object-cover shadow-md"
+                          />
+                        );
+                      },
+                      a: ({ node, ...props }) => (
+                        <a
+                          {...props}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 underline"
                         />
-                      );
-                    },
-                    a: ({ node, ...props }) => (
-                      <a
-                        {...props}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 underline"
-                      />
-                    ),
-                    h3: ({ node, ...props }) => (
-                      <h3 {...props} className="text-base font-bold mb-1" />
-                    ),
-                  }}
-                >
-                  {msg.text}
-                </ReactMarkdown>
-              ) : (
-                msg.text
-              )}
-            </div>
+                      ),
+                      h3: ({ node, ...props }) => (
+                        <h3 {...props} className="text-base font-bold mb-1" />
+                      ),
+                    }}
+                  >
+                    {msg.text}
+                  </ReactMarkdown>
+                ) : (
+                  msg.text
+                )}
+              </div>
+            )}
           </React.Fragment>
         ))}
         {isTyping && (

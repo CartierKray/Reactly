@@ -10,6 +10,14 @@ export async function POST(req: Request) {
   const { messages, chatId } = await req.json();
 
   try {
+    if (!process.env.OPENAI_API_KEY) {
+      console.error("OPENAI_API_KEY ontbreekt");
+      return NextResponse.json(
+        { reply: "Serverconfiguratie mist de OpenAI API key." },
+        { status: 500 }
+      );
+    }
+
     const systemPrompt = `
 Je bent een slimme, vriendelijke en overtuigende AI-assistent van **Reactly** – een toonaangevend webdesign- en marketingbureau.
 
@@ -34,12 +42,13 @@ Je bent behulpzaam én laat subtiel doorschemeren dat met Reactly samenwerken ee
 `;
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-4o",
+      // Nieuwste 4o alias; blijft automatisch up-to-date
+      model: "chatgpt-4o-latest",
       messages: [{ role: "system", content: systemPrompt }, ...messages],
       temperature: 0.8,
     });
 
-    const reply = completion.choices[0]?.message?.content;
+    const reply = completion.choices[0]?.message?.content ?? "";
     return NextResponse.json({ reply });
   } catch (err) {
     console.error(`[Chat ${chatId}] Fout:`, err);

@@ -57,12 +57,12 @@ export function SheetFour() {
                   },
                   {
                     href: "/componenten",
-                    label: "Componenten",
+                    label: "Producten",
                     textSize: "text-3xl md:text-4xl",
                   },
                   {
                     href: "/prijzen",
-                    label: "Peijzen",
+                    label: "Prijzen",
                     textSize: "text-3xl md:text-4xl",
                   },
                   {

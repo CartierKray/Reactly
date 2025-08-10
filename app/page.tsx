@@ -29,7 +29,7 @@ export default function Home() {
       </div>
 
       <FadeInWhenVisible delay={0.1}>
-        <div className="py-10 md:pt-28">
+        <div className="py-14 lg:py-20">
           <InfinitiveMovingCardsIMG />
         </div>
       </FadeInWhenVisible>
@@ -61,7 +61,7 @@ export default function Home() {
         </div>
       </FadeInWhenVisible> */}
 
-      <div className="pt-10 pb-20">
+      <div className="pb-10 lg:pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2
             id="reviews-title"
@@ -76,7 +76,7 @@ export default function Home() {
       </div>
 
       <FadeInWhenVisible delay={0.1}>
-        <div className="pb-10 md:pb-20">
+        <div className="pb-10 md:pb-10">
           <Reviews />
         </div>
       </FadeInWhenVisible>
