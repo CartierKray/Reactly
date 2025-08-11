@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useEffect, useState } from "react";
+import { Key, useEffect, useState } from "react";
 import Image from "next/image";
 import { ProductGridItem } from "../ProductGrid/ProductGrid";
 
@@ -63,59 +63,78 @@ export default function TemplateGrid({
     setCart((prev) => prev.filter((_, i) => i !== index));
   };
 
+  // ➕ All Access product (wordt gebruikt in de modal-link)
+  const addAllAccess = () => {
+    const allAccess: ProductGridItem = {
+      title: "All Access",
+      items: 1,
+      price: 249,
+      oldPrice: 349, // voldoet aan ProductGridItem
+      image: "/svg/reactlyallaccess.svg",
+      description: "Toegang tot alle huidige en toekomstige templates.",
+    };
+    // "in plaats daarvan" → vervang huidige cart met All Access
+    setCart([allAccess]);
+    setEmail("");
+    setIsOpen(true);
+  };
+
   const itemCount = cart.length;
   const total = cart.reduce((sum, it) => sum + (it.price || 0), 0);
+  const hasAllAccess = cart.some((it) => it.title === "All Access");
 
   return (
     <>
       {/* GRID */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {items.map((component, idx) => (
-          <div
-            key={idx}
-            className="bg-[#f0f0f0] dark:bg-[#1a1a1a] rounded-2xl overflow-hidden shadow hover:shadow-lg transition duration-300 border border-black/10 dark:border-white/5"
-          >
-            <div className="relative aspect-[5/3]">
-              <Image
-                src={component.image}
-                alt={component.title}
-                fill
-                className="object-cover rounded-t-2xl"
-              />
-            </div>
-            <div className="p-4">
-              <div className="flex mt-2.5 justify-between items-center mb-2">
-                <h3 className="text-black dark:text-white font-medium text-base">
-                  {component.title}
-                  <span className="text-[10px] dark:bg-[#444] px-1 py-0.5 rounded-3xl border border-[#707070] ml-1">
-                    {component.items}
-                  </span>
-                </h3>
-                <div className="text-sm space-x-1 text-right">
-                  <span className="line-through text-[12px] text-black/40 dark:text-white/40 mr-1">
-                    ${component.oldPrice}
-                  </span>
-                  <span className="text-black dark:text-white">
-                    €{component.price}
-                  </span>
-                </div>
+        {items.map(
+          (component: ProductGridItem, idx: Key | null | undefined) => (
+            <div
+              key={idx}
+              className="bg-[#f0f0f0] dark:bg-[#1a1a1a] rounded-2xl overflow-hidden shadow hover:shadow-lg transition duration-300 border border-black/10 dark:border-white/5"
+            >
+              <div className="relative aspect-[5/3]">
+                <Image
+                  src={component.image}
+                  alt={component.title}
+                  fill
+                  className="object-cover rounded-t-2xl"
+                />
               </div>
+              <div className="p-4">
+                <div className="flex mt-2.5 justify-between items-center mb-2">
+                  <h3 className="text-black dark:text-white font-medium text-base">
+                    {component.title}
+                    <span className="text-[10px] dark:bg-[#444] px-1.5 py-0.5 rounded-3xl border border-[#707070] ml-1 w-full">
+                      {component.items}
+                    </span>
+                  </h3>
+                  <div className="text-sm space-x-1 text-right">
+                    <span className="line-through text-[12px] text-black/40 dark:text-white/40 mr-1">
+                      €{component.oldPrice}
+                    </span>
+                    <span className="text-black dark:text-white">
+                      €{component.price}
+                    </span>
+                  </div>
+                </div>
 
-              <p className="text-xs py-3 mb-2 max-w-[300px] text-black/50 dark:text-white/60">
-                {component.description}
-              </p>
+                <p className="text-xs py-3 mb-2 max-w-[300px] text-black/50 dark:text-white/60">
+                  {component.description}
+                </p>
 
-              {/* CTA button */}
-              <button
-                className="mt-1 inline-flex items-center mb-2 rounded-2xl bg-black dark:bg-white text-white dark:text-black px-4 py-2 text-xs font-medium shadow"
-                type="button"
-                onClick={() => addToCart(component)}
-              >
-                Add to cart ${component.price}
-              </button>
+                {/* CTA button */}
+                <button
+                  className="mt-1 inline-flex items-center mb-2 rounded-2xl bg-black dark:bg-white text-white dark:text-black px-4 py-2 text-xs font-medium shadow"
+                  type="button"
+                  onClick={() => addToCart(component)}
+                >
+                  Add to cart €{component.price}
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          )
+        )}
       </div>
 
       {/* MODAL */}
@@ -145,12 +164,27 @@ export default function TemplateGrid({
                           src={selected.image}
                           alt={selected.title}
                           fill
-                          className="object-cover"
+                          className={
+                            selected.title === "All Access"
+                              ? "object-contain"
+                              : "object-cover"
+                          }
                         />
                       </div>
                       <div className="flex-1">
-                        <div className="text-[16px] font-medium">
-                          {selected.title} Template
+                        <div className="text-[16px] font-medium flex items-center">
+                          {selected.title}
+                          {selected.title === "All Access" && (
+                            <a
+                              href="/prijzen#all-access"
+                              target="_blank"
+                              className="ml-2 inline-flex items-center justify-center h-4 w-4 rounded-full border border-white/30 text-[10px] leading-none"
+                              aria-label="Meer info over All Access"
+                              title="Meer info"
+                            >
+                              i
+                            </a>
+                          )}
                         </div>
                         <div className="text-[16px] text-white/70">
                           €{selected.price}
@@ -196,7 +230,7 @@ export default function TemplateGrid({
                     Je betaalt in totaal{" "}
                     <span className="font-semibold">€{total}</span> voor{" "}
                     <span className="font-semibold">
-                      {itemCount === 1 ? "1 product" : `${itemCount} producten`}
+                      {itemCount === 1 ? "1 product" : `€{itemCount} producten`}
                     </span>
                     .
                   </p>
@@ -205,17 +239,20 @@ export default function TemplateGrid({
                     Je hebt geen producten geselecteerd.
                   </p>
                 )}
-                <div className="text-sm mt-2">
-                  In plaats daarvan&nbsp;
-                  <a
-                    href="/prijzen"
-                    target="_blank"
-                    className="font-semibold hover:underline"
-                  >
-                    All Access
-                  </a>
-                  &nbsp;downloaden ?
-                </div>
+
+                {!hasAllAccess && (
+                  <div className="text-sm mt-2">
+                    In plaats daarvan&nbsp;
+                    <button
+                      type="button"
+                      className="font-semibold hover:underline"
+                      onClick={addAllAccess}
+                    >
+                      All Access
+                    </button>
+                    &nbsp;kopen ?
+                  </div>
+                )}
               </div>
 
               <div className="mt-4 pb-2">

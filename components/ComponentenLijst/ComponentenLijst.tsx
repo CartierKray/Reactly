@@ -12,6 +12,7 @@ import ProductGrid, {
   templateItems,
 } from "../ProductGrid/ProductGrid";
 import TemplateGrid from "../TemplateGrid/TemplateGrid";
+import GridClothing from "../GridClothing/GridClothing";
 
 /**
  * Kies hier voor welke TEMPLATE-categorieën je het kaarten-grid wilt tonen.
@@ -46,6 +47,7 @@ const tabs = [
     label: "Component Packs",
     categories: [
       "Product Grid",
+      "Grid Clothing",
       "Hero Sections",
       "Logo Clouds",
       "Bento Grids",
@@ -201,6 +203,10 @@ export default function ComponentenLijst() {
             {/* App -> Product Grid */}
             {activeTab === "app" && activeCategory === "Product Grid" && (
               <ProductGrid items={appItems} />
+            )}
+
+            {activeTab === "app" && activeCategory === "Grid Clothing" && (
+              <GridClothing />
             )}
 
             {activeTab === "templates" &&

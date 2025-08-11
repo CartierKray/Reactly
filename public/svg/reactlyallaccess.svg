@@ -1,0 +1,29 @@
+<svg viewBox="0 0 800 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+  <style>
+    .text {
+      fill: white;
+      font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+      font-size: 100px;
+      font-weight: bold;
+      font-style: italic;
+      dominant-baseline: middle;
+      text-anchor: middle;
+    }
+    .subtext {
+      fill: white;
+      font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+      font-size: 28px;
+      font-weight: 600;
+      dominant-baseline: middle;
+      text-anchor: middle;
+      letter-spacing: 3px;
+      opacity: 0.9;
+    }
+  </style>
+
+  <!-- Hoofdtitel -->
+  <text x="400" y="60" class="text">Reactly</text>
+
+  <!-- Subtitel -->
+  <text x="400" y="105" class="subtext">ALL ACCESS</text>
+</svg>

@@ -16,7 +16,7 @@ const contactOptions = [
 const compactOptions = ["Start", "Groei", "Pro", "Boost", "Premium"];
 
 const pricingByContacts: { [key: string]: string } = {
-  Starter: "1499",
+  Starter: "1999",
   Groei: "€1999",
   Professioneel: "€2499",
   "AI & SEO Boost": "€2749",
@@ -51,17 +51,13 @@ export default function PricingSection() {
   const tiers = [
     {
       name: "Start",
-      basePrice: "1499",
+      basePrice: "1749",
       emails: "Basis website met 1 pagina\nInclusief mobielvriendelijk design",
       features: [
         "Responsief design",
         "Contactformulier",
         "Snelle laadtijden",
         "Basis SEO",
-        "Sociale media koppeling",
-        "GDPR proof",
-        "1 aanpassing inbegrepen",
-        "Toegang tot support community",
       ],
     },
     {
@@ -78,6 +74,10 @@ export default function PricingSection() {
         "Conversiegericht ontwerp",
         "2 weken support & revisies",
         "CMS integratie",
+        "Sociale media koppeling",
+        "GDPR proof",
+        "1 aanpassing inbegrepen",
+        "Toegang tot support community",
       ],
       recommended: true,
     },
@@ -260,7 +260,7 @@ export default function PricingSection() {
                       <Check className="h-3 w-3 stroke-[4px] text-white" />
                     </div>
                     <div className="text-sm font-medium text-black dark:text-white">
-                      Alles in Pro Marketing
+                      Alles in Start
                     </div>
                   </div>
                   <div className="my-4 flex items-start justify-start gap-2">
@@ -268,7 +268,7 @@ export default function PricingSection() {
                       <Check className="h-3 w-3 stroke-[4px] text-white" />
                     </div>
                     <div className="text-sm font-medium text-black dark:text-white">
-                      Alles in Start
+                      Alles in Pro Marketing
                     </div>
                   </div>
                 </div>
