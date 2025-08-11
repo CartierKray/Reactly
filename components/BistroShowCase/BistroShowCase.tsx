@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 
 function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
@@ -63,11 +64,11 @@ const BISTRO_ITEMS: BistroItem[] = [
 ];
 
 const DEFAULT_HOTSPOTS: Hotspot[] = [
-  { id: "cardigan", x: 30, y: 30 }, // woman's torso
-  { id: "denim", x: 25, y: 60 }, // woman's shorts
-  { id: "jacket", x: 78, y: 25 }, // man's jacket
-  { id: "tank", x: 60, y: 40 }, // under jacket area
-  { id: "shorts", x: 75, y: 53 }, // man's shorts
+  { id: "cardigan", x: 30, y: 30 },
+  { id: "denim", x: 25, y: 60 },
+  { id: "jacket", x: 78, y: 25 },
+  { id: "tank", x: 60, y: 40 },
+  { id: "shorts", x: 75, y: 53 },
 ];
 
 const PLACEHOLDER =
@@ -75,6 +76,19 @@ const PLACEHOLDER =
   encodeURIComponent(
     `<svg xmlns='http://www.w3.org/2000/svg' width='800' height='800'><rect width='100%' height='100%' fill='#f3f4f6'/></svg>`
   );
+
+// Motion variants for sliding in/out
+const slideVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 80 : -80,
+    opacity: 0,
+  }),
+  center: { x: 0, opacity: 1 },
+  exit: (direction: number) => ({
+    x: direction > 0 ? -80 : 80,
+    opacity: 0,
+  }),
+};
 
 export default function BistroGreenShowcase({
   title = "LATEST SALE STYLES",
@@ -93,11 +107,37 @@ export default function BistroGreenShowcase({
   imageWidth?: number;
   imageHeight?: number;
 }) {
-  const [activeId, setActiveId] = React.useState<string>(items[0]?.id ?? "");
-  const activeItem = React.useMemo(
-    () => items.find((i) => i.id === activeId) ?? items[0],
-    [items, activeId]
+  const [index, setIndex] = React.useState(0);
+  const [direction, setDirection] = React.useState(1); // 1 = forward, -1 = back
+
+  const activeItem = items[index] ?? items[0];
+  const activeId = activeItem?.id ?? "";
+
+  const goToIndex = React.useCallback(
+    (next: number) => {
+      if (!items.length) return;
+      const len = items.length;
+      const nextIndex = ((next % len) + len) % len;
+      setDirection(nextIndex > index ? 1 : -1);
+      setIndex(nextIndex);
+    },
+    [index, items.length]
   );
+
+  const goToId = React.useCallback(
+    (id: string) => {
+      const i = items.findIndex((it) => it.id === id);
+      if (i !== -1) goToIndex(i);
+    },
+    [items, goToIndex]
+  );
+
+  // Swipe to paginate on the left image
+  function onDragEnd(_e: MouseEvent | TouchEvent | PointerEvent, info: any) {
+    const swipe = info.offset.x + info.velocity.x * 100;
+    if (swipe < -100) goToIndex(index + 1);
+    else if (swipe > 100) goToIndex(index - 1);
+  }
 
   return (
     <section className="mx-auto max-w-screen-2xl px-4 py-10 lg:px-8">
@@ -113,46 +153,66 @@ export default function BistroGreenShowcase({
             </p>
           </div>
 
-          {/* Dynamic product image */}
-          <div className="relative w-full" style={{ maxWidth: imageWidth }}>
+          {/* Dynamic product image with slide transition + swipe */}
+          <div
+            className="relative w-full overflow-hidden"
+            style={{ maxWidth: imageWidth }}
+          >
             <div
               className="relative"
               style={{ width: imageWidth, height: imageHeight }}
             >
-              <Image
-                key={activeItem?.imageUrl}
-                src={activeItem?.imageUrl || PLACEHOLDER}
-                alt={activeItem?.name || "Selected item"}
-                width={imageWidth}
-                height={imageHeight}
-                className="h-full max-h-[70vh] max-w-md md:max-w-lg  md:w-full rounded object-cover transition-all duration-300"
-              />
+              <AnimatePresence custom={direction} initial={false}>
+                <motion.div
+                  key={activeItem?.id}
+                  className="absolute inset-0"
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    x: { type: "spring", stiffness: 400, damping: 32 },
+                    opacity: { duration: 0.18 },
+                  }}
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  onDragEnd={onDragEnd}
+                >
+                  <Image
+                    src={activeItem?.imageUrl || PLACEHOLDER}
+                    alt={activeItem?.name || "Selected item"}
+                    width={imageWidth}
+                    height={imageHeight}
+                    className="h-full w-full rounded object-cover"
+                  />
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
 
           {/* Item list (hover/click updates active) */}
           <ul className="space-y-1 text-[10px] tracking-wide sm:text-[10px] max-w-lg">
-            {items.map((item) => {
-              const isActive = item.id === activeId;
+            {items.map((item, i) => {
+              const isActive = i === index;
               return (
                 <li
                   key={item.id}
                   className={cn(
                     "group flex cursor-pointer items-center justify-between gap-2",
-                    "border-b border-transparent hover:border-zinc-200",
-                    // kleur: alles 50% zwart, alleen hover/focus zwart
-                    "text-black/50 hover:text-black focus:text-black focus:outline-none",
-                    isActive && "font-semibold" // actief = dikker (kleur blijft bepaald door hover)
+                    "border-b border-transparent hover:border-zinc-200 transition-colors",
+                    isActive
+                      ? "text-black font-semibold"
+                      : "text-black/50 hover:text-black"
                   )}
-                  onMouseEnter={() => setActiveId(item.id)}
-                  onFocus={() => setActiveId(item.id)}
-                  onClick={() => setActiveId(item.id)}
+                  onMouseEnter={() => goToIndex(i)}
+                  onFocus={() => goToIndex(i)}
+                  onClick={() => goToIndex(i)}
                   role="button"
                   tabIndex={0}
                   aria-pressed={isActive}
                 >
                   <span className="truncate">{item.name}</span>
-                  {/* laat kleur erven van het li → geen eigen text-* class */}
                   <span className="tabular-nums">
                     {euro.format(item.price)}
                   </span>
@@ -162,7 +222,6 @@ export default function BistroGreenShowcase({
           </ul>
         </div>
 
-        {/* Right column: lifestyle hero with hotspots */}
         {/* Right column: lifestyle hero with hotspots */}
         <div className="relative w-full overflow-hidden rounded h-[100vh] max-h-[100vh]">
           <Image
@@ -189,7 +248,7 @@ export default function BistroGreenShowcase({
                     isActive ? "ring-2 ring-zinc-900" : "ring-1 ring-white/60"
                   )}
                   style={{ left: `${h.x}%`, top: `${h.y}%` }}
-                  onClick={() => setActiveId(h.id)}
+                  onClick={() => goToId(h.id)}
                   aria-label={`Bekijk ${
                     items.find((i) => i.id === h.id)?.name ?? "item"
                   }`}
