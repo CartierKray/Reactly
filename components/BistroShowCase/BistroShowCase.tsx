@@ -8,7 +8,7 @@ function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
 
-// Currency formatter (EUR, Dutch locale)
+// EUR
 const euro = new Intl.NumberFormat("nl-NL", {
   style: "currency",
   currency: "EUR",
@@ -18,14 +18,14 @@ export type BistroItem = {
   id: string;
   name: string;
   price: number;
-  imageUrl: string; // left image to show when item is active
+  imageUrl: string;
   bold?: boolean;
 };
 
 export type Hotspot = {
-  id: string; // must match a BistroItem id
-  x: number; // percentage (0-100)
-  y: number; // percentage (0-100)
+  id: string; // moet matchen met item.id
+  x: number; // percentage 0-100
+  y: number; // percentage 0-100
 };
 
 const BISTRO_ITEMS: BistroItem[] = [
@@ -77,17 +77,11 @@ const PLACEHOLDER =
     `<svg xmlns='http://www.w3.org/2000/svg' width='800' height='800'><rect width='100%' height='100%' fill='#f3f4f6'/></svg>`
   );
 
-// Motion variants for sliding in/out
+// slide anim
 const slideVariants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? 80 : -80,
-    opacity: 0,
-  }),
+  enter: (direction: number) => ({ x: direction > 0 ? 80 : -80, opacity: 0 }),
   center: { x: 0, opacity: 1 },
-  exit: (direction: number) => ({
-    x: direction > 0 ? -80 : 80,
-    opacity: 0,
-  }),
+  exit: (direction: number) => ({ x: direction > 0 ? -80 : 80, opacity: 0 }),
 };
 
 export default function BistroGreenShowcase({
@@ -108,7 +102,8 @@ export default function BistroGreenShowcase({
   imageHeight?: number;
 }) {
   const [index, setIndex] = React.useState(0);
-  const [direction, setDirection] = React.useState(1); // 1 = forward, -1 = back
+  const [direction, setDirection] = React.useState(1); // 1 vooruit, -1 terug
+  const [revealed, setRevealed] = React.useState(false); // mobiel/tablet: pas tonen na dot
 
   const activeItem = items[index] ?? items[0];
   const activeId = activeItem?.id ?? "";
@@ -125,14 +120,17 @@ export default function BistroGreenShowcase({
   );
 
   const goToId = React.useCallback(
-    (id: string) => {
+    (id: string, { reveal }: { reveal?: boolean } = {}) => {
       const i = items.findIndex((it) => it.id === id);
-      if (i !== -1) goToIndex(i);
+      if (i !== -1) {
+        if (reveal) setRevealed(true);
+        goToIndex(i);
+      }
     },
     [items, goToIndex]
   );
 
-  // Swipe to paginate on the left image
+  // Swipe op flatlay
   function onDragEnd(_e: MouseEvent | TouchEvent | PointerEvent, info: any) {
     const swipe = info.offset.x + info.velocity.x * 100;
     if (swipe < -100) goToIndex(index + 1);
@@ -140,12 +138,153 @@ export default function BistroGreenShowcase({
   }
 
   return (
-    <section className="mx-auto max-w-screen-2xl px-4 py-10 lg:px-8">
-      <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-[1fr_1fr]">
-        {/* Left column: title + dynamic flatlay image + list */}
+    <section className="mx-auto max-w-screen-2xl px-3 sm:px-4 py-8 sm:py-10 lg:px-8">
+      {/* =======================
+          MOBIEL & TABLET (tot en met md): 
+          - Hero met dots BOVEN (hele foto zichtbaar)
+          - Detailblok pas NA dot-tap
+         ======================= */}
+      <div className="lg:hidden">
+        {/* Hero met hotspots — volledige foto zichtbaar dankzij vaste ratio */}
+        <div className="relative w-full overflow-hidden rounded aspect-[3/4]">
+          <Image
+            src={heroSrc || PLACEHOLDER}
+            alt="Bistro Green Lifestyle"
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
+          <div className="pointer-events-none absolute inset-0">
+            {hotspots.map((h) => {
+              const isActive = h.id === activeId;
+              return (
+                <button
+                  key={`${h.id}-${h.x}-${h.y}-m`}
+                  type="button"
+                  className={cn(
+                    "pointer-events-auto absolute grid place-items-center",
+                    "h-7 w-7 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/80 backdrop-blur-sm shadow",
+                    "transition",
+                    isActive ? "ring-2 ring-zinc-900" : "ring-1 ring-white/60"
+                  )}
+                  style={{ left: `${h.x}%`, top: `${h.y}%` }}
+                  onClick={() => goToId(h.id, { reveal: true })}
+                  aria-label={`Bekijk ${
+                    items.find((i) => i.id === h.id)?.name ?? "item"
+                  }`}
+                >
+                  <span
+                    className={cn(
+                      "block h-2 w-2 rounded-full",
+                      isActive ? "bg-zinc-900" : "bg-zinc-700"
+                    )}
+                  />
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Detailblok pas tonen na dot-klik */}
+        <AnimatePresence initial={false}>
+          {revealed && (
+            <motion.div
+              key="m-detail"
+              initial={{ opacity: 0, y: 20, height: 0 }}
+              animate={{ opacity: 1, y: 0, height: "auto" }}
+              exit={{ opacity: 0, y: -10, height: 0 }}
+              transition={{ duration: 0.28, ease: "easeOut" }}
+              className="mt-8"
+            >
+              <div className="px-1 mb-4">
+                <h2 className="text-sm font-extrabold tracking-tight text-zinc-900">
+                  {title}
+                </h2>
+                <p className="mt-1 text-sm font-medium tracking-wide text-zinc-800">
+                  {subtitle}
+                </p>
+              </div>
+
+              <div
+                className="relative w-full overflow-hidden mx-auto"
+                style={{ maxWidth: `min(92vw, ${imageWidth}px)` }}
+              >
+                <div
+                  className="relative"
+                  style={{
+                    width: `min(92vw, ${imageWidth}px)`,
+                    height: `clamp(260px, 56vw, ${imageHeight}px)`,
+                  }}
+                >
+                  <AnimatePresence custom={direction} initial={false}>
+                    <motion.div
+                      key={activeItem?.id}
+                      className="absolute inset-0"
+                      custom={direction}
+                      variants={slideVariants}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                      transition={{
+                        x: { type: "spring", stiffness: 400, damping: 32 },
+                        opacity: { duration: 0.18 },
+                      }}
+                      drag="x"
+                      dragConstraints={{ left: 0, right: 0 }}
+                      onDragEnd={onDragEnd}
+                    >
+                      <Image
+                        src={activeItem?.imageUrl || PLACEHOLDER}
+                        alt={activeItem?.name || "Selected item"}
+                        width={imageWidth}
+                        height={imageHeight}
+                        className="h-full w-full rounded object-cover"
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              </div>
+
+              <ul className="mt-6 space-y-1 text-[10px] tracking-wide max-w-xl px-1">
+                {items.map((item, i) => {
+                  const isActive = i === index;
+                  return (
+                    <li
+                      key={item.id}
+                      className={cn(
+                        "group flex cursor-pointer items-center justify-between gap-2",
+                        "border-b border-transparent hover:border-zinc-200 transition-colors",
+                        isActive
+                          ? "text-black font-semibold"
+                          : "text-black/50 hover:text-black"
+                      )}
+                      onClick={() => goToIndex(i)}
+                      role="button"
+                      tabIndex={0}
+                      aria-pressed={isActive}
+                    >
+                      <span className="truncate">{item.name}</span>
+                      <span className="tabular-nums">
+                        {euro.format(item.price)}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* =======================
+          DESKTOP (vanaf lg): je originele 2-koloms layout
+         ======================= */}
+      <div className="hidden lg:grid grid-cols-1 items-start gap-8 lg:gap-12 lg:grid-cols-[1fr_1fr]">
+        {/* Links: titel + flatlay + lijst */}
         <div className="flex flex-col justify-center gap-8 lg:gap-12">
-          <div>
-            <h2 className="text-sm font-extrabold tracking-tight text-zinc-900 lg:text-base">
+          <div className="px-1">
+            <h2 className="text-base font-extrabold tracking-tight text-zinc-900">
               {title}
             </h2>
             <p className="mt-1 text-sm font-medium tracking-wide text-zinc-800">
@@ -153,18 +292,20 @@ export default function BistroGreenShowcase({
             </p>
           </div>
 
-          {/* Dynamic product image with slide transition + swipe */}
           <div
-            className="relative w-full overflow-hidden"
-            style={{ maxWidth: imageWidth }}
+            className="relative w-full overflow-hidden mx-auto lg:mx-0"
+            style={{ maxWidth: "min(92vw, " + imageWidth + "px)" }}
           >
             <div
               className="relative"
-              style={{ width: imageWidth, height: imageHeight }}
+              style={{
+                width: "min(92vw, " + imageWidth + "px)",
+                height: `clamp(260px, 56vw, ${imageHeight}px)`,
+              }}
             >
               <AnimatePresence custom={direction} initial={false}>
                 <motion.div
-                  key={activeItem?.id}
+                  key={activeItem?.id + "-desk"}
                   className="absolute inset-0"
                   custom={direction}
                   variants={slideVariants}
@@ -191,15 +332,14 @@ export default function BistroGreenShowcase({
             </div>
           </div>
 
-          {/* Item list (hover/click updates active) */}
-          <ul className="space-y-1 text-[10px] tracking-wide sm:text-[10px] max-w-lg">
+          <ul className="space-y-1 text-[10px] tracking-wide mx-auto w-full px-1">
             {items.map((item, i) => {
               const isActive = i === index;
               return (
                 <li
-                  key={item.id}
+                  key={item.id + "-desk"}
                   className={cn(
-                    "group flex cursor-pointer items-center justify-between gap-2",
+                    "group flex cursor-pointer items-center w-full lg:max-w-lg justify-between gap-2",
                     "border-b border-transparent hover:border-zinc-200 transition-colors",
                     isActive
                       ? "text-black font-semibold"
@@ -222,24 +362,22 @@ export default function BistroGreenShowcase({
           </ul>
         </div>
 
-        {/* Right column: lifestyle hero with hotspots */}
+        {/* Rechts: hero met hotspots (zoals je had) */}
         <div className="relative w-full overflow-hidden rounded h-[100vh] max-h-[100vh]">
           <Image
             src={heroSrc || PLACEHOLDER}
             alt="Bistro Green Lifestyle"
-            width={1000}
-            height={1400}
+            width={1200}
+            height={1600}
             className="h-full w-full object-cover"
             priority
           />
-
-          {/* Hotspots */}
           <div className="pointer-events-none absolute inset-0">
             {hotspots.map((h) => {
               const isActive = h.id === activeId;
               return (
                 <button
-                  key={`${h.id}-${h.x}-${h.y}`}
+                  key={`${h.id}-${h.x}-${h.y}-desk`}
                   type="button"
                   className={cn(
                     "pointer-events-auto absolute grid place-items-center",

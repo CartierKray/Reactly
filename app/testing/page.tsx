@@ -17,9 +17,16 @@ function TestPage() {
         </div>
 
         <div>
-          <div className="justify-center text-center w-full">
-            <span>AREA020 X Oakley</span>
-            <h2>Gascan® - Blue Steel Fade&nbsp;</h2>
+          <div className="w-full py-10 text-center">
+            <span className="block uppercase tracking-[0.18em] text-[12px] sm:text-[13px] text-black">
+              AREA020 X OAKLEY
+            </span>
+            <div
+              className="mt-1 text-black font-medium tracking-[-0.01em] leading-[1.05]
+               text-[34px] sm:text-[44px] md:text-[56px]"
+            >
+              Gascan® - Blue <br className="hidden md:flex" /> Steel Fade
+            </div>
           </div>
         </div>
 

@@ -164,7 +164,7 @@ const PRODUCTS: Product[] = [
       { imageUrl: "/images/accessoires-1.webp" },
       { imageUrl: "/images/accessoires-1.webp" },
     ],
-    sizes: ["ONE"],
+    sizes: ["ONE SIZE"],
     category: "accessories",
   },
   {
@@ -186,6 +186,75 @@ const PRODUCTS: Product[] = [
     soldOut: true,
     sizes: ["XS", "S", "M", "L", "XL"],
     category: "women",
+  },
+  {
+    id: "myshus",
+    name: "Dark Brown MYSHUS Monogram Bag",
+    imageUrl: "/images/shirt-2.webp",
+    hoverImageUrl: "/images/top-1.jpg",
+    price: 159.95,
+    salePrice: 79.95,
+    salePercent: 50,
+    colors: [{ name: "Oxide", hex: "#6B6B6B" }],
+    variants: [
+      { imageUrl: "/images/shirt-2.webp", hoverImageUrl: "/images/top-1.jpg" },
+    ],
+    sizes: ["XS", "S", "M", "L", "XL"],
+    category: "tops",
+  },
+  {
+    id: "emb-mono",
+    name: "Black MERU EMB Monogram",
+    imageUrl: "/images/short-1.webp",
+    hoverImageUrl: "/images/short-2.webp",
+    price: 119.95,
+    salePrice: 84.95,
+    salePercent: 30,
+    colors: [
+      { name: "Grey", hex: "#424242" },
+      { name: "Black", hex: "#999999" },
+      { name: "Brown", hex: "#5E4A3B" },
+      { name: "Oxide", hex: "#6B6B6B" },
+    ],
+    variants: [
+      {
+        imageUrl: "/images/short-1.webp",
+        hoverImageUrl: "/images/short-2.webp",
+      },
+      {
+        imageUrl: "/images/short-2.webp",
+        hoverImageUrl: "/images/short-1.webp",
+      },
+      {
+        imageUrl: "/images/short-3.webp",
+        hoverImageUrl: "/images/short-2.webp",
+      },
+      {
+        imageUrl: "/images/short-1.webp",
+        hoverImageUrl: "/images/short-3.webp",
+      },
+    ],
+    sizes: ["XS", "S", "M", "L", "XL"],
+    category: "bottoms",
+  },
+  {
+    id: "white-may",
+    name: "White MAY Monogram Bag",
+    imageUrl: "/images/accessoires-1.webp",
+    hoverImageUrl: "/images/accessoires-1.webp",
+    price: 109.95,
+    salePrice: 54.95,
+    salePercent: 50,
+    colors: [
+      { name: "Black", hex: "#999999" },
+      { name: "Oxide", hex: "#6B6B6B" },
+    ],
+    variants: [
+      { imageUrl: "/images/accessoires-1.webp" },
+      { imageUrl: "/images/accessoires-1.webp" },
+    ],
+    sizes: ["ONE SIZE"],
+    category: "accessories",
   },
 ];
 
@@ -213,7 +282,7 @@ function SoldOutTag({ className = "" }: { className?: string }) {
 
 function Ribbon({ label }: { label: string }) {
   return (
-    <div className="absolute left-3 top-3 z-10 rounded bg-zinc-900 px-2 py-0.5 text-[11px] font-semibold tracking-wide text-white">
+    <div className="absolute left-3 top-3 z-10 rounded bg-white px-2 py-0.5 text-[11px] font-normal tracking-widest text-black">
       {label}
     </div>
   );
@@ -294,7 +363,6 @@ function ProductCard({ product }: { product: Product }) {
   const baseSrc = variant.imageUrl || product.imageUrl || PLACEHOLDER;
   const hoverSrc = variant.hoverImageUrl || product.hoverImageUrl || baseSrc;
 
-  // wissel richting bij hover in/uit
   const onEnter = () => {
     setDirection(1);
     setHovered(true);
@@ -304,24 +372,21 @@ function ProductCard({ product }: { product: Product }) {
     setHovered(false);
   };
 
-  // wissel richting bij kleurkeuze
   const handleColorSelect = (i: number) => {
     setDirection(i > selectedColor ? 1 : -1);
     setSelectedColor(i);
   };
 
-  // key zodat AnimatePresence opnieuw rendert bij wissel
   const imageKey = `${selectedColor}-${hovered ? "hover" : "base"}`;
 
   return (
     <article className="group relative w-full">
       {/* Image area */}
       <div
-        className="relative h-[260px] sm:h-[300px] md:h-[420px] lg:h-[500px] w-full overflow-hidden rounded bg-zinc-100"
+        className="relative h-[280px] sm:h-[325px] md:h-[450px] lg:h-[375px] xl:h-[475px] 2xl:h-[525px] w-full overflow-hidden bg-zinc-100"
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
       >
-        {/* Sale ribbon (alleen > 0%) */}
         {typeof product.salePercent === "number" && product.salePercent > 0 ? (
           <Ribbon label={`-${product.salePercent}%`} />
         ) : null}
@@ -351,12 +416,12 @@ function ProductCard({ product }: { product: Product }) {
           </motion.div>
         </AnimatePresence>
 
-        {/* Size overlay enkel op hover (desktop) met hover-bold per maat */}
+        {/* Size overlay (desktop) */}
         <div className="pointer-events-none absolute inset-x-0 bottom-2 hidden w-full justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100 md:flex">
-          <div className="pointer-events-auto flex items-center gap-1 rounded-full bg-white/90 px-3 py-1 text-[10px] uppercase tracking-wide shadow">
+          <div className="pointer-events-auto flex items-center gap-1 rounded-full bg-transparent px-3 py-1 pb-3 text-[10px] uppercase tracking-wide">
             {(product.sizes?.length
               ? product.sizes
-              : ["XS", "S", "M", "L", "XL"]
+              : ["XS", "S", "M", "L", "XL", "XXL"]
             ).map((s) => (
               <button
                 key={s}
@@ -374,26 +439,39 @@ function ProductCard({ product }: { product: Product }) {
           </div>
         </div>
 
-        {/* Cart button (mandje) rechts-onder, alleen op hover zichtbaar */}
-        <button
-          type="button"
-          aria-label="Add to cart"
-          className="absolute bottom-3 right-3 grid h-9 w-9 place-items-center rounded-md bg-black text-white opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 translate-y-1"
-          onClick={(e) => {
-            e.stopPropagation();
-            // TODO: voeg aan winkelmand toe
-          }}
-        >
-          {/* simple cart icon */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="h-5 w-5"
+        {/* Cart button (mobile hover/tap) */}
+        <div className="flex md:hidden">
+          <button
+            type="button"
+            aria-label="Add to cart"
+            className="absolute bottom-3 right-3 grid h-9 w-9 place-items-center rounded-md bg-black text-white opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 translate-y-1"
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
           >
-            <path d="M7 4h10a2 2 0 0 1 2 2v2H5V6a2 2 0 0 1 2-2zm-2 6h14l-1 10H6L5 10zm4 3a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm6 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-          </svg>
-        </button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="14"
+              viewBox="0 0 12 14"
+              fill="none"
+            >
+              <path
+                d="M9.11953 3.07992V1H2.87976V3.07992"
+                stroke="white"
+                strokeWidth="0.5"
+              ></path>
+              <rect
+                x="0.530151"
+                y="3.33008"
+                width="10.9396"
+                height="10.4196"
+                stroke="white"
+                strokeWidth="0.5"
+              ></rect>
+            </svg>
+          </button>
+        </div>
 
         {/* SOLD OUT rechtsboven */}
         {product.soldOut ? (
@@ -405,7 +483,7 @@ function ProductCard({ product }: { product: Product }) {
       <div className="mt-3 flex w-full items-start justify-between gap-3">
         {/* Links: naam + prijs */}
         <div className="min-w-0 flex-1">
-          <h3 className="truncate text-[10px] uppercase font-light text-zinc-800">
+          <h3 className="truncate text-[10px] mt-0.5 uppercase font-light text-zinc-800">
             {product.name}
           </h3>
           <div className="mt-2 flex items-baseline gap-2 text-[10px] tracking-wider">
@@ -424,21 +502,37 @@ function ProductCard({ product }: { product: Product }) {
               </span>
             )}
           </div>
+          <div className="block md:hidden">
+            {product.colors?.length ? (
+              <div className="mt-3 ml-auto flex shrink-0 items-center gap-1">
+                {product.colors.map((c, i) => (
+                  <ColorDot
+                    key={c.name + c.hex}
+                    color={c}
+                    selected={i === selectedColor}
+                    onSelect={() => handleColorSelect(i)}
+                  />
+                ))}
+              </div>
+            ) : null}
+          </div>
         </div>
 
         {/* Rechts: kleur-swatch(es) */}
-        {product.colors?.length ? (
-          <div className="mt-1 ml-auto flex shrink-0 items-center gap-2">
-            {product.colors.map((c, i) => (
-              <ColorDot
-                key={c.name + c.hex}
-                color={c}
-                selected={i === selectedColor}
-                onSelect={() => handleColorSelect(i)}
-              />
-            ))}
-          </div>
-        ) : null}
+        <div className="hidden md:flex">
+          {product.colors?.length ? (
+            <div className="mt-1 ml-auto flex shrink-0 items-center gap-2">
+              {product.colors.map((c, i) => (
+                <ColorDot
+                  key={c.name + c.hex}
+                  color={c}
+                  selected={i === selectedColor}
+                  onSelect={() => handleColorSelect(i)}
+                />
+              ))}
+            </div>
+          ) : null}
+        </div>
       </div>
     </article>
   );
@@ -447,8 +541,9 @@ function ProductCard({ product }: { product: Product }) {
 /* ===========================
    Grid
 =========================== */
+
 export default function GridClothing({
-  title = "SALE ACCESSORIES",
+  title = "Collection",
   products = PRODUCTS,
   categories = CATEGORIES,
 }: {
@@ -457,9 +552,14 @@ export default function GridClothing({
   categories?: PillCategory[];
 }) {
   const [sortOpen, setSortOpen] = React.useState(false);
+
+  // welke categorie; undefined = ALLE
   const [activeCat, setActiveCat] = React.useState<
     undefined | Product["category"]
-  >(undefined); // undefined = ALLE
+  >(undefined);
+
+  // of "Show All" expliciet is aangeklikt (voor de kop-tekst)
+  const [allMode, setAllMode] = React.useState(false);
 
   // filter
   const filtered = React.useMemo(
@@ -476,17 +576,38 @@ export default function GridClothing({
   }, [products]);
 
   const itemsCount = filtered.length;
+  const totalCount = products.length;
+
+  // dynamische kop
+  const activeLabel = activeCat
+    ? categories.find((c) => c.id === activeCat)?.label
+    : undefined;
+  const computedTitle = activeCat
+    ? activeLabel ?? title
+    : allMode
+    ? "Collection"
+    : title;
 
   return (
     <section className="mx-auto px-2 sm:px-4 py-6 lg:px-8">
       {/* Category pills (toggle filter) */}
-      <div className="no-scrollbar mb-6 sm:mb-10 lg:mb-20 -mx-1 flex w-full items-center justify-center gap-6 overflow-x-auto pb-1">
+      <div className="no-scrollbar mb-6 sm:mb-10 -mx-1 flex w-full items-center justify-center gap-6 overflow-x-auto pb-1">
+        {/* bestaande categorieën */}
         {categories.map((c) => {
           const selected = activeCat === c.id;
           return (
             <button
               key={c.id}
-              onClick={() => setActiveCat(selected ? undefined : c.id)} // opnieuw klikken = ALLE
+              onClick={() => {
+                // opnieuw op dezelfde categorie: reset naar ALL (geen allMode)
+                if (selected) {
+                  setActiveCat(undefined);
+                  setAllMode(false);
+                } else {
+                  setActiveCat(c.id);
+                  setAllMode(false);
+                }
+              }}
               aria-pressed={selected}
               className={cn(
                 "group inline-flex min-w-[86px] flex-col items-center gap-2 focus:outline-none"
@@ -521,12 +642,49 @@ export default function GridClothing({
             </button>
           );
         })}
+
+        {/* ★ NIEUW: Show All pill */}
+        <button
+          onClick={() => {
+            setActiveCat(undefined);
+            setAllMode(true); // zodat de kop "Collection" toont
+          }}
+          aria-pressed={allMode && activeCat === undefined}
+          className={cn(
+            "group inline-flex min-w-[86px] flex-col items-center gap-2 focus:outline-none"
+          )}
+          title="Show All"
+        >
+          <span
+            className={cn(
+              "flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border bg-white shadow-sm",
+              allMode && activeCat === undefined
+                ? "border-zinc-900"
+                : "border-zinc-200"
+            )}
+          >
+            {/* kleine ALL indicatie in de cirkel */}
+            <span className="text-[11px] font-semibold tracking-wide text-zinc-700">
+              ALL
+            </span>
+          </span>
+          <span
+            className={cn(
+              "text-center text-[12px]",
+              allMode && activeCat === undefined
+                ? "text-zinc-900 font-semibold"
+                : "text-zinc-700"
+            )}
+          >
+            Show All <span className="text-zinc-400">{totalCount}</span>
+          </span>
+        </button>
       </div>
 
-      {/* Heading met dynamische count */}
+      {/* Heading met dynamische titel + count */}
       <div className="mb-4 sm:mb-8 flex items-center justify-between">
         <h2 className="text-xl font-extrabold tracking-tight text-zinc-900">
-          {title} <span className="mx-2 text-zinc-300">•</span>
+          {computedTitle} <span className="mx-2 text-zinc-300">•</span>
           <span className="text-base font-medium text-zinc-500">
             {itemsCount} ITEMS
           </span>
@@ -534,7 +692,7 @@ export default function GridClothing({
       </div>
 
       {/* Grid: mobile altijd 2 kolommen, minimale space; groter → 4 kolommen */}
-      <div className="grid grid-cols-2 gap-x-2 gap-y-10 sm:gap-x-3 lg:grid-cols-4 lg:gap-x-6">
+      <div className="grid grid-cols-2 gap-x-0.5 md:gap-x-1.5 gap-y-10 lg:grid-cols-4">
         {filtered.map((p) => (
           <ProductCard key={p.id} product={p} />
         ))}
