@@ -146,7 +146,7 @@ export default function BistroGreenShowcase({
          ======================= */}
       <div className="lg:hidden">
         {/* Hero met hotspots — volledige foto zichtbaar dankzij vaste ratio */}
-        <div className="relative w-full overflow-hidden rounded aspect-[3/4]">
+        <div className="relative w-full overflow-hidden h-[70vh]">
           <Image
             src={heroSrc || PLACEHOLDER}
             alt="Bistro Green Lifestyle"
@@ -239,7 +239,7 @@ export default function BistroGreenShowcase({
                         alt={activeItem?.name || "Selected item"}
                         width={imageWidth}
                         height={imageHeight}
-                        className="h-full w-full rounded object-cover"
+                        className="h-full w-full object-cover"
                       />
                     </motion.div>
                   </AnimatePresence>
@@ -325,7 +325,7 @@ export default function BistroGreenShowcase({
                     alt={activeItem?.name || "Selected item"}
                     width={imageWidth}
                     height={imageHeight}
-                    className="h-full w-full rounded object-cover"
+                    className="h-full w-full object-cover"
                   />
                 </motion.div>
               </AnimatePresence>
@@ -363,7 +363,7 @@ export default function BistroGreenShowcase({
         </div>
 
         {/* Rechts: hero met hotspots (zoals je had) */}
-        <div className="relative w-full overflow-hidden rounded h-[100vh] max-h-[100vh]">
+        <div className="relative w-full overflow-hidden h-[100vh] max-h-[100vh]">
           <Image
             src={heroSrc || PLACEHOLDER}
             alt="Bistro Green Lifestyle"
