@@ -418,7 +418,7 @@ function ProductCard({ product }: { product: Product }) {
 
         {/* Size overlay (desktop) */}
         <div className="pointer-events-none absolute inset-x-0 bottom-2 hidden w-full justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100 md:flex">
-          <div className="pointer-events-auto flex items-center gap-1 rounded-full bg-transparent px-3 py-1 pb-3 text-[10px] uppercase tracking-wide">
+          <div className="pointer-events-auto flex  text-black items-center gap-1 rounded-full bg-transparent px-3 py-1 pb-3 text-[10px] uppercase tracking-wide">
             {(product.sizes?.length
               ? product.sizes
               : ["XS", "S", "M", "L", "XL", "XXL"]
@@ -480,16 +480,16 @@ function ProductCard({ product }: { product: Product }) {
       </div>
 
       {/* Meta */}
-      <div className="mt-3 flex w-full items-start justify-between gap-3">
+      <div className="mt-3 px-1.5 flex w-full items-start justify-between gap-3">
         {/* Links: naam + prijs */}
         <div className="min-w-0 flex-1">
-          <h3 className="truncate text-[10px] mt-0.5 uppercase font-light text-zinc-800">
+          <h3 className="truncate text-[10px] mt-0.5 uppercase font-light dark:text-white text-zinc-800">
             {product.name}
           </h3>
           <div className="mt-2 flex items-baseline gap-2 text-[10px] tracking-wider">
             {hasSale ? (
               <>
-                <span className="font-semibold text-rose-600">
+                <span className="font-semibold text-rose-600 dark:text-white">
                   {euro.format(product.salePrice!)}
                 </span>
                 <span className="text-zinc-400 line-through">
@@ -676,14 +676,14 @@ export default function GridClothing({
                 : "text-zinc-700"
             )}
           >
-            Show All <span className="text-zinc-400">{totalCount}</span>
+            Collection <span className="text-zinc-400">{totalCount}</span>
           </span>
         </button>
       </div>
 
       {/* Heading met dynamische titel + count */}
       <div className="mb-4 sm:mb-8 flex items-center justify-between">
-        <h2 className="text-xl font-extrabold tracking-tight text-zinc-900">
+        <h2 className="text-2xl tracking-normal font-semibold text-zinc-900 dark:text-white">
           {computedTitle} <span className="mx-2 text-zinc-300">•</span>
           <span className="text-base font-medium text-zinc-500">
             {itemsCount} ITEMS

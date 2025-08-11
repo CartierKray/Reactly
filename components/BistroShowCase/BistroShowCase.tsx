@@ -198,10 +198,10 @@ export default function BistroGreenShowcase({
               className="mt-8"
             >
               <div className="px-1 mb-4">
-                <h2 className="text-sm font-extrabold tracking-tight text-zinc-900">
+                <h2 className="text-sm dark:text-white font-extrabold tracking-tight text-zinc-900">
                   {title}
                 </h2>
-                <p className="mt-1 text-sm font-medium tracking-wide text-zinc-800">
+                <p className="mt-1 text-sm dark:text-white/50 font-medium tracking-wide text-zinc-800">
                   {subtitle}
                 </p>
               </div>
@@ -246,7 +246,7 @@ export default function BistroGreenShowcase({
                 </div>
               </div>
 
-              <ul className="mt-6 space-y-1 text-[10px] tracking-wide max-w-xl px-1">
+              <ul className="mt-6 space-y-1 text-[10px] tracking-wide  max-w-xl px-1">
                 {items.map((item, i) => {
                   const isActive = i === index;
                   return (
@@ -254,10 +254,10 @@ export default function BistroGreenShowcase({
                       key={item.id}
                       className={cn(
                         "group flex cursor-pointer items-center justify-between gap-2",
-                        "border-b border-transparent hover:border-zinc-200 transition-colors",
+                        "border-b border-transparent hover:border-zinc-200 dark:hover:border-zinc-600 transition-colors",
                         isActive
-                          ? "text-black font-semibold"
-                          : "text-black/50 hover:text-black"
+                          ? "text-black dark:text-white font-semibold"
+                          : "text-black/50 dark:text-white/50 dark:hover:text-white hover:text-black"
                       )}
                       onClick={() => goToIndex(i)}
                       role="button"
@@ -280,14 +280,15 @@ export default function BistroGreenShowcase({
       {/* =======================
           DESKTOP (vanaf lg): je originele 2-koloms layout
          ======================= */}
+
       <div className="hidden lg:grid grid-cols-1 items-start gap-8 lg:gap-12 lg:grid-cols-[1fr_1fr]">
         {/* Links: titel + flatlay + lijst */}
         <div className="flex flex-col justify-center gap-8 lg:gap-12">
           <div className="px-1">
-            <h2 className="text-base font-extrabold tracking-tight text-zinc-900">
+            <h2 className="text-base font-extrabold tracking-tight text-zinc-900 dark:text-white">
               {title}
             </h2>
-            <p className="mt-1 text-sm font-medium tracking-wide text-zinc-800">
+            <p className="mt-1 text-sm font-medium tracking-wide text-zinc-800 dark:text-white/50">
               {subtitle}
             </p>
           </div>
@@ -340,10 +341,10 @@ export default function BistroGreenShowcase({
                   key={item.id + "-desk"}
                   className={cn(
                     "group flex cursor-pointer items-center w-full lg:max-w-lg justify-between gap-2",
-                    "border-b border-transparent hover:border-zinc-200 transition-colors",
+                    "border-b border-transparent hover:border-zinc-200 dark:hover:border-zinc-600 transition-colors",
                     isActive
-                      ? "text-black font-semibold"
-                      : "text-black/50 hover:text-black"
+                      ? "text-black dark:text-white font-semibold"
+                      : "text-black/50 dark:text-white/50 dark:hover:text-white hover:text-black"
                   )}
                   onMouseEnter={() => goToIndex(i)}
                   onFocus={() => goToIndex(i)}
