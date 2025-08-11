@@ -271,7 +271,7 @@ function SoldOutTag({ className = "" }: { className?: string }) {
   return (
     <div
       className={cn(
-        "absolute left-3 top-3 z-10 rounded bg-zinc-900/90 px-2 py-0.5 text-[11px] font-semibold tracking-wide text-white",
+        "absolute left-3 top-3 z-10 rounded bg-white px-2 py-0.5 text-[11px] font-normal tracking-wide text-black",
         className
       )}
     >
@@ -282,7 +282,7 @@ function SoldOutTag({ className = "" }: { className?: string }) {
 
 function Ribbon({ label }: { label: string }) {
   return (
-    <div className="absolute left-3 top-3 z-10 rounded bg-white px-2 py-0.5 text-[11px] font-normal tracking-widest text-black">
+    <div className="absolute left-2 top-2 z-10  bg-white px-2 py-0.5 text-[11px] font-normal tracking-widest text-black">
       {label}
     </div>
   );
@@ -474,9 +474,9 @@ function ProductCard({ product }: { product: Product }) {
         </div>
 
         {/* SOLD OUT rechtsboven */}
-        {product.soldOut ? (
+        {/* {product.soldOut ? (
           <SoldOutTag className="top-3 right-3 left-auto" />
-        ) : null}
+        ) : null} */}
       </div>
 
       {/* Meta */}

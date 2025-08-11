@@ -90,7 +90,7 @@ const ComponentHeaderClothing: React.FC = () => {
             textWrap: "balance",
           }}
         >
-          Clothing
+          Collection
         </span>
       </h2>
 
@@ -105,8 +105,8 @@ const ComponentHeaderClothing: React.FC = () => {
             textWrap: "balance",
           }}
         >
-          Blader door onze steeds groter wordende collectie diensten die jouw
-          website laten opvallen.
+          Blader door onze steeds groter wordende kleding collectie die jouw
+          deze zomer laten opvallen.
         </span>
       </h2>
     </div>
