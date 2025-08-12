@@ -218,7 +218,7 @@ function InfoCarousel() {
       </div>
 
       {/* Dots */}
-      <div className="mt-2 flex items-center justify-center gap-2">
+      {/* <div className="mt-2 flex items-center justify-center gap-2">
         {Array.from({ length: len }).map((_, d) => (
           <span
             key={d}
@@ -228,7 +228,7 @@ function InfoCarousel() {
             )}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
@@ -405,7 +405,7 @@ export default function ProductDetail({ product }: { product: Product }) {
           </div>
 
           {/* RIGHT: meta */}
-          <aside className="w-full mx-auto max-w-[440px] md:pt-10 lg:justify-self-end">
+          <aside className="w-full mx-auto max-w-[440px] md:pt-14 lg:justify-self-end">
             <h1 className="text-[20px] uppercase font-[550] tracking-wider text-zinc-900">
               {product.name}
             </h1>
