@@ -350,7 +350,7 @@ export default function ProductDetail({ product }: { product: Product }) {
 
           {/* RIGHT: meta */}
           <aside className="w-full mx-auto md:mx-0 lg:mx-auto max-w-[440px] pt-10 md:pl-6 lg:pl-0 lg:justify-self-end">
-            <h1 className="text-[20px] uppercase font-medium tracking-[0.02em] text-zinc-900">
+            <h1 className="text-[20px] uppercase font-[550] tracking-wider text-zinc-900">
               {product.name}
             </h1>
 
@@ -394,9 +394,9 @@ export default function ProductDetail({ product }: { product: Product }) {
             </div>
 
             {/* Size */}
-            <div className="mt-7">
+            <div className="mt-4">
               <div className="text-[13px] font-normal text-zinc-900">Size</div>
-              <div className="mt-5 grid grid-cols-6 gap-2 w-fit max-[380px]:grid-cols-3 sm:grid-cols-6">
+              <div className="mt-4 grid grid-cols-6 gap-2 w-fit max-[380px]:grid-cols-3 sm:grid-cols-6">
                 {sizes.map((s) => (
                   <button
                     key={s}
@@ -417,7 +417,7 @@ export default function ProductDetail({ product }: { product: Product }) {
                   </button>
                 ))}
               </div>
-              <p className="mt-6 text-[10px] font-light text-zinc-500">
+              <p className="mt-4 text-[10px] font-light text-zinc-500">
                 This model is 190 cm/ 6&apos;3” tall and wearing a size Medium.
               </p>
               <hr className="mt-6 border-zinc-200" />
