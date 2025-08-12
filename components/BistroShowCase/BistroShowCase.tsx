@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
@@ -85,7 +86,7 @@ const slideVariants = {
 };
 
 export default function BistroGreenShowcase({
-  title = "LATEST SALE STYLES",
+  title = "LATEST STYLE TRENDS",
   subtitle = "BISTRO GREEN",
   items = BISTRO_ITEMS,
   heroSrc = "/images/STRY3.webp",
@@ -101,6 +102,8 @@ export default function BistroGreenShowcase({
   imageWidth?: number;
   imageHeight?: number;
 }) {
+  const router = useRouter();
+
   const [index, setIndex] = React.useState(0);
   const [direction, setDirection] = React.useState(1); // 1 vooruit, -1 terug
   const [revealed, setRevealed] = React.useState(false); // mobiel/tablet: pas tonen na dot
@@ -138,14 +141,12 @@ export default function BistroGreenShowcase({
   }
 
   return (
-    <section className="mx-auto max-w-screen-2xl px-3 sm:px-4 py-8 sm:py-10 lg:px-8">
+    <section className="mx-auto max-w-screen-2xl px-3 sm:px-4 pb-8 sm:pb-10 lg:px-8">
       {/* =======================
-          MOBIEL & TABLET (tot en met md): 
-          - Hero met dots BOVEN (hele foto zichtbaar)
-          - Detailblok pas NA dot-tap
+          MOBIEL & TABLET (tot en met md)
          ======================= */}
       <div className="lg:hidden">
-        {/* Hero met hotspots — volledige foto zichtbaar dankzij vaste ratio */}
+        {/* Hero met hotspots */}
         <div className="relative w-full overflow-hidden h-[70vh]">
           <Image
             src={heroSrc || PLACEHOLDER}
@@ -186,7 +187,7 @@ export default function BistroGreenShowcase({
           </div>
         </div>
 
-        {/* Detailblok pas tonen na dot-klik */}
+        {/* Bottom sheet – na dot-tap */}
         <AnimatePresence initial={false}>
           {revealed && (
             <motion.div
@@ -197,77 +198,100 @@ export default function BistroGreenShowcase({
               transition={{ duration: 0.28, ease: "easeOut" }}
               className="mt-8"
             >
-              <div className="px-1 mb-4">
-                <h2 className="text-sm dark:text-white font-extrabold tracking-tight text-zinc-900">
-                  {title}
+              {/* Header met sluitknop */}
+              <div className="flex items-center justify-between border-b -mt-5 border-zinc-200 dark:border-white/25 px-2 pb-2">
+                <h2 className="text-sm font-medium tracking-tight text-zinc-900 dark:text-white">
+                  See clothes
                 </h2>
-                <p className="mt-1 text-sm dark:text-white/50 font-medium tracking-wide text-zinc-800">
-                  {subtitle}
-                </p>
-              </div>
-
-              <div
-                className="relative w-full overflow-hidden mx-auto"
-                style={{ maxWidth: `min(92vw, ${imageWidth}px)` }}
-              >
-                <div
-                  className="relative"
-                  style={{
-                    width: `min(92vw, ${imageWidth}px)`,
-                    height: `clamp(260px, 56vw, ${imageHeight}px)`,
-                  }}
+                <button
+                  onClick={() => setRevealed(false)}
+                  aria-label="Close"
+                  className="p-2 -mr-2 rounded hover:bg-zinc-100 dark:hover:bg-white/25 active:scale-95 transition"
                 >
-                  <AnimatePresence custom={direction} initial={false}>
-                    <motion.div
-                      key={activeItem?.id}
-                      className="absolute inset-0"
-                      custom={direction}
-                      variants={slideVariants}
-                      initial="enter"
-                      animate="center"
-                      exit="exit"
-                      transition={{
-                        x: { type: "spring", stiffness: 400, damping: 32 },
-                        opacity: { duration: 0.18 },
-                      }}
-                      drag="x"
-                      dragConstraints={{ left: 0, right: 0 }}
-                      onDragEnd={onDragEnd}
-                    >
-                      <Image
-                        src={activeItem?.imageUrl || PLACEHOLDER}
-                        alt={activeItem?.name || "Selected item"}
-                        width={imageWidth}
-                        height={imageHeight}
-                        className="h-full w-full object-cover"
-                      />
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  >
+                    <path d="M6 6l12 12M18 6L6 18" />
+                  </svg>
+                </button>
               </div>
 
-              <ul className="mt-6 space-y-1 text-[10px] tracking-wide  max-w-xl px-1">
+              {/* Lijst: 3-koloms grid per rij, thumb in lijn; Explore rechts bij actieve rij */}
+              <ul className="divide-y divide-zinc-200 dark:divide-white/25">
                 {items.map((item, i) => {
                   const isActive = i === index;
                   return (
                     <li
                       key={item.id}
-                      className={cn(
-                        "group flex cursor-pointer items-center justify-between gap-2",
-                        "border-b border-transparent hover:border-zinc-200 dark:hover:border-zinc-600 transition-colors",
-                        isActive
-                          ? "text-black dark:text-white font-semibold"
-                          : "text-black/50 dark:text-white/50 dark:hover:text-white hover:text-black"
-                      )}
+                      className="cursor-pointer"
                       onClick={() => goToIndex(i)}
                       role="button"
                       tabIndex={0}
                       aria-pressed={isActive}
                     >
-                      <span className="truncate">{item.name}</span>
-                      <span className="tabular-nums">
-                        {euro.format(item.price)}
-                      </span>
+                      <div className="grid-cols-[92px_1fr_auto] items-center w-full flex justify-between gap-3 px-2">
+                        {/* Thumbnail kolom: behoudt kolombreedte, maar geen hoogte als niet actief */}
+
+                        {/* Titel */}
+                        <div
+                          className={cn(
+                            "py-1 pr-2 text-[10px] tracking-wide",
+                            isActive
+                              ? "text-black dark:text-white font-semibold"
+                              : "text-black/70 dark:text-white/70"
+                          )}
+                        >
+                          {item.name}
+                        </div>
+
+                        {/* Prijs rechts */}
+                        <div className="py-1 pl-2 text-[10px] tabular-nums text-black dark:text-white">
+                          {euro.format(item.price)}
+                        </div>
+                      </div>
+
+                      <div className="flex mb-2 justify-between">
+                        <div
+                          className={cn(
+                            "overflow-hidden transition-[height] duration-200",
+                            isActive ? "h-20" : "h-0"
+                          )}
+                        >
+                          {isActive && (
+                            <div className="h-24 w-24 ml-2 bg-zinc-100 overflow-hidden">
+                              <Image
+                                src={item.imageUrl || PLACEHOLDER}
+                                alt={item.name}
+                                width={96}
+                                height={96}
+                                className="h-full w-full object-cover"
+                                priority={false}
+                              />
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Explore-link alleen bij actieve rij */}
+                        {isActive && (
+                          <div className="flex justify-end items-end tracking-wider pr-1">
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                router.push(`/product/${item.id}`);
+                              }}
+                              className="text-[10px] underline underline-offset-2"
+                              aria-label={`Open ${item.name}`}
+                            >
+                              Explore Item
+                            </button>
+                          </div>
+                        )}
+                      </div>
                     </li>
                   );
                 })}
@@ -278,14 +302,13 @@ export default function BistroGreenShowcase({
       </div>
 
       {/* =======================
-          DESKTOP (vanaf lg): je originele 2-koloms layout
+          DESKTOP (vanaf lg): originele 2-koloms layout
          ======================= */}
-
       <div className="hidden lg:grid grid-cols-1 items-start gap-8 lg:gap-12 lg:grid-cols-[1fr_1fr]">
         {/* Links: titel + flatlay + lijst */}
         <div className="flex flex-col justify-center gap-8 lg:gap-12">
           <div className="px-1">
-            <h2 className="text-base font-extrabold tracking-tight text-zinc-900 dark:text-white">
+            <h2 className="text-3xl font-semibold tracking-normal text-zinc-900 dark:text-white">
               {title}
             </h2>
             <p className="mt-1 text-sm font-medium tracking-wide text-zinc-800 dark:text-white/50">
@@ -363,7 +386,7 @@ export default function BistroGreenShowcase({
           </ul>
         </div>
 
-        {/* Rechts: hero met hotspots (zoals je had) */}
+        {/* Rechts: hero met hotspots */}
         <div className="relative w-full overflow-hidden h-[100vh] max-h-[100vh]">
           <Image
             src={heroSrc || PLACEHOLDER}

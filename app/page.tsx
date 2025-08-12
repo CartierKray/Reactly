@@ -10,7 +10,6 @@ import G2BadgeSection from "@/components/G2BadgeSection/G2BadgeSection";
 import CardComponentTwo from "@/components/CardComponent/CardComponentTwo";
 import VideoBannerEleven from "@/components/VideoBanner/VideoBannerEleven";
 import FadeInWhenVisible from "@/components/FadeInWhenVisible/FadeInWhenVisible";
-import ComponentHeaderWebdesign from "@/components/ComponentenLijst/ComponentHeaderWebdesign";
 import InfinitiveMovingCardsIMG from "@/components/InfinitiveMovingCards/InfinitiveMovingCardsIMG";
 
 export default function Home() {
