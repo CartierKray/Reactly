@@ -293,7 +293,7 @@ export default function GridClothing({
     : title;
 
   return (
-    <section className="mx-auto px-2 sm:px-4 py-6 lg:px-8">
+    <section className="mx-auto py-6 lg:px-1.5">
       {/* Category pills */}
       {/* <div className="no-scrollbar mb-6 sm:mb-10 -mx-1 flex w-full items-center justify-center gap-6 overflow-x-auto pb-1">
         {categories.map((c) => {
@@ -347,8 +347,8 @@ export default function GridClothing({
       </div> */}
 
       {/* Heading */}
-      <div className="mb-4 sm:mb-8 flex items-center justify-between">
-        <div>
+      <div className="mb-4 px-2  sm:mb-8 flex items-center justify-between">
+        <div className="">
           <h2 className="text-2xl tracking-normal font-semibold text-zinc-900 dark:text-white">
             {computedTitle} <span className="mx-2 text-zinc-300">•</span>
             <span className="text-base font-medium text-zinc-500">

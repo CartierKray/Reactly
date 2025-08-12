@@ -307,7 +307,7 @@ export default function ProductDetail({ product }: { product: Product }) {
           Terug
         </button> */}
 
-        <div className="grid gap-y-10 gap-x-12 md:grid-cols-[minmax(0,1fr)_500px] xl:grid-cols-[minmax(0,1fr)_675px]">
+        <div className="grid gap-y-10 md:grid-cols-[minmax(0,1fr)_500px] xl:grid-cols-[minmax(0,1fr)_725px]">
           {/* LEFT: desktop gallery + mobile swiper */}
           <div className="">
             <div
@@ -405,7 +405,7 @@ export default function ProductDetail({ product }: { product: Product }) {
           </div>
 
           {/* RIGHT: meta */}
-          <aside className="w-full mx-auto md:mx-0 lg:mx-auto max-w-[440px] pt-10 md:pl-6 lg:pl-0 lg:justify-self-end">
+          <aside className="w-full mx-auto max-w-[440px] md:pt-10 lg:justify-self-end">
             <h1 className="text-[20px] uppercase font-[550] tracking-wider text-zinc-900">
               {product.name}
             </h1>
@@ -570,13 +570,13 @@ function AccRow({
 }) {
   const [open, setOpen] = React.useState(false);
   return (
-    <div className="py-3">
+    <div className="py-1">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center justify-between text-left text-[12px] font-medium"
+        className="flex w-full items-center justify-between text-left text-[11px] font-medium"
       >
-        <span>{title}</span>
-        <span className="text-base">{open ? "−" : "+"}</span>
+        <span className="pt-2 text-normal">{title}</span>
+        <span className="text-base mt-2.5">{open ? "−" : "+"}</span>
       </button>
       <div
         className={cn(
