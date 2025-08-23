@@ -3,16 +3,21 @@
 import { useEffect, useState } from "react";
 
 const texts = [
-  { text: "Ontvang binnen 24 uur een gratis strategievoorstel" },
-  { text: "17+ jaar gecombineerde ervaring in design & marketing" },
-  { text: "Wij bouwen converterende websites die klanten opleveren" },
-  { text: "Boost je merk met creatieve campagnes op maat" },
-  { text: "SEO & SEA die écht leads en omzet opleveren" },
-  { text: "Responsive webdesign: pixel-perfect op elk scherm" },
-  { text: "Social media strategieën die je bereik verdubbelen" },
-  { text: "Data-gedreven marketing voor maximale ROI" },
-  { text: "Van branding tot lancering: alles onder één dak" },
-  { text: "Wij laten jouw bedrijf online groeien – snel en schaalbaar" },
+  { text: "Gratis strategie binnen 24 uur 🎉" },
+  { text: "17+ jaar design & marketing ervaring 👨🏻‍💻" },
+  { text: "Websites die klanten opleveren ✅" },
+  { text: "Boost je merk met creatieve campagnes 📈" },
+  { text: "SEO & SEA die omzet genereren 💰" },
+  { text: "Pixel-perfect responsive design 📲" },
+  { text: "Verdubbel je bereik op social 📣" },
+  { text: "Data-gedreven groei voor maximale ROI 📊" },
+  { text: "Alles van branding tot lancering 🏠" },
+  { text: "Snel en schaalbaar online groeien 🚀" },
+  { text: "Creatieve campagnes die blijven hangen 🎨" },
+  { text: "Conversiegericht webdesign dat werkt ⚡️" },
+  { text: "Jouw merk, onze strategie 🤝" },
+  { text: "Meer leads, meer klanten, meer omzet 💎" },
+  { text: "Digitale oplossingen die resultaat geven 🌐" },
 ];
 
 export default function BannerEight() {
