@@ -1,128 +1,75 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import { BsWhatsapp } from "react-icons/bs";
-import { FiMail, FiPhone } from "react-icons/fi";
 
 const texts = [
-  {
-    text: "Ontvang een offerte op maat binnen 24 uur",
-  },
-  {
-    text: "Meer dan 17 jaar gecombineerde expertise!",
-  },
-  {
-    text: "Alle merken en modellen beschikbaar",
-  },
-  {
-    text: "Rijden in jouw droomauto binnen 48 uur!",
-  },
+  { text: "Ontvang binnen 24 uur een gratis strategievoorstel" },
+  { text: "17+ jaar gecombineerde ervaring in design & marketing" },
+  { text: "Wij bouwen converterende websites die klanten opleveren" },
+  { text: "Boost je merk met creatieve campagnes op maat" },
+  { text: "SEO & SEA die écht leads en omzet opleveren" },
+  { text: "Responsive webdesign: pixel-perfect op elk scherm" },
+  { text: "Social media strategieën die je bereik verdubbelen" },
+  { text: "Data-gedreven marketing voor maximale ROI" },
+  { text: "Van branding tot lancering: alles onder één dak" },
+  { text: "Wij laten jouw bedrijf online groeien – snel en schaalbaar" },
 ];
 
 export default function BannerEight() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(0);
 
+  // Tekstrotatie (blijft werken)
   useEffect(() => {
-    const interval = setInterval(() => {
+    const id = setInterval(() => {
       setPrevIndex(currentIndex);
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
+      setCurrentIndex((p) => (p + 1) % texts.length);
     }, 4000);
-    return () => clearInterval(interval);
+    return () => clearInterval(id);
   }, [currentIndex]);
 
   return (
-    <div className="w-full bg-[#2563eb]">
-      <div className="h-10 max-w-7xl px-4 mx-auto md:px-10 flex items-center justify-center group text-white transition-colors duration-500">
-        <div className="w-full flex items-center justify-between">
-          {/* Links: TrustPilot rating */}
-          {/* <div className="hidden lg:flex justify-between items-center text-sm font-medium">
-            <div className="flex items-center cursor-pointer text-[10px] gap-1">
-              <span className="font-semibold">
-                <Image
-                  src="/svg/stars-trustpilot.svg"
-                  alt="Trustpilot Stars"
-                  width={10}
-                  height={10}
-                  className="w-full h-3"
-                />
-              </span>
-              <span>218 reviews op</span>
-              <Image
-                src={"/svg/trustpilota.svg"}
-                alt="Trustpilot"
-                width={10}
-                height={10}
-                className="w-auto h-4"
-              />
-            </div>
-          </div> */}
-
-          {/* Midden: draaiende tekst met animatie */}
-          <div className=" relative flex-1 flex justify-center items-center h-full">
+    <div
+      className={[
+        // blok met vaste hoogte
+        "relative w-full h-10",
+        // blauw + inner shadow (beide randen zichtbaar)
+        "bg-blue-600 text-white shadow-inner shadow-[#0080ff]",
+        // geen seam/clip
+        "overflow-visible isolate border-none ring-0 outline-none",
+      ].join(" ")}
+    >
+      <div
+        className="
+          relative z-10 max-w-7xl h-full px-4 md:px-10 mx-auto
+          grid grid-cols-1 lg:grid-cols-3 items-center
+          justify-items-center lg:justify-items-stretch
+        "
+      >
+        {/* MIDDEN — ALTIJD GECENTREERD */}
+        <div className="col-span-1 pt-0.5 lg:col-start-2 flex items-center justify-center w-full mx-auto">
+          {/* Animatievenster: grid-overlap i.p.v. relative/absolute */}
+          <div className="h-5 w-full grid place-items-center overflow-hidden">
             {texts.map((item, index) => {
-              let className =
-                "absolute px-4 text-[12px] text-white transition-all duration-500 ease-in-out transform";
+              let cls =
+                // overlap in dezelfde gridcel, gecentreerd
+                "col-start-1 row-start-1 text-[12px] px-2 " +
+                "transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] transform";
 
-              if (index === currentIndex) {
-                className += " translate-y-0 opacity-100";
-              } else if (index === prevIndex) {
-                className += " -translate-y-full opacity-0";
-              } else {
-                className += " translate-y-full opacity-0";
-              }
+              if (index === currentIndex) cls += " translate-y-0 opacity-100";
+              else if (index === prevIndex)
+                cls += " -translate-y-full opacity-0";
+              else cls += " translate-y-full opacity-0";
 
               return (
-                <div key={index} className={className}>
-                  <div className="tracking-wider font-semibold transition-all duration-300 ease-in-out">
+                <div key={index} className={cls}>
+                  <span className="tracking-wider font-medium whitespace-nowrap">
                     {item.text}
-                  </div>
+                  </span>
                 </div>
               );
             })}
           </div>
-
-          {/* Rechts: contactgegevens */}
-          {/* <div className="hidden lg:flex items-center gap-4 text-[10px] whitespace-nowrap">
-            <div className="flex items-center gap-1">
-              <FiMail size={14} />
-              <Link
-                href="mailto:info@beterlease.nl"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out">
-                  Info@beterlease.nl
-                </span>
-              </Link>
-            </div>
-            <div className="flex items-center gap-1">
-              <FiPhone size={14} />
-              <Link
-                href="tel:+31618891346"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out">
-                  +31 (0)6 18 89 13 46
-                </span>
-              </Link>
-            </div>
-            <div className="flex items-center gap-1 font-medium">
-              <BsWhatsapp size={14} />
-              <Link
-                href="https://wa.me/+31618891346?text=Hallo%20BeterLease.nl,%20ik%20heb%20een%20vraag%20over%20het%20zakelijk%20financieren%20van%20een%20auto."
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out">
-                  WhatsApp ons
-                </span>
-              </Link>
-            </div>
-          </div> */}
         </div>
       </div>
     </div>

@@ -1,10 +1,8 @@
 import React from "react";
-import dynamic from "next/dynamic";
-import Image from "next/image";
-import NavbarNewFour from "../Navbar/NavbarNewFour";
-import { FlipWordsTwo } from "../FlipWords/FlipWordsTwo";
 import Link from "next/link";
-import G2BadgeSection from "../G2BadgeSection/G2BadgeSection";
+import Image from "next/image";
+import dynamic from "next/dynamic";
+import { FlipWordsTwo } from "../FlipWords/FlipWordsTwo";
 
 // Dynamically load Spline component client-side only
 const Spline = dynamic(() => import("@splinetool/react-spline"), {
@@ -13,9 +11,9 @@ const Spline = dynamic(() => import("@splinetool/react-spline"), {
 
 export default function RubikOne() {
   return (
-    <div className="relative h-[100vh] bg-black text-white overflow-hidden">
+    <div className="relative h-[96.2vh] bg-black text-white overflow-hidden">
       {/* Navbar */}
-      <NavbarNewFour />
+      {/* <NavbarNewFour /> */}
 
       {/* Background Images (z-0) */}
       <Image
@@ -71,9 +69,9 @@ export default function RubikOne() {
       </div>
 
       {/* Content (z-20) */}
-      <div className="relative z-20 h-[100vh] lg:pt-3">
-        <section className="mx-auto px-6 pb-8 h-[100vh] md:max-w-[1375px]">
-          <div className="flex h-[100vh] items-center justify-center lg:justify-between text-center lg:flex-row md:pb-12">
+      <div className="relative z-20 h-[96.2vh] lg:pt-3">
+        <section className="mx-auto px-6 pb-8 h-[96.2vh] md:max-w-[1375px]">
+          <div className="flex h-[96.2vh] items-center justify-center lg:justify-between text-center lg:flex-row md:pb-12">
             {/* Text Section */}
             <div className="text-center lg:text-left order-2 max-w-3xl animate-hero-text-slide-up-fade sm:shrink-0 md:order-1 lg:pl-16">
               <div className="uppercase tracking-wide text-4xl md:text-5xl lg:text-7xl font-semibold text-white">

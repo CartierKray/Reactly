@@ -11,10 +11,18 @@ import CardComponentTwo from "@/components/CardComponent/CardComponentTwo";
 import VideoBannerEleven from "@/components/VideoBanner/VideoBannerEleven";
 import FadeInWhenVisible from "@/components/FadeInWhenVisible/FadeInWhenVisible";
 import InfinitiveMovingCardsIMG from "@/components/InfinitiveMovingCards/InfinitiveMovingCardsIMG";
+import BannerEight from "@/components/Banner/BannerEight";
+import NavbarNewFour from "@/components/Navbar/NavbarNewFour";
+import BannerSix from "@/components/Banner/BannerSix";
+import BannerFive from "@/components/Banner/BannerFive";
+import NavbarNewSeven from "@/components/Navbar/NavbarNewSeven";
 
 export default function Home() {
   return (
     <>
+      <BannerEight />
+      <NavbarNewSeven />
+
       <div className="w-full">
         {/* Alleen zichtbaar in light mode */}
         <div className="block dark:hidden w-full">
@@ -147,7 +155,9 @@ export default function Home() {
       </FadeInWhenVisible>
 
       <FadeInWhenVisible delay={0.1}>
-        <FAQSectionTwo />
+        <div className="mb-20">
+          <FAQSectionTwo />
+        </div>
       </FadeInWhenVisible>
 
       {/* <FadeInWhenVisible delay={0.1}>

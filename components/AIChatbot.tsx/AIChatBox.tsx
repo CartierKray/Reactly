@@ -222,7 +222,7 @@ Stel gerust je vraag. Je kunt ook mailen naar [info@reactly.nl](mailto:info@reac
             >
               <div>
                 <div className="text-sm tracking-wide font-medium dark:text-white">
-                  Start een chat
+                  Stel je vraag
                 </div>
                 <div className="font-normal text-gray-500 dark:text-white/50 text-xs text-black/50 tracking-wide flex items-center gap-1">
                   <span className="w-2 h-2 bg-green-500 rounded-full inline-block"></span>

@@ -18,9 +18,9 @@ const VideoBannerEleven: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[100vh] overflow-hidden">
+    <div className="relative w-full h-[96.2vh] overflow-hidden">
       {/* Sticky navbar */}
-      <NavbarNewFour />
+      {/* <NavbarNewFour /> */}
 
       {/* Video background */}
       <video
@@ -28,14 +28,14 @@ const VideoBannerEleven: React.FC = () => {
         loop
         muted
         playsInline
-        className="w-full h-[100vh] object-cover"
+        className="w-full h-[96.2vh] object-cover"
       >
         <source src="/video/Reactly.mp4" type="video/mp4" />
         Jouw browser ondersteunt deze video niet.
       </video>
 
       {/* Donkere overlay */}
-      <div className="absolute inset-0 bg-black/60 z-0 pointer-events-none" />
+      <div className="absolute inset-0 bg-black/40 z-0 pointer-events-none" />
 
       {/* Overlay content */}
       {/* <div className="absolute inset-0 flex flex-col text-center items-center justify-center lg:items-start lg:justify-center lg:text-start max-w-7xl mx-auto px-6 z-10 text-white"> */}
