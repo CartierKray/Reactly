@@ -3,10 +3,14 @@ import FooterSectionSM from "@/components/Footer/SWFooter";
 import FAQSection from "@/components/FaqSection/FaqSection";
 import VideoBannerEleven from "@/components/VideoBanner/VideoBannerEleven";
 import FadeInWhenVisible from "@/components/FadeInWhenVisible/FadeInWhenVisible";
+import NavbarNewSeven from "@/components/Navbar/NavbarNewSeven";
+import BannerEight from "@/components/Banner/BannerEight";
 
 function FAQPage() {
   return (
     <>
+      <BannerEight />
+      <NavbarNewSeven />
       <VideoBannerEleven />
 
       <FadeInWhenVisible delay={0.1}>

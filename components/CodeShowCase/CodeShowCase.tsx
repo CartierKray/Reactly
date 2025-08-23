@@ -319,14 +319,10 @@ export default function FeatureShowcaseGrid() {
           </div>
           <div className="relative z-10">
             <div className=" bg-dot-pattern min-h-[454px] rounded-xl  border border-white/10">
-              {/* Grid */}
               <div className=" overflow-hidden rounded-b-xl text-sm ">
-                {/* Header */}
                 <div className="px-4 py-4 text-xs text-white/50 flex justify-between  [background-size:16px_16px]"></div>
 
-                {/* Grid with manual alignment */}
                 <div className="grid grid-cols-2  mt-3 gap-px">
-                  {/* Left Column (LTR): 4 rows */}
                   <div className="flex flex-col divide-y pt-1 divide-white/10">
                     {[
                       {
@@ -380,11 +376,8 @@ export default function FeatureShowcaseGrid() {
                     ))}
                   </div>
 
-                  {/* Right Column (RTL): 1x empty, then 3 rows */}
                   <div className="flex flex-col divide-y pt-3 divide-white/10">
-                    {/* Empty placeholder row to align with LTR */}
                     <div className="bg-transparent h-[72px]" />{" "}
-                    {/* Match height of one LTR row */}
                     {[
                       {
                         name: "سارة أحمد",

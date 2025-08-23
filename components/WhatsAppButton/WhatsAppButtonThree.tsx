@@ -40,14 +40,18 @@ const WhatsAppButtonThree: React.FC<WhatsAppButtonThreeProps> = ({
         className="fixed bottom-4 right-4 z-50 bg-[#0057FF]  shadow-inner shadow-[#0080ff] rounded-full w-14 h-14 flex items-center justify-center cursor-pointer transition hover:scale-105"
         onClick={handleClick}
       >
-        <div className="absolute top-0 left-0 -mt-1 -ml-1">
-          <div className="relative w-5 h-5">
-            <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping"></span>
-            <span className="relative inline-flex items-center justify-center h-5 w-5 rounded-full bg-red-600 text-white text-xs font-bold shadow">
-              1
-            </span>
+        {/* Badge: zichtbaar als gesloten, verborgen als open */}
+        {!isOpen && (
+          <div className="absolute top-0 left-0 -mt-1 -ml-1">
+            <div className="relative w-5 h-5">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping"></span>
+              <span className="relative inline-flex items-center justify-center h-5 w-5 rounded-full bg-red-600 text-white text-xs font-bold shadow">
+                1
+              </span>
+            </div>
           </div>
-        </div>
+        )}
+
         {isOpen ? (
           // Pijl omlaag
           <svg width="24" height="24" viewBox="0 0 24 24">
