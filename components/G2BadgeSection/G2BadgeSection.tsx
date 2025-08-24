@@ -37,7 +37,33 @@ export default function G2BadgeSection() {
 
         {/* Center content */}
         <div className="flex flex-col items-center justify-center text-center gap-3">
-          <div className="flex gap-x-2">
+          <div className="flex mb-2 items-center cursor-pointer text-[10px] gap-1">
+            <span className="font-semibold hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out">
+              <Image
+                src="/svg/stars-trustpilot.svg"
+                alt="Google"
+                width={10}
+                height={10}
+                className="w-full h-3"
+              />
+            </span>
+            <span className="">218 reviews op</span>
+            {/* <div className="flex text-yellow-500">
+                        {Array(5)
+                          .fill(0)
+                          .map((_, i) => (
+                            <AiFillStar key={i} size={14} />
+                          ))}
+                        </div> */}
+            <Image
+              src={"/svg/trustpilota.svg"}
+              alt="Google"
+              width={10}
+              height={10}
+              className="w-auto h-4"
+            />
+          </div>
+          {/* <div className="flex gap-x-2">
             <div className="flex items-center space-x-1">
               <svg
                 width="15"
@@ -130,7 +156,7 @@ export default function G2BadgeSection() {
                 221 reviews
               </a>
             </div>
-          </div>
+          </div> */}
           {/* <div className="flex items-center cursor-pointer text-[10px] gap-1">
                         <span className="font-semibold">
                           <Image

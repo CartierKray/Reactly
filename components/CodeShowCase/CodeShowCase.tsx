@@ -100,7 +100,7 @@ export default function FeatureShowcaseGrid() {
 
       <div className="grid grid-cols-1 grid-rows-3 md:grid-cols-2 gap-2 max-w-7xl mx-auto">
         {/* 1. Cascade Layers */}
-        <div className="bg-black rounded-2xl text-white p-4 flex flex-col justify-between border border-white/10 relative">
+        <div className="dark:bg-black bg-[#ffffff] border-black/10 dark:border-white/10 rounded-2xl text-white p-4 flex flex-col justify-between border relative">
           <div className="absolute inset-0 bg-dot-pattern bg-[length:10px_10px] opacity-5" />
           <div className="flex items-start pt-6 md:pt-8 gap-4 mb-10 z-10 relative">
             <div className="pt-1">
@@ -142,7 +142,9 @@ export default function FeatureShowcaseGrid() {
               </svg>
             </div>
             <div>
-              <h2 className="text-xl font-semibold">Cascade layers</h2>
+              <h2 className="text-xl text-black dark:text-white font-semibold">
+                Cascade layers
+              </h2>
               <p className="text-gray-400 mt-1 mb-6 text-sm">
                 Tailwind uses CSS layers so you don’t have to worry about
                 specificity issues.
@@ -150,18 +152,18 @@ export default function FeatureShowcaseGrid() {
             </div>
           </div>
           <div className="relative z-10">
-            <div className=" bg-dot-pattern rounded-xl pt-8 pl-8 text-xs font-mono leading-relaxed overflow-x-auto border border-white/10">
-              <div className="rounded-tl-xl pt-2 pl-1 backdrop-blur-sm border-t border-l border-[#fff]/30">
+            <div className=" bg-dot-pattern bg-[#fafafa] dark:bg-transparent rounded-xl pt-8 pl-8 text-xs font-mono leading-relaxed overflow-x-auto border border-black/10 dark:border-white/10">
+              <div className="rounded-tl-xl shadow-lg dark:shadow-none bg-white dark:bg-transparent pt-2 pl-1 backdrop-blur-sm border-t border-l border-black/10 dark:border-[#fff]/30">
                 <div className="flex gap-2 p-2 pt-1 pb-2.5">
                   <span className="size-3 rounded-full bg-red-400"></span>
                   <span className="size-3 rounded-full bg-yellow-400"></span>
                   <span className="size-3 rounded-full bg-green-500"></span>
                 </div>
 
-                <div className="bg-[#11141b] border-l border-white/10 border-t rounded-tl-xl overflow-hidden font-mono text-xs">
+                <div className="bg-[#ebebeba5] dark:bg-[#11141b] border-l border-white/10 border-t rounded-tl-xl overflow-hidden font-mono text-xs">
                   <div className="flex">
                     {/* Line numbers */}
-                    <div className="text-right text-gray-500 pl-4 pr-4 py-3 select-none border-r border-white/10">
+                    <div className="text-right text-gray-500 pl-4 pr-4 py-3 select-none border-r border-black/10 dark:border-white/10">
                       {Array.from({ length: 15 }).map((_, i) => (
                         <div key={i} className="leading-6">
                           {i + 1}
@@ -173,7 +175,7 @@ export default function FeatureShowcaseGrid() {
                     <div className="rounded-xl overflow-hidden font-mono text-xs">
                       <div className="flex">
                         {/* Code content */}
-                        <div className="py-3 px-4 overflow-x-auto w-full text-white">
+                        <div className="py-3 px-4 overflow-x-auto w-full text-black dark:text-white">
                           <pre className="whitespace-pre leading-6">
                             <code>
                               {`@layer theme, base, components, utilities;

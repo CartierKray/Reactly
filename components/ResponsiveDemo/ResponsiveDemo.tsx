@@ -25,7 +25,7 @@ export default function ResponsiveDemo() {
   const isStacked = ["Mobile", "sm", "md"].includes(currentBreakpoint);
 
   return (
-    <div className="hidden xl:block rounded-2xl border border-black/10 dark:border-white/10 max-w-7xl mx-auto bg-[#ffffff] dark:bg-[#000] overflow-hidden">
+    <div className="hidden xl:block rounded-2xl border  max-w-7xl mx-auto bg-[#ffffff] border-black/10 dark:border-white/10 dark:bg-[#000] overflow-hidden">
       {/* Header */}
       <div className="flex items-start gap-4 mb-1 p-10 z-10 relative">
         <div className="pt-1">
