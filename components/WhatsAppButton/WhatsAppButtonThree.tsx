@@ -18,7 +18,7 @@ const WhatsAppButtonThree: React.FC<WhatsAppButtonThreeProps> = ({
 
   const phone = "31618891346";
   const message = encodeURIComponent(
-    "Hallo Beterlease.nl, ik heb interesse en zou graag meer informatie willen ontvangen."
+    "Hallo Reactly, ik heb interesse en zou graag meer informatie willen ontvangen."
   );
   const whatsappLink = `https://wa.me/${phone}?text=${message}`;
 
