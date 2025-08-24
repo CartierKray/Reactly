@@ -1,11 +1,11 @@
 import React from "react";
+import RubikOne from "@/components/Rubik/Rubik";
+import BannerEight from "@/components/Banner/BannerEight";
 import FooterSectionSM from "@/components/Footer/SWFooter";
 import FAQSection from "@/components/FaqSection/FaqSection";
+import NavbarNewSeven from "@/components/Navbar/NavbarNewSeven";
 import VideoBannerEleven from "@/components/VideoBanner/VideoBannerEleven";
 import FadeInWhenVisible from "@/components/FadeInWhenVisible/FadeInWhenVisible";
-import NavbarNewSeven from "@/components/Navbar/NavbarNewSeven";
-import BannerEight from "@/components/Banner/BannerEight";
-import RubikOne from "@/components/Rubik/Rubik";
 
 function FAQPage() {
   return (

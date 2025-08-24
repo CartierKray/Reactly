@@ -1,22 +1,19 @@
 import RubikOne from "@/components/Rubik/Rubik";
 import { Reviews } from "@/components/Reviews/Reviews";
+import BannerEight from "@/components/Banner/BannerEight";
 import FooterSectionSM from "@/components/Footer/SWFooter";
+import NavbarNewSeven from "@/components/Navbar/NavbarNewSeven";
 import { CTAButton } from "@/components/CTAButtons/CTAButtonts";
 import RolexAdvies from "@/components/RolexSection/RolexAdvies";
 import FAQSectionTwo from "@/components/FaqSection/FaqSectionTwo";
 import CodeShowcase from "@/components/CodeShowCase/CodeShowCase";
+import CardComponent from "@/components/CardComponent/CardComponent";
 import LeaseOptionsGridTwo from "@/components/ImageText/ImageTextTen";
 import G2BadgeSection from "@/components/G2BadgeSection/G2BadgeSection";
 import CardComponentTwo from "@/components/CardComponent/CardComponentTwo";
 import VideoBannerEleven from "@/components/VideoBanner/VideoBannerEleven";
 import FadeInWhenVisible from "@/components/FadeInWhenVisible/FadeInWhenVisible";
 import InfinitiveMovingCardsIMG from "@/components/InfinitiveMovingCards/InfinitiveMovingCardsIMG";
-import BannerEight from "@/components/Banner/BannerEight";
-import NavbarNewFour from "@/components/Navbar/NavbarNewFour";
-import BannerSix from "@/components/Banner/BannerSix";
-import BannerFive from "@/components/Banner/BannerFive";
-import NavbarNewSeven from "@/components/Navbar/NavbarNewSeven";
-import CardComponent from "@/components/CardComponent/CardComponent";
 
 export default function Home() {
   return (

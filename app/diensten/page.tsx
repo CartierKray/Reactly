@@ -1,7 +1,6 @@
 import React from "react";
 import NavbarNewSix from "@/components/Navbar/NavbarSix";
 import FooterSectionSM from "@/components/Footer/SWFooter";
-import ComponentenLijst from "@/components/ComponentenLijst/ComponentenLijst";
 import FadeInWhenVisible from "@/components/FadeInWhenVisible/FadeInWhenVisible";
 import ComponentHeaderDiensten from "@/components/ComponentenLijst/ComponentHeaderDiensten";
 import ComponentenLijstDiensten from "@/components/ComponentenLijst/ComponentenLijstDiensten";

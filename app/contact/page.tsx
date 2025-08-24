@@ -1,14 +1,11 @@
 import React from "react";
+import RubikOne from "@/components/Rubik/Rubik";
+import BannerEight from "@/components/Banner/BannerEight";
 import FooterSectionSM from "@/components/Footer/SWFooter";
-import ReviewSlider from "@/components/Reviews/ReviewSlider";
 import ContactForm from "@/components/ContactForm/ContactForm";
-import DirectAdviesTwo from "@/components/DirectAdvies/DirectAdviesTwo";
+import NavbarNewSeven from "@/components/Navbar/NavbarNewSeven";
 import VideoBannerEleven from "@/components/VideoBanner/VideoBannerEleven";
 import FadeInWhenVisible from "@/components/FadeInWhenVisible/FadeInWhenVisible";
-import { Reviews } from "@/components/Reviews/Reviews";
-import NavbarNewSeven from "@/components/Navbar/NavbarNewSeven";
-import BannerEight from "@/components/Banner/BannerEight";
-import RubikOne from "@/components/Rubik/Rubik";
 
 function ContactPage() {
   return (

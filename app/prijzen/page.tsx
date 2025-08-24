@@ -1,11 +1,9 @@
 import React from "react";
-import RubikOne from "@/components/Rubik/Rubik";
-import FooterSectionSM from "@/components/Footer/SWFooter";
-import PricingSection from "@/components/Pricing/PricingSection";
-import VideoBannerEleven from "@/components/VideoBanner/VideoBannerEleven";
-import FadeInWhenVisible from "@/components/FadeInWhenVisible/FadeInWhenVisible";
 import { Reviews } from "@/components/Reviews/Reviews";
 import NavbarNewSix from "@/components/Navbar/NavbarSix";
+import FooterSectionSM from "@/components/Footer/SWFooter";
+import PricingSection from "@/components/Pricing/PricingSection";
+import FadeInWhenVisible from "@/components/FadeInWhenVisible/FadeInWhenVisible";
 import ComponentHeaderPrijzen from "@/components/ComponentenLijst/ComponentHeaderPrijzen";
 
 function PrijzenPage() {
