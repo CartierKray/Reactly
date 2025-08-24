@@ -16,6 +16,7 @@ import NavbarNewFour from "@/components/Navbar/NavbarNewFour";
 import BannerSix from "@/components/Banner/BannerSix";
 import BannerFive from "@/components/Banner/BannerFive";
 import NavbarNewSeven from "@/components/Navbar/NavbarNewSeven";
+import CardComponent from "@/components/CardComponent/CardComponent";
 
 export default function Home() {
   return (
@@ -140,8 +141,12 @@ export default function Home() {
             </a>
           </p>
         </div>
-        <CardComponentTwo />
-        {/* </div> */}
+        <div className="flex lg:hidden">
+          <CardComponentTwo />
+        </div>
+        <div className="hidden py-10 lg:py-20 lg:flex">
+          <CardComponent />
+        </div>
       </FadeInWhenVisible>
 
       <FadeInWhenVisible delay={0.1}>

@@ -74,28 +74,23 @@ export function InfiniteMovingCardsFour() {
 
 const items = [
   {
-    frontImage: "/images/aklassefront.jpg",
-    backImage: "/images/aklasseinside.jpg",
-    title: "Mercedes-Benz A-Klasse",
+    frontImage: "/images/front.jpg",
+    backImage: "/images/back.jpg",
+    title: "Reactly",
   },
   {
-    frontImage: "/images/bmwfront.jpg",
-    backImage: "/images/bmwinside.jpg",
-    title: "BMW 8-serie",
+    frontImage: "/images/front-1.jpg",
+    backImage: "/images/back-1.jpg",
+    title: "Reactly",
   },
   {
-    frontImage: "/images/rs6front.jpg",
-    backImage: "/images/rs6inside.jpg",
-    title: "Audi RS6",
+    frontImage: "/images/front-2.jpg",
+    backImage: "/images/back-2.jpg",
+    title: "Reactly",
   },
   {
-    frontImage: "/images/rangefront.jpg",
-    backImage: "/images/rangeinside.jpg",
-    title: "Range Rover Sport",
-  },
-  {
-    frontImage: "/images/gklassefront.jpg",
-    backImage: "/images/gklasseinside.jpg",
-    title: "Mercedes-Benz G-Klasse",
+    frontImage: "/images/front-3.jpg",
+    backImage: "/images/back-3.jpg",
+    title: "Reactly",
   },
 ];

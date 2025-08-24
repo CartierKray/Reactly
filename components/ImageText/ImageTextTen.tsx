@@ -49,29 +49,30 @@ const LeaseOptionsGridTwo: React.FC = () => {
               />
             </div>
             <h4 className="uppercase text-sm dark:text-[#c2b293] text-[#c2b293] tracking-wide mb-3">
-              Dé Lease Specialist van Nederland
+              Dé Webdesign & Marketing Partner van Nederland
             </h4>
+
             <h2 className="text-4xl pt-1 md:text-5xl font-medium mb-6 leading-tight">
-              Nieuwste{" "}
-              <span className="text-black dark:text-white">ocassions</span>
+              Websites die{" "}
+              <span className="text-black dark:text-white">converteren</span>
             </h2>
+
             <p className="leading-relaxed dark:text-white/50 text-[15px] text-black">
-              Lease uw zakelijke financial lease auto bij BeterLease.nl Met onze
-              jaren ervaring als financial lease expert zijn wij dé leasepartner
-              voor ondernemers en maken wij zakelijk leasen betaalbaar en
-              eenvoudig. Kies uit <span>financial lease</span>
-              ,&nbsp;
-              <span>operational lease</span>,&nbsp;<span>equipment lease</span>{" "}
-              of <span>private lease</span>. Onze leaseadviseurs helpen u graag
-              bij het vinden van de beste leasevorm en leaseauto die past bij uw
-              wensen en ambities.
+              We helpen merken en MKB’s groeien met conversiegericht webdesign
+              en slimme marketing. Met jaren ervaring zijn we je digitale
+              partner: we ontwerpen, bouwen en optimaliseren — snel en zonder
+              gedoe. Kies uit <span>webdesign</span>,&nbsp;<span>SEO</span>
+              ,&nbsp;<span>SEA</span>,&nbsp;
+              <span>social ads</span> of <span>branding</span>. Onze
+              specialisten adviseren je over de beste aanpak die past bij jouw
+              doelen en budget.
             </p>
 
             {/* Knop alleen zichtbaar in light mode */}
             <div className="dark:hidden pt-8">
               <Link href={"/offerte"}>
                 <button className="flex justify-start px-12 bg-[#c2b293] hover:bg-[#c2b293] shadow-inner shadow-[#e3d1ac] hover:tracking-wider backdrop-blur-sm text-white py-2 rounded-3xl text-sm z-10 hover:font-semibold transition-all duration-300 ease-in-out">
-                  Bereken je leasebedrag
+                  Vraag je offerte aan
                 </button>
               </Link>
             </div>
@@ -81,7 +82,7 @@ const LeaseOptionsGridTwo: React.FC = () => {
               <Link href={"/offerte"}>
                 <button className="relative font-light text-[14px] backdrop-blur-xl outline-1 outline-white outline mt-8 w-fit px-12 hover:font-medium hover:tracking-wide transition-all duration-500 ease-in-out whitespace-nowrap pt-2.5 pb-2.5 bg-white rounded-full overflow-hidden group">
                   <span className="relative z-10 text-black group-hover:text-black font-medium hover:tracking-wide transition-all duration-500 ease-in-out">
-                    Bereken je leasebedrag
+                    Vraag je offerte aan
                   </span>
                   <span className="absolute inset-0 rounded-full bg-white w-0 group-hover:w-full transition-all duration-500 ease-in-out"></span>
                 </button>

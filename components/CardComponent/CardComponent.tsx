@@ -13,25 +13,25 @@ interface Totals {
 }
 
 const serviceOptions = {
-  appartement: [
-    { name: "Bespaaradvies", price: 300 },
-    { name: "Energielabel", price: 280 },
-    { name: "Labels prijs", price: 680 },
+  website: [
+    { name: "Website Starter", price: 795 },
+    { name: "Website Pro", price: 1195 },
+    { name: "Website All-in", price: 1749 },
   ],
-  rijtjeshuis: [
-    { name: "Bespaaradvies", price: 345 },
-    { name: "Energielabel", price: 280 },
-    { name: "Labels prijs", price: 680 },
+  marketing: [
+    { name: "SEO Boost", price: 395 },
+    { name: "Social Ads Pro", price: 695 },
+    { name: "Full-Funnel Growth", price: 1295 },
   ],
-  tweeondereenkap: [
-    { name: "Bespaaradvies", price: 375 },
-    { name: "Energielabel", price: 280 },
-    { name: "Labels prijs", price: 680 },
+  ai: [
+    { name: "Chatbot Starter", price: 375 },
+    { name: "Chatbot Pro", price: 680 },
+    { name: "Chatbot Enterprise", price: 1290 },
   ],
-  villa: [
-    { name: "Bespaaradvies", price: 395 },
-    { name: "Energielabel", price: 280 },
-    { name: "Labels prijs", price: 680 },
+  ecommerce: [
+    { name: "Shop Starter", price: 395 },
+    { name: "Feed & CRO Boost", price: 680 },
+    { name: "E-commerce All-in", price: 1290 },
   ],
 };
 
@@ -55,48 +55,46 @@ const CardComponent: React.FC = () => {
       className="flex w-full flex-col items-center h-full justify-center z-10"
     >
       {/* De kaarten container */}
-      <div className="grid md:grid-cols-2 xl:grid-cols-5 w-full mx-auto max-w-7xl ">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 px-0.5 w-full mx-auto max-w-7xl ">
         {/* Kaarten hier. Let op: Je moet de 'selected' state per service beheren */}
         {/* Voorbeeld: */}
         <Card
-          title="SALES"
-          services={serviceOptions.appartement.map((service, index) => ({
+          title="WEBSITE"
+          services={serviceOptions.website.map((service, index) => ({
             ...service,
             selected: index === 0, // Voorbeeld: het eerste item is geselecteerd
           }))}
+          onSelectionChange={(total) => handleSelectionChange("website", total)}
+          imageSrc={"/svg/web-inteligence.svg"}
+        />
+        <Card
+          title="MARKETING"
+          services={serviceOptions.marketing} // Geen 'selected' veld, niets is geselecteerd
           onSelectionChange={(total) =>
-            handleSelectionChange("appartement", total)
+            handleSelectionChange("marketing", total)
           }
           imageSrc={"/svg/sales-inteligence.svg"}
         />
         <Card
-          title="APP"
-          services={serviceOptions.rijtjeshuis} // Geen 'selected' veld, niets is geselecteerd
-          onSelectionChange={(total) =>
-            handleSelectionChange("rijtjeshuis", total)
-          }
+          title="AI CHATBOT"
+          services={serviceOptions.ai} // Geen 'selected' veld, niets is geselecteerd
+          onSelectionChange={(total) => handleSelectionChange("ai", total)}
           imageSrc={"/svg/app-inteligence.svg"}
         />
         <Card
-          title="WEB"
-          services={serviceOptions.tweeondereenkap} // Geen 'selected' veld, niets is geselecteerd
+          title="E-COMMERCE"
+          services={serviceOptions.ecommerce} // Geen 'selected' veld, niets is geselecteerd
           onSelectionChange={(total) =>
-            handleSelectionChange("tweeondereenkap", total)
+            handleSelectionChange("ecommerce", total)
           }
-          imageSrc={"/svg/web-inteligence.svg"}
+          imageSrc={"/svg/shopper-inteligence.svg"}
         />
-        <Card
-          title="STOCK"
-          services={serviceOptions.villa} // Geen 'selected' veld, niets is geselecteerd
-          onSelectionChange={(total) => handleSelectionChange("villa", total)}
-          imageSrc={"/svg/stock-inteligence.svg"}
-        />
-        <Card
+        {/* <Card
           title="SHOPPER"
           services={serviceOptions.villa} // Geen 'selected' veld, niets is geselecteerd
           onSelectionChange={(total) => handleSelectionChange("villa", total)}
           imageSrc={"/svg/shopper-inteligence.svg"}
-        />
+        /> */}
         {/* Voeg meer kaarten toe zoals nodig */}
       </div>
     </div>

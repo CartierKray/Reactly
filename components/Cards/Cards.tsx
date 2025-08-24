@@ -95,7 +95,7 @@ export const Card: React.FC<CardProps> = ({
 
   return (
     <>
-      <div className="outline outline-1 scale-90 outline-zinc-400/5 rounded-lg overflow-hidden shadow-lg bg-white z-10">
+      <div className="outline outline-1 scale-90 outline-zinc-400/5 rounded-lg overflow-hidden shadow-lg bg-white dark:shadow-inner dark:bg-[#282828] dark:shadow-[#444444] dark:outline-none z-10">
         {/* Afbeeldingscontainer */}
         <Image
           width={1000}
@@ -106,19 +106,19 @@ export const Card: React.FC<CardProps> = ({
         />
         {/* Titel en lijst met diensten */}
         <div className="px-3 w-full">
-          <div className="font-semibold text-center text-2xl tracking-normal mb-2 bg-clip-text text-transparent bg-black">
+          <div className="font-semibold text-center text-2xl tracking-normal mb-2 bg-clip-text text-transparent dark:text-white bg-black">
             {title}
           </div>
 
           <hr className="w-16 border-gray-300 rounded-3xl mx-auto justify-center m-8 mt-8" />
-          <ul className="list-reset">
+          <ul className="list-reset ">
             {services.map((service) => (
               <li
                 key={service.name}
-                className={`flex justify-between mb-[13px] p-3 items-center my-2 px-3 ${
+                className={`flex  justify-between mb-[13px] p-3 items-center my-2 px-3 ${
                   selectedServices[service.name]
-                    ? "outline outline-1 outline-green-600/75 rounded-3xl"
-                    : "hover:outline hover:outline-1 rounded-3xl hover:outline-green-600/75"
+                    ? "outline  outline-1 outline-green-600/75 rounded-3xl"
+                    : "hover:outline  hover:outline-1 rounded-3xl hover:outline-green-600/75"
                 }`}
                 onClick={() => toggleService(service)}
                 onMouseEnter={() => setHoveredService(service.name)} // Voeg deze regel toe
@@ -159,8 +159,8 @@ export const Card: React.FC<CardProps> = ({
                     className={`transition-all duration-300 ease-in-out ${
                       selectedServices[service.name] ||
                       hoveredService === service.name
-                        ? "pl-3 font-semibold text-black"
-                        : "text-black pl-3 text-[15.5px] font-extralight"
+                        ? "pl-3 font-semibold dark:text-white text-black"
+                        : "text-black dark:text-white pl-3 text-[15.5px] font-extralight"
                     }`}
                   >
                     {service.name}
@@ -171,7 +171,7 @@ export const Card: React.FC<CardProps> = ({
                   className={`transition-all duration-200 ease-in-out ${
                     selectedServices[service.name] ||
                     hoveredService === service.name
-                      ? " font-semibold text-black"
+                      ? " font-semibold text-black dark:text-white"
                       : "text-gray-400 text-sm  font-extralight"
                   }`}
                 >
@@ -198,10 +198,10 @@ export const Card: React.FC<CardProps> = ({
             animate={cardTotal > 0 ? "visible" : "hidden"}
             variants={containerVariants}
           >
-            <p className="text-[22px] scale-90 px-1.5 text-zinc-400/60 pt-1 pb-4 tracking-widest">
+            <p className="text-[22px] dark:text-white/50 scale-90 px-1.5 text-zinc-400/60 pt-1 pb-4 tracking-widest">
               TOTAAL
             </p>
-            <p className="text-[25px] px-1.5">€ {cardTotal.toFixed(0)}</p>
+            <p className="text-[25px]  px-1.5">€ {cardTotal.toFixed(0)}</p>
           </motion.div>
           <motion.div
             className=" py-5"
