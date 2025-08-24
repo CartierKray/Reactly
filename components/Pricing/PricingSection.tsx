@@ -17,9 +17,9 @@ const compactOptions = ["Start", "Groei", "Pro", "Boost", "Premium"];
 
 const pricingByContacts: { [key: string]: string } = {
   Starter: "1999",
-  Groei: "€1999",
-  Professioneel: "€2499",
-  "AI & SEO Boost": "€2749",
+  Groei: "€2249",
+  Professioneel: "€2799",
+  "AI & SEO Boost": "€3249",
   "All-in Premium": "4749",
 };
 
@@ -75,7 +75,6 @@ export default function PricingSection() {
         "2 weken support & revisies",
         "CMS integratie",
         "Sociale media koppeling",
-        "GDPR proof",
         "1 aanpassing inbegrepen",
         "Toegang tot support community",
       ],
@@ -88,13 +87,12 @@ export default function PricingSection() {
       features: [
         "Alles van Pro Marketing",
         "AI gegenereerde content",
-        "Webshop integratie",
+        "Webshop integratie*",
         "Automatische funnels & CRM",
         "Chatbot integratie",
         "Premium SEO & snelheid",
         "Onbeperkte revisies",
-        "Persoonlijke projectmanager",
-        "Training & live onboarding",
+        "6 maanden support*",
       ],
       cta: "Vraag offerte aan",
     },
@@ -198,7 +196,7 @@ export default function PricingSection() {
                       </p>
                       <span className="text-xs text-neutral-600 dark:text-neutral-200">
                         {tier.name === "Start"
-                          ? "1499 pakket"
+                          ? "Eenmalig"
                           : tier.name === "Enterprise"
                           ? "Maatwerk Offerte"
                           : "Eenmalige betaling"}
@@ -208,14 +206,14 @@ export default function PricingSection() {
 
                   <div className="mt-8">
                     <div className="flex items-end">
-                      <span className="text-lg font-bold text-neutral-500 dark:text-neutral-200">
+                      <span className="text-lg font-medium text-neutral-500 dark:text-neutral-200">
                         €&nbsp;
                       </span>
                       <div className="flex items-baseline gap-2">
                         <span className="text-5xl font-medium text-neutral-800 dark:text-neutral-50">
                           {tier.basePrice.replace("€", "")}
                         </span>
-                        {tier.basePrice !== "1499" &&
+                        {tier.basePrice !== "" &&
                           tier.basePrice !== "Custom" && (
                             <span className="text-xl font-normal text-gray-500 line-through dark:text-neutral-200">
                               €{parseInt(tier.basePrice.replace("€", "")) + 400}
