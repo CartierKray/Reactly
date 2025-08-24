@@ -123,12 +123,12 @@ export default function Home() {
         {/* <div className="relative bg-gradient-to-b w-full from-[#FFF] via-[#e9eeff] to-[#FFF]"> */}
         {/* <RolexIntro /> */}
         {/* <ProductShowcase /> */}
-        <div className="">
+        <div className="pt-12">
           <h2
             id="reviews-title"
             className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"
           >
-            Offerte op maat voor jouw project
+            Bereken jouw offerte op maat
           </h2>
           <p className="mt-2 text-md md:text-lg max-w-xs md:max-w-xl mx-auto text-neutral-600 text-center dark:text-neutral-200">
             We staan voor je klaar om je te helpen met al je vragen. Kun je niet
@@ -144,7 +144,7 @@ export default function Home() {
         <div className="flex lg:hidden">
           <CardComponentTwo />
         </div>
-        <div className="hidden py-10 lg:py-20 lg:flex">
+        <div className="hidden py-10 lg:pt-16 pb-20 lg:flex">
           <CardComponent />
         </div>
       </FadeInWhenVisible>
