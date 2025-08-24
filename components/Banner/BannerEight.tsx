@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 
 const texts = [
-  { text: "Gratis strategie binnen 24 uur 🎉" },
+  { text: "Bekroond als #1 in Webdesign & Marketing  🎉" },
+  { text: "Offerte voor web & marketing binnen 24 uur 🚀" },
   { text: "17+ jaar design & marketing ervaring 👨🏻‍💻" },
   { text: "Websites die klanten opleveren ✅" },
   { text: "Boost je merk met creatieve campagnes 📈" },
@@ -12,7 +13,7 @@ const texts = [
   { text: "Verdubbel je bereik op social 📣" },
   { text: "Data-gedreven groei voor maximale ROI 📊" },
   { text: "Alles van branding tot lancering 🏠" },
-  { text: "Snel en schaalbaar online groeien 🚀" },
+  { text: "Snel en schaalbaar online groeien ⚡️" },
   { text: "Creatieve campagnes die blijven hangen 🎨" },
   { text: "Conversiegericht webdesign dat werkt ⚡️" },
   { text: "Jouw merk, onze strategie 🤝" },

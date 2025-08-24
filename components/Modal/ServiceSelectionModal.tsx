@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Service } from "../Cards/Cards";
@@ -63,23 +65,32 @@ const ServiceSelectionModal: React.FC<Props> = ({
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center px-4"
+          className="fixed inset-0 z-[60] bg-black/50 backdrop-blur-md flex items-center justify-center px-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setIsOpen(false)}
         >
           <motion.div
-            className="bg-white relative max-w-lg w-full rounded-lg shadow-xl px-5 overflow-y-auto max-h-[95vh]"
+            className="bg-white relative max-w-lg w-full rounded-lg shadow-xl px-5 overflow-y-auto max-h-[95vh] z-[70]"
             initial={{ scale: 0.85 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0.85 }}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="px-3 pt-10 w-full">
-              <button className="absolute top-0 pl-4 pr-4 rounded-bl-xl rounded-tr-md right-0 font-thin bg-gray-200 text-gray-700 text-5xl">
+              <button
+                type="button"
+                aria-label="Sluiten"
+                onClick={() => setIsOpen(false)}
+                className="absolute top-0 right-0 z-[80] pl-4 pr-4 rounded-bl-xl rounded-tr-md
+                           font-thin bg-gray-200 text-gray-700 text-5xl
+                           hover:bg-gray-300/90
+                           pointer-events-auto"
+              >
                 &times;
               </button>
+
               <div className="pt-2">
                 <h2 className="text-2xl tracking-wide font-semibold text-gray-900 mb-6">
                   <span>

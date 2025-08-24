@@ -1,7 +1,6 @@
 "use client";
 
-import { Card } from "@/components/Cards/Cards";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { CardTwo } from "../Cards/CardsTwo";
 
 interface ServiceOption {
@@ -14,35 +13,25 @@ interface Totals {
 }
 
 const serviceOptions = {
-  sales: [
-    { name: "Bespaaradvies", price: 300 },
-    { name: "Energielabel", price: 280 },
-    { name: "Labels prijs", price: 680 },
+  website: [
+    { name: "Website Starter", price: 795 },
+    { name: "Website Pro", price: 1195 },
+    { name: "Website All-in", price: 1749 },
   ],
-  app: [
-    { name: "Bespaaradvies", price: 345 },
-    { name: "Energielabel", price: 280 },
-    { name: "Labels prijs", price: 680 },
+  marketing: [
+    { name: "SEO Boost", price: 395 },
+    { name: "Social Ads Pro", price: 695 },
+    { name: "Full-Funnel Growth", price: 1295 },
   ],
-  web: [
-    { name: "Bespaaradvies", price: 375 },
-    { name: "Energielabel", price: 280 },
-    { name: "Labels prijs", price: 680 },
+  ai: [
+    { name: "Chatbot Starter", price: 375 },
+    { name: "Chatbot Pro", price: 680 },
+    { name: "Chatbot Enterprise", price: 1290 },
   ],
-  stock: [
-    { name: "Bespaaradvies", price: 395 },
-    { name: "Energielabel", price: 280 },
-    { name: "Labels prijs", price: 680 },
-  ],
-  shopper: [
-    { name: "Bespaaradvies", price: 395 },
-    { name: "Energielabel", price: 280 },
-    { name: "Labels prijs", price: 680 },
-  ],
-  custom: [
-    { name: "Bespaaradvies", price: 395 },
-    { name: "Energielabel", price: 280 },
-    { name: "Labels prijs", price: 680 },
+  ecommerce: [
+    { name: "Shop Starter", price: 395 },
+    { name: "Feed & CRO Boost", price: 680 },
+    { name: "E-commerce All-in", price: 1290 },
   ],
 };
 
@@ -69,25 +58,27 @@ const CardComponentTwo: React.FC = () => {
       <div className="grid grid-cols-2 md:px-10 pt-14 md:py-20 md:grid-cols-2 md:grid-row-2 lg:grid-cols-4 max-w-7xl md:w-full -mt-5 mb-10 md:mb-0">
         {/* Kaarten hier. Let op: Je moet de 'selected' state per service beheren */}
         <CardTwo
-          title="SALES"
-          services={serviceOptions.sales.map((service, index) => ({
+          title="WEBSITE"
+          services={serviceOptions.website.map((service, index) => ({
             ...service,
             selected: index === 0, // Voorbeeld: het eerste item is geselecteerd
           }))}
-          onSelectionChange={(total) => handleSelectionChange("sales", total)}
+          onSelectionChange={(total) => handleSelectionChange("website", total)}
+          imageSrc={"/svg/web-inteligence.svg"}
+        />
+        <CardTwo
+          title="MARKETING"
+          services={serviceOptions.marketing} // Geen 'selected' veld, niets is geselecteerd
+          onSelectionChange={(total) =>
+            handleSelectionChange("marketing", total)
+          }
           imageSrc={"/svg/sales-inteligence.svg"}
         />
         <CardTwo
-          title="APP"
-          services={serviceOptions.app} // Geen 'selected' veld, niets is geselecteerd
-          onSelectionChange={(total) => handleSelectionChange("app", total)}
+          title="AI CHATBOT"
+          services={serviceOptions.ai} // Geen 'selected' veld, niets is geselecteerd
+          onSelectionChange={(total) => handleSelectionChange("ai", total)}
           imageSrc={"/svg/app-inteligence.svg"}
-        />
-        <CardTwo
-          title="WEB"
-          services={serviceOptions.web} // Geen 'selected' veld, niets is geselecteerd
-          onSelectionChange={(total) => handleSelectionChange("web", total)}
-          imageSrc={"/svg/web-inteligence.svg"}
         />
         {/* <CardTwo
           title="STOCK"
@@ -96,9 +87,11 @@ const CardComponentTwo: React.FC = () => {
           imageSrc={"/svg/stock-inteligence.svg"}
         /> */}
         <CardTwo
-          title="SHOPPER"
-          services={serviceOptions.stock} // Geen 'selected' veld, niets is geselecteerd
-          onSelectionChange={(total) => handleSelectionChange("shopper", total)}
+          title="E-COMMERCE"
+          services={serviceOptions.ecommerce} // Geen 'selected' veld, niets is geselecteerd
+          onSelectionChange={(total) =>
+            handleSelectionChange("ecommerce", total)
+          }
           imageSrc={"/svg/shopper-inteligence.svg"}
         />
         {/* <div className="lg:hidden block ">
