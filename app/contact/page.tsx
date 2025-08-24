@@ -6,14 +6,32 @@ import DirectAdviesTwo from "@/components/DirectAdvies/DirectAdviesTwo";
 import VideoBannerEleven from "@/components/VideoBanner/VideoBannerEleven";
 import FadeInWhenVisible from "@/components/FadeInWhenVisible/FadeInWhenVisible";
 import { Reviews } from "@/components/Reviews/Reviews";
+import NavbarNewSeven from "@/components/Navbar/NavbarNewSeven";
+import BannerEight from "@/components/Banner/BannerEight";
+import RubikOne from "@/components/Rubik/Rubik";
 
 function ContactPage() {
   return (
     <>
-      <VideoBannerEleven />
+      <BannerEight />
+      <NavbarNewSeven />
+
+      <div className="w-full">
+        {/* Alleen zichtbaar in light mode */}
+        <div className="block dark:hidden w-full">
+          <VideoBannerEleven />
+        </div>
+
+        {/* Alleen zichtbaar in dark mode */}
+        <div className="hidden dark:block w-full">
+          <RubikOne />
+        </div>
+      </div>
 
       <FadeInWhenVisible delay={0.1}>
-        <ContactForm />
+        <div className="pb-10 md:pb-20">
+          <ContactForm />
+        </div>
       </FadeInWhenVisible>
 
       {/* <FadeInWhenVisible delay={0.1}>
@@ -27,7 +45,7 @@ function ContactPage() {
         </div>
       </FadeInWhenVisible> */}
 
-      <div className="pt-10 pb-20">
+      {/* <div className="pt-10 pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2
             id="reviews-title"
@@ -39,13 +57,13 @@ function ContactPage() {
             Hier is wat sommige van onze klanten te zeggen hebben over Reactly.
           </p>
         </div>
-      </div>
+      </div> */}
 
-      <FadeInWhenVisible delay={0.1}>
+      {/* <FadeInWhenVisible delay={0.1}>
         <div className="pb-10 md:pb-20">
           <Reviews />
         </div>
-      </FadeInWhenVisible>
+      </FadeInWhenVisible> */}
 
       <FadeInWhenVisible delay={0.1}>
         <FooterSectionSM />

@@ -40,7 +40,7 @@ export default function ContactSectionThree() {
             </div>
 
             {/* Bedrijfsgegevens */}
-            <h2 className="font-semibold tracking-wider text-[#c2b293] dark:text-red-600 mb-4 pt-2 text-sm">
+            <h2 className="font-semibold tracking-wider text-[#c2b293] dark:text-[#c2b293] mb-4 pt-2 text-sm">
               BEDRIJFSGEGEVENS
             </h2>
             <div className="space-y-1 dark:text-white  leading-relaxed">
@@ -90,7 +90,7 @@ export default function ContactSectionThree() {
           </div>
 
           {/* Openingstijden */}
-          <h2 className="font-semibold tracking-wider dark:text-red-600 text-[#c2b293] mb-4 pt-2 text-sm">
+          <h2 className="font-semibold tracking-wider dark:text-[#c2b293] text-[#c2b293] mb-4 pt-2 text-sm">
             OPENINGSTIJDEN
           </h2>
           <div className="space-y-2 dark:text-white  text-sm">
@@ -128,7 +128,7 @@ export default function ContactSectionThree() {
           </p>
 
           <div className="pl-2 mt-8 pb-5">
-            <h3 className="font-semibold dark:dark:text-red-600  text-black text-lg mb-4 tracking-wider">
+            <h3 className="font-semibold dark:dark:text-[#c2b293]  text-black text-lg mb-4 tracking-wider">
               Follow us
             </h3>
             <div className="flex space-x-6 pt-4">
