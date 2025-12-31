@@ -47,13 +47,13 @@ export default function ContactSectionFive() {
               <div className="flex items-start gap-2">
                 <span className="w-20">Straat</span>
                 <span className="text-[13.5px] font-normal text-black dark:text-white hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out">
-                  Nijenburg 98
+                  Staalstraat 103
                 </span>
               </div>
               <div className="flex items-start gap-2">
                 <span className="w-20">Postcode</span>
                 <span className="text-[13.5px] font-normal text-black dark:text-white  hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out">
-                  1081GG Amsterdam
+                  1951 MA, Velsen-Noord
                 </span>
               </div>
               {/* <div className="flex items-start gap-2">
