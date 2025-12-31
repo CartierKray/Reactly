@@ -12,7 +12,10 @@ import Image from "next/image";
 
 export default function ContactSectionFive() {
   return (
-    <div className="w-full bg-white dark:bg-black bg-transparent backdrop-blur-md">
+    <div
+      id="contact"
+      className="w-full bg-white dark:bg-black bg-transparent backdrop-blur-md"
+    >
       <div className="max-w-6xl mx-auto grid-cols-1 gap-6 shadow-sm">
         <div className="col-span-1 rounded-3xl border-[1px] dark:border-white/25 p-6">
           <div className="text-sm space-y-6 pb-10 text-gray-800">

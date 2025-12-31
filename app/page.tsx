@@ -111,6 +111,10 @@ export default function Home() {
 
       <CodeShowcase />
 
+      <FadeInWhenVisible delay={0.1}>
+        <LeaseOptionsGridTwo />
+      </FadeInWhenVisible>
+
       <div className="pb-10 lg:pt-10">
         <h2
           id="reviews-title"
@@ -215,10 +219,6 @@ export default function Home() {
           </div>
         </div>
       </div> */}
-
-      {/* <FadeInWhenVisible delay={0.1}>
-        <LeaseOptionsGridTwo />
-      </FadeInWhenVisible> */}
 
       {/* <FadeInWhenVisible delay={0.1}>
         <div className=" pb-10">

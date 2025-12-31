@@ -23,7 +23,7 @@ const leaseOptions = [
 
 const LeaseOptionsGridTwo: React.FC = () => {
   return (
-    <section className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 my-10  mt-16 md:pt-10 md:pb-8 space-y-20">
+    <section className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 my-10 md:pb-8">
       {leaseOptions.map((option, index) => (
         <div
           id={option.id}
@@ -70,7 +70,7 @@ const LeaseOptionsGridTwo: React.FC = () => {
 
             {/* Knop alleen zichtbaar in light mode */}
             <div className="dark:hidden pt-8">
-              <Link href={"/contact#contactgegevens"}>
+              <Link href={"/#contact"}>
                 <button className="flex justify-start px-12 bg-[#c2b293] hover:bg-[#c2b293] shadow-inner shadow-[#e3d1ac] hover:tracking-wider backdrop-blur-sm text-white py-2 rounded-3xl text-sm z-10 hover:font-semibold transition-all duration-300 ease-in-out">
                   Vraag je offerte aan
                 </button>
@@ -79,7 +79,7 @@ const LeaseOptionsGridTwo: React.FC = () => {
 
             {/* Knop alleen zichtbaar in dark mode */}
             <div className="hidden dark:flex mb-5 md:mb-2 justify-startt items-start">
-              <Link href={"/contact#contactgegevens"}>
+              <Link href={"/#contact"}>
                 <button className="relative font-light text-[14px] backdrop-blur-xl outline-1 outline-white outline mt-8 w-fit px-12 hover:font-medium hover:tracking-wide transition-all duration-500 ease-in-out whitespace-nowrap pt-2.5 pb-2.5 bg-white rounded-full overflow-hidden group">
                   <span className="relative z-10 text-black group-hover:text-black font-medium hover:tracking-wide transition-all duration-500 ease-in-out">
                     Vraag je offerte aan

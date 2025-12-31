@@ -1437,9 +1437,9 @@ export default function FeatureShowcaseGrid() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto pt-2">
+      {/* <div className="max-w-7xl mx-auto pt-2">
         <KleurenPalet />
-      </div>
+      </div> */}
     </div>
   );
 }
