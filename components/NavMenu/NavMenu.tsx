@@ -21,16 +21,17 @@ interface MenuItem {
 }
 
 const menuItems: MenuItem[] = [
-  { label: "DIENSTEN", href: "/diensten" },
-  { label: "COMPONENTEN", href: "/componenten" },
-  { label: "PRIJZEN", href: "/prijzen" },
-  { label: "FAQ", href: "/faq" },
-  { label: "CONTACT", href: "/contact" },
+  // { label: "DIENSTEN", href: "/diensten" },
+  // { label: "COMPONENTEN", href: "/componenten" },
+  // { label: "PRIJZEN", href: "/prijzen" },
+  // { label: "FAQ", href: "/faq" },
+  // { label: "CONTACT", href: "/contact" },
 ];
 
 export function NavMenu() {
   return (
-    <div className="hidden lg:flex items-center space-x-6">
+    // <div className="hidden lg:flex items-center space-x-6">
+    <div className="flex items-center space-x-6">
       <NavigationMenu>
         <NavigationMenuList className="space-x-2 flex items-center">
           {menuItems.map((item) => (
@@ -241,7 +242,7 @@ export function NavMenu() {
       <div className="flex items-center space-x-4">
         <ModeToggle />
         <div className="flex items-center scale-90 pt-1">
-          <SheetFour />
+          {/* <SheetFour /> */}
         </div>
       </div>
     </div>

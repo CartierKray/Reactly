@@ -62,9 +62,9 @@ function NavbarNewSeven() {
 
             <NavMenu />
 
-            <div className="flex lg:hidden pt-1.5">
+            {/* <div className="flex lg:hidden pt-1.5">
               <SheetFour />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { AiFillStar } from "react-icons/ai";
 
 export default function G2BadgeSection() {
   const badgePaths = [
@@ -48,20 +49,20 @@ export default function G2BadgeSection() {
               />
             </span>
             <span className="">218 reviews op</span>
-            {/* <div className="flex text-yellow-500">
-                        {Array(5)
-                          .fill(0)
-                          .map((_, i) => (
-                            <AiFillStar key={i} size={14} />
-                          ))}
-                        </div> */}
-            <Image
+            <div className="flex text-yellow-500">
+              {Array(5)
+                .fill(0)
+                .map((_, i) => (
+                  <AiFillStar key={i} size={14} />
+                ))}
+            </div>
+            {/* <Image
               src={"/svg/trustpilota.svg"}
               alt="Google"
               width={10}
               height={10}
               className="w-auto h-4"
-            />
+            /> */}
           </div>
           {/* <div className="flex gap-x-2">
             <div className="flex items-center space-x-1">
@@ -201,24 +202,24 @@ export default function G2BadgeSection() {
 
         <div className="mt-8 flex flex-row gap-4 text-sm items-center justify-center">
           {/* Ontdek de mogelijkheden */}
-          <Link href="/aanbod">
+          {/* <Link href="/aanbod">
             <button className="relative border-t border-b border-black dark:border-[#c2b293] px-6 py-2 text-black dark:text-white overflow-hidden group transform-gpu">
               <span className="relative z-10 text-xs sm:text-sm uppercase group-hover:tracking-wide group-hover:font-medium transition-all duration-500 ease-in-out group-hover:text-white">
                 Ontdek onze diensten
               </span>
               <span className="absolute inset-0 bg-black dark:bg-[#c2b293] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-in-out z-0 transform-gpu will-change-transform" />
             </button>
-          </Link>
+          </Link> */}
 
           {/* Neem contact op */}
-          <Link href="/contact">
+          {/* <Link href="/contact">
             <button className="relative border-t border-b border-black dark:border-white px-4 py-2 text-black dark:text-white overflow-hidden group transform-gpu">
               <span className="relative z-10 text-xs sm:text-sm uppercase group-hover:tracking-wide group-hover:font-medium transition-all duration-500 ease-in-out group-hover:text-white dark:group-hover:text-black">
                 Neem contact op
               </span>
               <span className="absolute inset-0 bg-black dark:bg-white origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-in-out z-0 transform-gpu will-change-transform" />
             </button>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

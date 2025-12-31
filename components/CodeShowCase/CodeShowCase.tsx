@@ -162,7 +162,6 @@ export default function FeatureShowcaseGrid() {
 
                 <div className="bg-[#ebebeba5] dark:bg-[#11141b] border-l border-white/10 border-t rounded-tl-xl overflow-hidden font-mono text-xs">
                   <div className="flex">
-                    {/* Line numbers */}
                     <div className="text-right text-gray-500 pl-4 pr-4 py-3 select-none border-r border-black/10 dark:border-white/10">
                       {Array.from({ length: 15 }).map((_, i) => (
                         <div key={i} className="leading-6">
@@ -171,10 +170,8 @@ export default function FeatureShowcaseGrid() {
                       ))}
                     </div>
 
-                    {/* Code content */}
                     <div className="rounded-xl overflow-hidden font-mono text-xs">
                       <div className="flex">
-                        {/* Code content */}
                         <div className="py-3 px-4 overflow-x-auto w-full text-black dark:text-white">
                           <pre className="whitespace-pre leading-6">
                             <code>

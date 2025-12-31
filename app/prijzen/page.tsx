@@ -47,9 +47,9 @@ function PrijzenPage() {
         </div>
       </FadeInWhenVisible>
 
-      <FadeInWhenVisible delay={0.1}>
+      {/* <FadeInWhenVisible delay={0.1}>
         <FooterSectionSM />
-      </FadeInWhenVisible>
+      </FadeInWhenVisible> */}
     </>
   );
 }

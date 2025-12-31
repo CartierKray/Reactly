@@ -7,6 +7,7 @@ import { FiFacebook, FiInstagram, FiTwitter, FiYoutube } from "react-icons/fi";
 import Link from "next/link";
 import { toast } from "../ui/use-toast";
 import ContactSectionThree from "../ContactSection/ContactSectionThree";
+import ContactSectionFive from "../ContactSection/ContactSectionFive";
 
 const ContactForm = () => {
   const formRef = useRef<HTMLFormElement>(null); // ✅ Ref om het formulier te resetten
@@ -161,16 +162,16 @@ const ContactForm = () => {
                 Ik wil een offerte aanvragen
               </option>
               <option value="Technische vraag">
-                Ik heb een technische vraag
+                Ik heb een specifieke technische vraag
               </option>
               <option value="Technische vraag">
-                Ik heb een vraag over leasen
+                Ik heb een vraag over webdesign
               </option>
               <option value="Technische vraag">
-                Heb ik jaar cijfers nodig voor leasen?
+                Hoeveel kost een website of een component
               </option>
               <option value="Technische vraag">
-                Kan ik leasen als ik een negatieve BKR heb?
+                Kan ik alleen marketing of een website afnemen?
               </option>
               <option value="Anders">Anders</option>
             </select>
@@ -181,7 +182,7 @@ const ContactForm = () => {
             </div>
             <textarea
               name="message"
-              placeholder="Je bericht"
+              placeholder="Stel je vraag zo duidelijk mogelijk.."
               required
               value={formData.message}
               onChange={handleInputChange}
@@ -208,7 +209,8 @@ const ContactForm = () => {
 
       <div className="lg:w-1/2 bg relative order-1 md:order-1 lg:order-1 w-full flex pt-0 lg:pt-0 lg:pb-0 p-0 lg:p-10 lg:justify-center lg:items-center lg:max-w-3xl">
         <div className="xl:mr-20 ">
-          <ContactSectionThree />
+          {/* <ContactSectionThree /> */}
+          <ContactSectionFive />
         </div>
       </div>
     </div>

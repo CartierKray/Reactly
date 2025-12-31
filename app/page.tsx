@@ -14,6 +14,7 @@ import CardComponentTwo from "@/components/CardComponent/CardComponentTwo";
 import VideoBannerEleven from "@/components/VideoBanner/VideoBannerEleven";
 import FadeInWhenVisible from "@/components/FadeInWhenVisible/FadeInWhenVisible";
 import InfinitiveMovingCardsIMG from "@/components/InfinitiveMovingCards/InfinitiveMovingCardsIMG";
+import ContactForm from "@/components/ContactForm/ContactForm";
 
 export default function Home() {
   return (
@@ -34,7 +35,13 @@ export default function Home() {
       </div>
 
       <FadeInWhenVisible delay={0.1}>
-        <div className="py-14 lg:py-20">
+        <div className="w-full flex items-center justify-center mb-10 pt-20 lg:pt-14">
+          <G2BadgeSection />
+        </div>
+      </FadeInWhenVisible>
+
+      <FadeInWhenVisible delay={0.1}>
+        <div className="pt-0 md:pt-12 pb-20">
           <InfinitiveMovingCardsIMG />
         </div>
       </FadeInWhenVisible>
@@ -66,7 +73,7 @@ export default function Home() {
         </div>
       </FadeInWhenVisible> */}
 
-      <div className="pb-10 lg:pb-20">
+      {/* <div className="pb-10 lg:pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2
             id="reviews-title"
@@ -78,13 +85,13 @@ export default function Home() {
             Hier is wat sommige van onze klanten te zeggen hebben over Reactly.
           </p>
         </div>
-      </div>
+      </div> */}
 
-      <FadeInWhenVisible delay={0.1}>
+      {/* <FadeInWhenVisible delay={0.1}>
         <div className="pb-10 md:pb-10">
           <Reviews />
         </div>
-      </FadeInWhenVisible>
+      </FadeInWhenVisible> */}
 
       <div className="pb-10 lg:pt-10">
         <h2
@@ -104,23 +111,45 @@ export default function Home() {
 
       <CodeShowcase />
 
+      <div className="pb-10 lg:pt-10">
+        <h2
+          id="reviews-title"
+          className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"
+        >
+          Contact formulier
+        </h2>
+        <p className="mt-2 text-md md:text-lg max-w-xs md:max-w-xl mx-auto text-neutral-600 text-center dark:text-neutral-200">
+          We staan voor je klaar om je te helpen met al je vragen. Kun je niet
+          vinden wat je zoekt? Geef een belletje of neem contact met ons op via
+          &nbsp;
+          <a href="mailto:info@reactly.nl" className="text-blue-500 underline">
+            info@reactly.nl
+          </a>
+        </p>
+      </div>
+
       <FadeInWhenVisible delay={0.1}>
+        <div className="pb-10 md:pb-20">
+          <ContactForm />
+        </div>
+      </FadeInWhenVisible>
+
+      {/* <FadeInWhenVisible delay={0.1}>
         <div className="pb-5">
           <CTAButton />
         </div>
-      </FadeInWhenVisible>
+      </FadeInWhenVisible> */}
 
-      <FadeInWhenVisible delay={0.1}>
+      {/* <FadeInWhenVisible delay={0.1}>
         <div className="py-20 pt-24 flex">
           <RolexAdvies />
         </div>
-      </FadeInWhenVisible>
+      </FadeInWhenVisible> */}
 
-      <FadeInWhenVisible>
-        {/* <div className="relative bg-gradient-to-b w-full from-[#FFF] via-[#e9eeff] to-[#FFF]"> */}
-        {/* <RolexIntro /> */}
-        {/* <ProductShowcase /> */}
-        <div className="pt-12">
+      {/* <div className="relative bg-gradient-to-b w-full from-[#FFF] via-[#e9eeff] to-[#FFF]"> */}
+      {/* <RolexIntro /> */}
+      {/* <ProductShowcase /> */}
+      {/* <div className="pt-12">
           <h2
             id="reviews-title"
             className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"
@@ -137,30 +166,23 @@ export default function Home() {
               info@reactly.nl
             </a>
           </p>
-        </div>
-        <div className="flex lg:hidden">
+        </div> */}
+      {/* <div className="flex lg:hidden">
           <CardComponentTwo />
-        </div>
-        <div className="hidden py-10 lg:pt-16 pb-20 lg:flex">
+        </div> */}
+      {/* <div className="hidden py-10 lg:pt-16 pb-20 lg:flex">
           <CardComponent />
-        </div>
-      </FadeInWhenVisible>
+        </div> */}
 
-      <FadeInWhenVisible delay={0.1}>
-        <div className="w-full flex items-center justify-center mb-10 pt-20 lg:pt-14 pb-20">
-          <G2BadgeSection />
-        </div>
-      </FadeInWhenVisible>
-
-      <FadeInWhenVisible delay={0.1}>
+      {/* <FadeInWhenVisible delay={0.1}>
         <LeaseOptionsGridTwo />
-      </FadeInWhenVisible>
+      </FadeInWhenVisible> */}
 
-      <FadeInWhenVisible delay={0.1}>
+      {/* <FadeInWhenVisible delay={0.1}>
         <div className="mb-20">
           <FAQSectionTwo />
         </div>
-      </FadeInWhenVisible>
+      </FadeInWhenVisible> */}
 
       {/* <FadeInWhenVisible delay={0.1}>
         <CTA />
