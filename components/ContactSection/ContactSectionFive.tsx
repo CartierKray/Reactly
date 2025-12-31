@@ -65,9 +65,9 @@ export default function ContactSectionFive() {
               <div className="space-y-2">
                 <div className="flex items-start gap-2">
                   <span className="w-20">Telefoon</span>
-                  <Link href="tel:+310102952" className="xl-nav-link-amberr">
+                  <Link href="tel:+31618891346" className="xl-nav-link-amberr">
                     <span className="text-black dark:text-white  hover:tracking-wider  hover:font-semibold transition-all duration-300 ease-in-out text-[13.5px] font-normal whitespace-nowrap">
-                      +31 6 10 10 29 52
+                      +31 (0)6 18 89 13 46
                     </span>
                   </Link>
                 </div>
