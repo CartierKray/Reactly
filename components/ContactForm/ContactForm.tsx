@@ -158,20 +158,14 @@ const ContactForm = () => {
               className="bg-white p-3 rounded text-black w-full outline outline-1 outline-gray-400"
             >
               <option value="">Kies een onderwerp</option>
-              <option value="Offerte aanvragen">
-                Ik wil een offerte aanvragen
-              </option>
-              <option value="Technische vraag">
+              <option value="Offerte">Ik wil een offerte aanvragen</option>
+              <option value="marketing">Ik heb een vraag over marketing</option>
+              <option value="webdesign">Ik heb een vraag over webdesign</option>
+              <option value="Technisch">
                 Ik heb een specifieke technische vraag
               </option>
-              <option value="Technische vraag">
-                Ik heb een vraag over webdesign
-              </option>
-              <option value="Technische vraag">
+              <option value="kosten">
                 Hoeveel kost een website of een component
-              </option>
-              <option value="Technische vraag">
-                Kan ik alleen marketing of een website afnemen?
               </option>
               <option value="Anders">Anders</option>
             </select>
