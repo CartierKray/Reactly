@@ -45,7 +45,9 @@ export default function ContactSectionFive() {
             </h2>
             <div className="space-y-1 dark:text-white  leading-relaxed">
               <div className="flex items-start gap-2">
-                <span className="w-20">Straat</span>
+                <span className="w-20">
+                  Straahttp://localhost:3000/svg/bg-accent-two.svgt
+                </span>
                 <span className="text-[13.5px] font-normal text-black dark:text-white hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out">
                   Staalstraat 103
                 </span>

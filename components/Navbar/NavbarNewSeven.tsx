@@ -31,8 +31,8 @@ function NavbarNewSeven() {
         "transition-[top] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
         bannerHidden ? "top-0" : "top-10", // 0px of 40px (zelfde als banner h-10)
       ].join(" ")}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      // onMouseEnter={() => setHovered(true)}
+      // onMouseLeave={() => setHovered(false)}
     >
       <div
         className={[
