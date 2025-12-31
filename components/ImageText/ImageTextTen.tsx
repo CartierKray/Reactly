@@ -23,7 +23,7 @@ const leaseOptions = [
 
 const LeaseOptionsGridTwo: React.FC = () => {
   return (
-    <section className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 my-10 md:pb-8">
+    <section className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 my-10 pb-14">
       {leaseOptions.map((option, index) => (
         <div
           id={option.id}
