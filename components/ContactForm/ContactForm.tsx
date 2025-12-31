@@ -74,10 +74,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div
-      id="contactgegevens"
-      className="bg-white dark:bg-transparent text-black min-h-screen lg:flex items-center justify-center p-5 relative"
-    >
+    <div className="bg-white dark:bg-transparent text-black min-h-screen lg:flex items-center justify-center p-5 relative">
       <div className="inset-0 absolute bottom-0">
         <Image
           src="/svg/bg-accent-two.svg"

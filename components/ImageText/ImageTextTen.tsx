@@ -58,21 +58,23 @@ const LeaseOptionsGridTwo: React.FC = () => {
             </h2>
 
             <p className="leading-relaxed dark:text-white/50 text-[15px] text-black">
-              We helpen merken en MKB’s groeien met conversiegericht webdesign
-              en slimme marketing. Met jaren ervaring zijn we je digitale
-              partner: we ontwerpen, bouwen en optimaliseren — snel en zonder
-              gedoe. Kies uit <span>webdesign</span>,&nbsp;<span>SEO</span>
-              ,&nbsp;<span>SEA</span>,&nbsp;
-              <span>social ads</span> of <span>branding</span>. Onze
+              Bij Reactly helpen wij merken en MKB&apos;s groeien met
+              conversiegericht webdesign en slimme marketing campagnes. Met 17+
+              jaren ervaring zijn we je digitale partner: we ontwerpen, bouwen
+              en optimaliseren snel en zonder gedoe! Kies o.a. uit{" "}
+              <span>Webdesign</span>,&nbsp;
+              <span>SEO & SEA</span>
+              ,&nbsp;<span>Analyses</span>,&nbsp;
+              <span>Google & Meta Ads</span> of <span>Branding</span>. Onze
               specialisten adviseren je over de beste aanpak die past bij jouw
-              doelen en budget.
+              doelen en budget!
             </p>
 
             {/* Knop alleen zichtbaar in light mode */}
             <div className="dark:hidden pt-8">
               <Link href={"/#contact"}>
                 <button className="flex justify-start px-12 bg-[#c2b293] hover:bg-[#c2b293] shadow-inner shadow-[#e3d1ac] hover:tracking-wider backdrop-blur-sm text-white py-2 rounded-3xl text-sm z-10 hover:font-semibold transition-all duration-300 ease-in-out">
-                  Vraag je offerte aan
+                  Neem vandaag de eerste stap
                 </button>
               </Link>
             </div>
@@ -82,7 +84,7 @@ const LeaseOptionsGridTwo: React.FC = () => {
               <Link href={"/#contact"}>
                 <button className="relative font-light text-[14px] backdrop-blur-xl outline-1 outline-white outline mt-8 w-fit px-12 hover:font-medium hover:tracking-wide transition-all duration-500 ease-in-out whitespace-nowrap pt-2.5 pb-2.5 bg-white rounded-full overflow-hidden group">
                   <span className="relative z-10 text-black group-hover:text-black font-medium hover:tracking-wide transition-all duration-500 ease-in-out">
-                    Vraag je offerte aan
+                    Neem vandaag de eerste stap
                   </span>
                   <span className="absolute inset-0 rounded-full bg-white w-0 group-hover:w-full transition-all duration-500 ease-in-out"></span>
                 </button>
