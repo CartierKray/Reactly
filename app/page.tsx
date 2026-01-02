@@ -41,64 +41,23 @@ export default function Home() {
       </FadeInWhenVisible>
 
       <FadeInWhenVisible delay={0.1}>
+        <div className="pb-10 md:pb-10">
+          <Reviews />
+        </div>
+      </FadeInWhenVisible>
+
+      <FadeInWhenVisible delay={0.1}>
         <div className="pt-0 md:pt-12 pb-20">
           <InfinitiveMovingCardsIMG />
         </div>
       </FadeInWhenVisible>
-
-      {/* <div className="pt-10 lg:pt-20 pb-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2
-            id="reviews-title"
-            className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"
-          >
-            Webdesign op maat voor jouw website
-          </h2>
-          <p className="mt-2 text-md md:text-lg max-w-xs md:max-w-xl mx-auto text-neutral-600 text-center dark:text-neutral-200">
-            We staan voor je klaar om je te helpen met al je vragen. Kun je niet
-            vinden wat je zoekt? Neem contact met ons op via &nbsp;
-            <a
-              href="mailto:info@reactly.nl"
-              className="text-blue-500 underline"
-            >
-              info@reactly.nl
-            </a>
-          </p>
-        </div>
-      </div> */}
-
-      {/* <FadeInWhenVisible delay={0.1}>
-        <div className="hidden pt-20 md:pt-20 py-10 md:flex">
-          <DiagonalSlider />
-        </div>
-      </FadeInWhenVisible> */}
-
-      {/* <div className="pb-10 lg:pb-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2
-            id="reviews-title"
-            className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"
-          >
-            Geliefd door duizenden gebruikers
-          </h2>
-          <p className="mt-2 text-md md:text-lg max-w-xs md:max-w-full mx-auto text-neutral-600 text-center dark:text-neutral-200">
-            Hier is wat sommige van onze klanten te zeggen hebben over Reactly.
-          </p>
-        </div>
-      </div> */}
-
-      {/* <FadeInWhenVisible delay={0.1}>
-        <div className="pb-10 md:pb-10">
-          <Reviews />
-        </div>
-      </FadeInWhenVisible> */}
 
       <div className="pb-10 lg:pt-10">
         <h2
           id="reviews-title"
           className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"
         >
-          Webdesign op maat voor jouw bedrijf?
+          Webdesign op maat
         </h2>
         <p className="mt-2 text-md md:text-lg max-w-xs md:max-w-xl mx-auto text-neutral-600 text-center dark:text-neutral-200">
           We staan voor je klaar om je te helpen met al je vragen. Kun je niet
@@ -110,6 +69,23 @@ export default function Home() {
       </div>
 
       <CodeShowcase />
+
+      <div className="pb-10 lg:pt-10">
+        <h2
+          id="reviews-title"
+          className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"
+        >
+          Start vandaag!
+        </h2>
+        <p className="mt-2 text-md md:text-lg max-w-xs md:max-w-xl mx-auto text-neutral-600 text-center dark:text-neutral-200">
+          We staan voor je klaar om je te helpen met al je vragen. Kun je niet
+          vinden wat je zoekt? Geef een belletje of neem contact met ons op via
+          &nbsp;
+          <a href="mailto:info@reactly.nl" className="text-blue-500 underline">
+            info@reactly.nl
+          </a>
+        </p>
+      </div>
 
       <FadeInWhenVisible delay={0.1}>
         <LeaseOptionsGridTwo />
