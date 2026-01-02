@@ -97,7 +97,7 @@ export default function Home() {
           id="reviews-title"
           className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"
         >
-          Vragen? &nbsp;Stel ze aan ons
+          Een aantal van onze klanten
         </h2>
         <p className="mt-2 text-md md:text-lg max-w-xs md:max-w-xl mx-auto text-neutral-600 text-center dark:text-neutral-200">
           We staan voor je klaar om je te helpen met al je vragen. Kun je niet
@@ -110,14 +110,14 @@ export default function Home() {
       </div>
 
       <FadeInWhenVisible delay={0.1}>
-        <div className="pb-10 md:pb-20">
-          <ContactForm />
+        <div className="pt-14 pb-16">
+          <InfinitiveMovingCardsIMG />
         </div>
       </FadeInWhenVisible>
 
       <FadeInWhenVisible delay={0.1}>
-        <div className="pt-12 pb-28">
-          <InfinitiveMovingCardsIMG />
+        <div className="pb-14">
+          <ContactForm />
         </div>
       </FadeInWhenVisible>
 

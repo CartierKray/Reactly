@@ -224,18 +224,18 @@ export default function Footer() {
 
       <div className="border-t max-w-7xl mx-auto border-none pt-2 flex flex-col md:flex-row md:justify-between items-center text-xs relative z-20">
         <div className="flex flex-wrap gap-2 text-gray-400 text-[11px] justify-center md:justify-start">
-          <span className="hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out">
+          <span className="hover:tracking-wider hover:cursor-pointer hover:font-semibold transition-all duration-300 ease-in-out">
             Algemene voorwaarden
           </span>
-          <span className="hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out">
+          <span className="hover:tracking-wider hover:cursor-pointer hover:font-semibold transition-all duration-300 ease-in-out">
             Privacy
           </span>
-          <span className="hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out">
+          <span className="hover:tracking-wider hover:cursor-pointer hover:font-semibold transition-all duration-300 ease-in-out">
             Cookies
           </span>
         </div>
 
-        <div className="text-gray-500 text-xs mt-3 md:mt-0 text-center hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out">
+        <div className="text-gray-500 text-xs hover:cursor-pointer mt-3 md:mt-0 text-center hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out">
           © 2025 Reactly.nl
         </div>
       </div>

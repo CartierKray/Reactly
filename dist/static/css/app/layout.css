@@ -21865,6 +21865,10 @@ input:checked + .slider:before {
     padding-bottom: 7rem;
   }
 
+  .lg\:pt-4 {
+    padding-top: 1rem;
+  }
+
   .lg\:text-left {
     text-align: left;
   }
