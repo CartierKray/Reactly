@@ -15866,6 +15866,9 @@ video {
 .pt-\[6\.5px\] {
   padding-top: 6.5px;
 }
+.pb-28 {
+  padding-bottom: 7rem;
+}
 .text-left {
   text-align: left;
 }
@@ -21807,6 +21810,10 @@ input:checked + .slider:before {
 
   .lg\:pt-32 {
     padding-top: 8rem;
+  }
+
+  .lg\:pb-28 {
+    padding-bottom: 7rem;
   }
 
   .lg\:text-left {

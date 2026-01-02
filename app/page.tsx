@@ -47,11 +47,11 @@ export default function Home() {
         </div>
       </FadeInWhenVisible>
 
-      <FadeInWhenVisible delay={0.1}>
+      {/* <FadeInWhenVisible delay={0.1}>
         <div className="pt-0 md:pt-12 pb-20">
           <InfinitiveMovingCardsIMG />
         </div>
-      </FadeInWhenVisible>
+      </FadeInWhenVisible> */}
 
       <div className="pb-10 lg:pt-10">
         <h2
@@ -112,6 +112,12 @@ export default function Home() {
       <FadeInWhenVisible delay={0.1}>
         <div className="pb-10 md:pb-20">
           <ContactForm />
+        </div>
+      </FadeInWhenVisible>
+
+      <FadeInWhenVisible delay={0.1}>
+        <div className="pt-12 pb-28">
+          <InfinitiveMovingCardsIMG />
         </div>
       </FadeInWhenVisible>
 
