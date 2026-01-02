@@ -242,7 +242,7 @@ export function NavMenu() {
       <Link href={""}>
         <div className="flex items-center space-x-4">
           <div className="py-1 outline whitespace-nowrap text-xs px-2.5 rounded-md hover:cursor-pointer outline-1 hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out ">
-            <div>Plan een gesprek</div>
+            <div>Plan een kennismaking</div>
           </div>
         </div>
       </Link>

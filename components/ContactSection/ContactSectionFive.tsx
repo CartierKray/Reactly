@@ -12,12 +12,9 @@ import Image from "next/image";
 
 export default function ContactSectionFive() {
   return (
-    <div
-      id="contact"
-      className="w-full bg-white dark:bg-black bg-transparent backdrop-blur-md"
-    >
-      <div className=" mx-auto grid-cols-1 gap-6 shadow-sm">
-        <div className="col-span-1 rounded-3xl border-[1px] dark:border-white/15 dark:shadow-md dark:shadow-[#c2b293] p-6">
+    <div className="w-full rounded-3xl dark:shadow-inner dark:bg-[#282828] dark:shadow-[#444444]  bg-transparent backdrop-blur-md">
+      <div className=" mx-auto grid-cols-1 rounded-3xl gap-6 shadow-sm">
+        <div className="col-span-1 rounded-3xl border-[1px] dark:border-none dark:border-white/15 dark:shadow dark:shadow-[#c2b293] p-6">
           <div className="text-sm space-y-6 pb-10 text-gray-800">
             {/* Logo */}
             <div className="">
@@ -108,7 +105,7 @@ export default function ContactSectionFive() {
             ].map((day) => (
               <div
                 key={day}
-                className="flex justify-between items-center border-b dark:border-b dark:border-white/25 pb-1 hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out"
+                className="flex justify-between text-xs items-center border-b dark:border-b dark:border-white/25 pb-1 hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out"
               >
                 <div className="flex items-center gap-2 ">
                   <FiClock className="text-xs" />
@@ -136,6 +133,8 @@ export default function ContactSectionFive() {
             </h3>
             <div className="flex space-x-6 pt-4">
               <a
+                target="_blank"
+                rel="noopener noreferrer"
                 href="#"
                 className="text-black dark:text-white  hover:text-[#2eb2ff] relative"
               >
@@ -143,17 +142,23 @@ export default function ContactSectionFive() {
               </a>
               <a
                 href="#"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-black dark:text-white  hover:text-[#323cf9] relative"
               >
                 <FiFacebook className="w-5 h-5 hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out" />
               </a>
               <a
-                href="https://www.instagram.com/beterlease/"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.instagram.com/reactly.nl/"
                 className="text-black dark:text-white  hover:text-[#ea2eff] relative"
               >
                 <FiInstagram className="w-5 h-5 hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out" />
               </a>
               <a
+                target="_blank"
+                rel="noopener noreferrer"
                 href="#"
                 className="text-black dark:text-white  hover:text-[#ff2e2e] relative"
               >

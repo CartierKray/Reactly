@@ -74,7 +74,7 @@ const LeaseOptionsGridTwo: React.FC = () => {
             <div className="dark:hidden pt-8">
               <Link href={"/#contact"}>
                 <button className="flex justify-start px-12 bg-[#c2b293] hover:bg-[#c2b293] shadow-inner shadow-[#e3d1ac] hover:tracking-wider backdrop-blur-sm text-white py-2 rounded-3xl text-sm z-10 hover:font-semibold transition-all duration-300 ease-in-out">
-                  Neem vandaag de eerste stap
+                  Start vandaag
                 </button>
               </Link>
             </div>
@@ -84,7 +84,7 @@ const LeaseOptionsGridTwo: React.FC = () => {
               <Link href={"/#contact"}>
                 <button className="relative font-light text-[14px] backdrop-blur-xl outline-1 outline-white outline mt-8 w-fit px-12 hover:font-medium hover:tracking-wide transition-all duration-500 ease-in-out whitespace-nowrap pt-2.5 pb-2.5 bg-white rounded-full overflow-hidden group">
                   <span className="relative z-10 text-black group-hover:text-black font-medium hover:tracking-wide transition-all duration-500 ease-in-out">
-                    Neem vandaag de eerste stap
+                    Start vandaag
                   </span>
                   <span className="absolute inset-0 rounded-full bg-white w-0 group-hover:w-full transition-all duration-500 ease-in-out"></span>
                 </button>

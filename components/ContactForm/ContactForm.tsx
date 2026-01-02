@@ -74,7 +74,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-transparent text-black min-h-screen lg:flex items-center justify-center p-5 relative">
+    <div className="bg-white  dark:bg-transparent text-black min-h-screen lg:flex items-center justify-center p-5 relative">
       <div className="inset-0 absolute bottom-0">
         <Image
           src="/svg/bg-accent-two.svg"
@@ -85,123 +85,133 @@ const ContactForm = () => {
         />
       </div>
 
-      <div className="lg:w-1/2 order-2 md:order-2 mt-10 lg:mt-0 lg:order-2 rounded-lg lg:justify-center items-center grid p-0 pb-10 md:pb-10 lg:p-10 w-full ">
-        <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 z-10">
-          <div className="grid grid-cols-2 gap-6">
-            <div className="pb-3">
-              <div className="text-black dark:text-white pb-2.5 uppercase text-[12.5px] font-semibold">
-                Naam <a className="text-red-500">*</a>
+      <div className="w-full grid lg:flex lg:max-w-7xl">
+        <div className="lg:w-1/2 order-1 md:order-2 mt-10  lg:order-2 lg:mt-0 rounded-lg lg:justify-center items-center grid p-0 pb-10 md:pb-10 lg:p-10 w-full ">
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className="space-y-6 z-10"
+          >
+            <div className="grid grid-cols-2 gap-6">
+              <div className="pb-3">
+                <div className="text-black dark:text-white pb-2.5 uppercase text-[12.5px] font-semibold">
+                  Naam <a className="text-red-500">*</a>
+                </div>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Naam *"
+                  required
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className="bg-white p-3 rounded text-black w-full outline outline-1 outline-gray-400"
+                />
               </div>
-              <input
-                type="text"
-                name="name"
-                placeholder="Naam *"
-                required
-                value={formData.name}
-                onChange={handleInputChange}
-                className="bg-white p-3 rounded text-black w-full outline outline-1 outline-gray-400"
-              />
-            </div>
-            <div className="pb-3">
-              <div className="text-black dark:text-white pb-2.5 uppercase text-[12.5px] font-semibold">
-                Bedrijf / KvK <a className="text-red-500">*</a>
+              <div className="pb-3">
+                <div className="text-black dark:text-white pb-2.5 uppercase text-[12.5px] font-semibold">
+                  Bedrijf / KvK <a className="text-red-500">*</a>
+                </div>
+                <input
+                  type="text"
+                  name="company"
+                  placeholder="Bedrijf / KvK"
+                  value={formData.company}
+                  onChange={handleInputChange}
+                  className="bg-white p-3 rounded text-black w-full outline outline-1 outline-gray-400"
+                />
               </div>
-              <input
-                type="text"
-                name="company"
-                placeholder="Bedrijf / KvK"
-                value={formData.company}
-                onChange={handleInputChange}
-                className="bg-white p-3 rounded text-black w-full outline outline-1 outline-gray-400"
-              />
-            </div>
-            <div className="pb-3">
-              <div className="text-black dark:text-white pb-2.5 uppercase text-[12.5px] font-semibold">
-                E-mail <a className="text-red-500">*</a>
+              <div className="pb-3">
+                <div className="text-black dark:text-white pb-2.5 uppercase text-[12.5px] font-semibold">
+                  E-mail <a className="text-red-500">*</a>
+                </div>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="E-mailadres *"
+                  required
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="bg-white p-3 rounded text-black w-full outline outline-1 outline-gray-400"
+                />
               </div>
-              <input
-                type="email"
-                name="email"
-                placeholder="E-mailadres *"
-                required
-                value={formData.email}
-                onChange={handleInputChange}
-                className="bg-white p-3 rounded text-black w-full outline outline-1 outline-gray-400"
-              />
+              <div className="pb-3">
+                <div className="text-black pb-2.5 dark:text-white uppercase text-[12.5px] font-semibold">
+                  Telefoon <a className="text-red-500">*</a>
+                </div>
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Telefoonnummer"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  className="bg-white p-3 rounded text-black w-full outline outline-1 outline-gray-400"
+                />
+              </div>
             </div>
             <div className="pb-3">
               <div className="text-black pb-2.5 dark:text-white uppercase text-[12.5px] font-semibold">
-                Telefoon <a className="text-red-500">*</a>
+                Onderwerp <a className="text-red-500">*</a>
               </div>
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Telefoonnummer"
-                value={formData.phone}
-                onChange={handleInputChange}
+              <select
+                name="subject"
+                required
+                onChange={handleSelectChange}
+                value={formData.subject}
                 className="bg-white p-3 rounded text-black w-full outline outline-1 outline-gray-400"
-              />
+              >
+                <option value="">Kies een onderwerp</option>
+                <option value="Offerte">Ik wil een offerte aanvragen</option>
+                <option value="marketing">
+                  Ik heb een vraag over marketing
+                </option>
+                <option value="webdesign">
+                  Ik heb een vraag over webdesign
+                </option>
+                <option value="Technisch">
+                  Ik heb een specifieke technische vraag
+                </option>
+                <option value="kosten">
+                  Hoeveel kost een website of een component
+                </option>
+                <option value="Anders">Anders</option>
+              </select>
             </div>
-          </div>
-          <div className="pb-3">
-            <div className="text-black pb-2.5 dark:text-white uppercase text-[12.5px] font-semibold">
-              Onderwerp <a className="text-red-500">*</a>
+            <div className="pb-3">
+              <div className="text-black pb-2.5 dark:text-white uppercase text-[12.5px] font-semibold">
+                Je bericht <a className="text-red-500">*</a>
+              </div>
+              <textarea
+                name="message"
+                placeholder="Stel je vraag zo duidelijk mogelijk.."
+                required
+                value={formData.message}
+                onChange={handleInputChange}
+                className="bg-[white] p-3 rounded text-black w-full h-32 outline outline-1 outline-gray-400"
+              ></textarea>
             </div>
-            <select
-              name="subject"
-              required
-              onChange={handleSelectChange}
-              value={formData.subject}
-              className="bg-white p-3 rounded text-black w-full outline outline-1 outline-gray-400"
+            <div className="text-[12.5px] dark:text-white pb-3">
+              <span className="text-[#f00]">*</span>Je persoonsgegevens
+              gebruiken wij alleen voor het gevraagde contact. Lees de{" "}
+              <span className="hover:underline hover:cursor-pointer">
+                privacyverklaring
+              </span>{" "}
+              voor meer informatie.
+            </div>
+
+            <button
+              type="submit"
+              className=" w-full tracking-wide text-xs md:text-[12.5px] whitespace-nowrap uppercase  mb-2 rounded dark:bg-white dark:text-black dark:hover:bg-green-600 dark:hover:shadow-green-500 dark:hover:text-white dark:shadow-none dark:hover:shadow-inner dark bg-[#c2b293] shadow-inner shadow-[#e3d1ac] text-white backdrop-blur-sm hover:shadow-green-500 hover:bg-green-600 font-medium py-3 px-8 hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out"
             >
-              <option value="">Kies een onderwerp</option>
-              <option value="Offerte">Ik wil een offerte aanvragen</option>
-              <option value="marketing">Ik heb een vraag over marketing</option>
-              <option value="webdesign">Ik heb een vraag over webdesign</option>
-              <option value="Technisch">
-                Ik heb een specifieke technische vraag
-              </option>
-              <option value="kosten">
-                Hoeveel kost een website of een component
-              </option>
-              <option value="Anders">Anders</option>
-            </select>
-          </div>
-          <div className="pb-3">
-            <div className="text-black pb-2.5 dark:text-white uppercase text-[12.5px] font-semibold">
-              Je bericht <a className="text-red-500">*</a>
-            </div>
-            <textarea
-              name="message"
-              placeholder="Stel je vraag zo duidelijk mogelijk.."
-              required
-              value={formData.message}
-              onChange={handleInputChange}
-              className="bg-[white] p-3 rounded text-black w-full h-32 outline outline-1 outline-gray-400"
-            ></textarea>
-          </div>
-          <div className="text-[12.5px] dark:text-white pb-3">
-            <span className="text-[#f00]">*</span>Je persoonsgegevens gebruiken
-            wij alleen voor het gevraagde contact. Lees de{" "}
-            <span className="hover:underline hover:cursor-pointer">
-              privacyverklaring
-            </span>{" "}
-            voor meer informatie.
-          </div>
+              Bericht Versturen
+            </button>
+          </form>
+        </div>
 
-          <button
-            type="submit"
-            className=" w-full tracking-wide text-xs md:text-[12.5px] whitespace-nowrap uppercase  mb-2 rounded dark:bg-white dark:text-black dark:hover:bg-green-600 dark:hover:shadow-green-500 dark:hover:text-white dark:shadow-none dark:hover:shadow-inner dark bg-[#c2b293] shadow-inner shadow-[#e3d1ac] text-white backdrop-blur-sm hover:shadow-green-500 hover:bg-green-600 font-medium py-3 px-8 hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out"
-          >
-            Bericht Versturen
-          </button>
-        </form>
-      </div>
-
-      <div className="lg:w-1/2  relative order-1 md:order-1 lg:order-1 w-full flex pt-0 lg:pt-0 lg:pb-0 p-0 lg:p-10 lg:justify-center lg:items-center">
-        <div className=" ">
-          {/* <ContactSectionThree /> */}
-          <ContactSectionFive />
+        <div className="lg:w-1/2 relative order-1 md:order-2 lg:order-1 w-full flex pt-0 lg:pt-0 lg:pb-0 p-0 lg:p-10 lg:justify-center lg:items-center">
+          <div className="pt-5 lg:max-w-xl w-full md:pt-0">
+            {/* <ContactSectionThree /> */}
+            <ContactSectionFive />
+          </div>
         </div>
       </div>
     </div>
