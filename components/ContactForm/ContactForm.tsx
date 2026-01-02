@@ -198,8 +198,8 @@ const ContactForm = () => {
         </form>
       </div>
 
-      <div className="lg:w-1/2 bg relative order-1 md:order-1 lg:order-1 w-full flex pt-0 lg:pt-0 lg:pb-0 p-0 lg:p-10 lg:justify-center lg:items-center lg:max-w-3xl">
-        <div className="xl:mr-20 ">
+      <div className="lg:w-1/2  relative order-1 md:order-1 lg:order-1 w-full flex pt-0 lg:pt-0 lg:pb-0 p-0 lg:p-10 lg:justify-center lg:items-center">
+        <div className=" ">
           {/* <ContactSectionThree /> */}
           <ContactSectionFive />
         </div>

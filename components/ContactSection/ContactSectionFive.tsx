@@ -16,8 +16,8 @@ export default function ContactSectionFive() {
       id="contact"
       className="w-full bg-white dark:bg-black bg-transparent backdrop-blur-md"
     >
-      <div className="max-w-6xl mx-auto grid-cols-1 gap-6 shadow-sm">
-        <div className="col-span-1 rounded-3xl border-[1px] dark:border-white/25 p-6">
+      <div className=" mx-auto grid-cols-1 gap-6 shadow-sm">
+        <div className="col-span-1 rounded-3xl border-[1px] dark:border-white/15 dark:shadow-md dark:shadow-[#c2b293] p-6">
           <div className="text-sm space-y-6 pb-10 text-gray-800">
             {/* Logo */}
             <div className="">
@@ -43,7 +43,7 @@ export default function ContactSectionFive() {
             </div>
 
             {/* Bedrijfsgegevens */}
-            <h2 className="font-semibold tracking-wider text-[#c2b293] dark:text-[#c2b293] mb-4 pt-2 text-sm">
+            <h2 className="font-semibold tracking-wider text-black dark:text-[#c2b293] mb-4 pt-2 text-sm">
               BEDRIJFSGEGEVENS
             </h2>
             <div className="space-y-1 dark:text-white  leading-relaxed">
