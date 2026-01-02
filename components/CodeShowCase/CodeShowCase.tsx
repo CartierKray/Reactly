@@ -4,9 +4,6 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { TiltImageCard } from "../TiltShineCard/TiltImageCard";
-import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
-import ResponsiveDemo from "../ResponsiveDemo/ResponsiveDemo";
-import KleurenPalet from "../KleurenPalet/KleurenPalet";
 
 const filters = [
   { name: "blur-sm", className: "backdrop-blur-sm" },
@@ -743,7 +740,7 @@ export default function FeatureShowcaseGrid() {
         </div>
 
         {/* 9. Gradients */}
-        <div className="bg-[#000] rounded-2xl text-white p-4 border border-white/10 relative overflow-hidden">
+        <div className="bg-[#000] hidden md:block rounded-2xl text-white p-4 border border-white/10 relative overflow-hidden">
           <div className="absolute inset-0 bg-dot-pattern bg-[length:10px_10px] opacity-5 pointer-events-none" />
 
           {/* Header */}
