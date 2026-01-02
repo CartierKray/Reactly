@@ -11,7 +11,7 @@ const Spline = dynamic(() => import("@splinetool/react-spline"), {
 
 export default function RubikOne() {
   return (
-    <div className="relative h-[75vh] lg:h-[96.2vh] bg-black text-white overflow-hidden">
+    <div className="relative h-[100vh] bg-black text-white overflow-hidden">
       {/* Navbar */}
       {/* <NavbarNewFour /> */}
 

@@ -719,11 +719,15 @@ Stel gerust je vraag. Je kunt ook mailen naar [info@reactly.nl](mailto:info@reac
 
       {/* ✅ Chatvenster */}
       <div
-        className={`fixed bottom-20 right-4 bg-white border border-black/10 dark:border-[#111]/50 rounded-2xl shadow-2xl flex flex-col overflow-hidden z-50 transition-all duration-500 ease-in-out ${
+        className={`fixed bottom-20 right-4 bg-white border border-black/10 dark:border-[#111]/50 rounded-2xl shadow-2xl flex flex-col overflow-hidden z-[100] transition-all duration-500 ease-in-out ${
           isOpen
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-4 pointer-events-none"
-        } ${isExpanded ? "w-[600px] h-[800px]" : "w-[360px] h-[650px]"}`}
+        } ${
+          isExpanded
+            ? " md:w-[600px] md:h-[80vh] xl:w-[75vw]"
+            : "w-[340px] h-[575px] md:w-[365px] md:h-[625px] lg:h-[650px]"
+        }`}
       >
         {viewState === "home" && renderHome()}
         {viewState === "overview" && renderMessagesOverview()}
