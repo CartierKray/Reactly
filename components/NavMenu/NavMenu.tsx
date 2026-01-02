@@ -13,6 +13,7 @@ import {
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import { SheetFour } from "@/components/Sheet/SheetFour";
 import Image from "next/image";
+import { Button } from "../ui/button";
 
 interface MenuItem {
   label: string;
@@ -238,8 +239,16 @@ export function NavMenu() {
         </NavigationMenuList>
       </NavigationMenu>
 
+      <Link href={""}>
+        <div className="flex items-center space-x-4">
+          <div className="py-1 outline whitespace-nowrap text-xs px-2.5 rounded-md hover:cursor-pointer outline-1 hover:tracking-wider hover:font-semibold transition-all duration-300 ease-in-out ">
+            <div>Plan een gesprek</div>
+          </div>
+        </div>
+      </Link>
+
       {/* Right side */}
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-0">
         <ModeToggle />
         <div className="flex items-center scale-90 pt-1">
           {/* <SheetFour /> */}

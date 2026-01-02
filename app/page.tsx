@@ -20,6 +20,7 @@ export default function Home() {
   return (
     <>
       <BannerEight />
+
       <NavbarNewSeven />
 
       <div className="w-full">
