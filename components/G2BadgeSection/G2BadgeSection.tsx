@@ -30,7 +30,7 @@ export default function G2BadgeSection() {
   );
 
   return (
-    <div className=" mb-12 md:-mb-1">
+    <div id="reviews" className=" mb-12 md:-mb-1">
       <div className="flex items-center justify-center gap-4 w-full">
         {/* Left SVG */}
         <div className="rotate-[7.32deg]">{cesarSvg}</div>

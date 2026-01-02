@@ -54,24 +54,24 @@ const VideoBannerEleven: React.FC = () => {
 
         <div className="mt-6 flex flex-row gap-4 text-sm items-center md:items-start justify-center md:justify-start">
           {/* Bekijk ons aanbod */}
-          {/* <Link href={"/aanbod"}>
+          <Link href={"/#reviews"}>
             <button className="relative border-t border-b dark:border-[#c2b293] border-[#c2b293] px-6 py-2 text-white overflow-hidden group transform-gpu">
               <span className="relative z-10 text-xs sm:text-sm uppercase group-hover:tracking-wide group-hover:font-medium group-hover:text-white transition-all duration-500 ease-in-out">
-                Ontdek de mogelijkheden
+                Alle reviews
               </span>
               <span className="absolute inset-0 bg-[#c2b293] dark:bg-[#c2b293] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-in-out z-0 transform-gpu will-change-transform"></span>
             </button>
-          </Link> */}
+          </Link>
 
           {/* Neem contact op */}
-          {/* <Link href={"/contact"}>
+          <Link href={"/#contactform"}>
             <button className="relative border-t border-b border-white px-4 py-2 text-white overflow-hidden group transform-gpu">
               <span className="relative z-10 text-xs sm:text-sm uppercase group-hover:tracking-wide group-hover:font-medium group-hover:text-black transition-all duration-500 ease-in-out">
                 Neem contact op
               </span>
               <span className="absolute inset-0 bg-white origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-in-out z-0 transform-gpu will-change-transform"></span>
             </button>
-          </Link> */}
+          </Link>
         </div>
       </div>
     </div>
