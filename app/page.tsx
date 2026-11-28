@@ -1,273 +1,50 @@
-import RubikOne from "@/components/Rubik/Rubik";
-import { Reviews } from "@/components/Reviews/Reviews";
-import BannerEight from "@/components/Banner/BannerEight";
-import FooterSectionSM from "@/components/Footer/SWFooter";
-import NavbarNewSeven from "@/components/Navbar/NavbarNewSeven";
-import { CTAButton } from "@/components/CTAButtons/CTAButtonts";
-import RolexAdvies from "@/components/RolexSection/RolexAdvies";
-import FAQSectionTwo from "@/components/FaqSection/FaqSectionTwo";
-import CodeShowcase from "@/components/CodeShowCase/CodeShowCase";
-import CardComponent from "@/components/CardComponent/CardComponent";
-import LeaseOptionsGridTwo from "@/components/ImageText/ImageTextTen";
-import G2BadgeSection from "@/components/G2BadgeSection/G2BadgeSection";
-import CardComponentTwo from "@/components/CardComponent/CardComponentTwo";
-import VideoBannerEleven from "@/components/VideoBanner/VideoBannerEleven";
-import FadeInWhenVisible from "@/components/FadeInWhenVisible/FadeInWhenVisible";
-import InfinitiveMovingCardsIMG from "@/components/InfinitiveMovingCards/InfinitiveMovingCardsIMG";
-import ContactForm from "@/components/ContactForm/ContactForm";
+/**
+ * app/page.tsx — de homepage.
+ *
+ * Rustig en ruim, zoals BeterLease: elk blok staat in dezelfde opbouw met
+ * dezelfde witruimte en dezelfde kop, zonder scheidingslijnen ertussen.
+ *
+ *   hero (video in licht, bewegende kubus in donker) → beoordelingen en
+ *   klantlogo's → diensten (bento) → waarom Reactly + kerncijfers →
+ *   prijzen (vanaf € 499) → werkwijze → techniek-showcase → ervaringen → veelgestelde vragen →
+ *   afsluiter → contact
+ */
+
+import type { Metadata } from "next";
+
+import ContactSection from "@/components/site/ContactSection";
+import CtaBand from "@/components/site/CtaBand";
+import FaqSection from "@/components/site/FaqSection";
+import Reviews from "@/components/site/Reviews";
+import Hero from "@/components/site/home/Hero";
+import PricingTeaser from "@/components/site/home/PricingTeaser";
+import Process from "@/components/site/home/Process";
+import Services from "@/components/site/home/Services";
+import TechShowcase from "@/components/site/home/TechShowcase";
+import TrustBand from "@/components/site/home/TrustBand";
+import WhyReactly from "@/components/site/home/WhyReactly";
+import { ALL_FAQS } from "@/lib/content";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
+
+const HOME_FAQ = [0, 1, 2, 4, 6, 9].map((i) => ALL_FAQS[i]).filter(Boolean);
 
 export default function Home() {
   return (
     <>
-      <BannerEight />
-
-      <NavbarNewSeven />
-
-      <div className="w-full">
-        {/* Alleen zichtbaar in light mode */}
-        <div className="block dark:hidden w-full">
-          <VideoBannerEleven />
-        </div>
-
-        {/* Alleen zichtbaar in dark mode */}
-        <div className="hidden dark:block w-full">
-          <RubikOne />
-        </div>
-      </div>
-
-      <FadeInWhenVisible delay={0.1}>
-        <div className="w-full flex items-center justify-center mb-10 pt-20 lg:pt-14">
-          <G2BadgeSection />
-        </div>
-      </FadeInWhenVisible>
-
-      <FadeInWhenVisible delay={0.1}>
-        <div className="pb-10 md:pb-10">
-          <Reviews />
-        </div>
-      </FadeInWhenVisible>
-
-      {/* <FadeInWhenVisible delay={0.1}>
-        <div className="pt-0 md:pt-12 pb-20">
-          <InfinitiveMovingCardsIMG />
-        </div>
-      </FadeInWhenVisible> */}
-
-      <div className="pb-10 lg:pt-10">
-        <h2
-          id="reviews-title"
-          className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"
-        >
-          Webdesign op maat
-        </h2>
-        <p className="mt-2 text-md md:text-lg max-w-xs md:max-w-xl mx-auto text-neutral-600 text-center dark:text-neutral-200">
-          We staan voor je klaar om je te helpen met al je vragen. Kun je niet
-          vinden wat je zoekt? Neem contact met ons op via &nbsp;
-          <a href="mailto:info@reactly.nl" className="text-blue-500 underline">
-            info@reactly.nl
-          </a>
-        </p>
-      </div>
-
-      <CodeShowcase />
-
-      <div className="pb-10 lg:pt-10">
-        <h2
-          id="reviews-title"
-          className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"
-        >
-          Plan een kennismaking
-        </h2>
-        <p className="mt-2 text-md md:text-lg max-w-xs md:max-w-xl mx-auto text-neutral-600 text-center dark:text-neutral-200">
-          We staan voor je klaar om je te helpen met al je vragen. Kun je niet
-          vinden wat je zoekt? Geef een belletje of neem contact met ons op via
-          &nbsp;
-          <a href="mailto:info@reactly.nl" className="text-blue-500 underline">
-            info@reactly.nl
-          </a>
-        </p>
-      </div>
-
-      <FadeInWhenVisible delay={0.1}>
-        <LeaseOptionsGridTwo />
-      </FadeInWhenVisible>
-
-      <div className="pb-10 lg:pt-10">
-        <h2
-          id="reviews-title"
-          className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"
-        >
-          Een aantal van onze klanten
-        </h2>
-        <p className="mt-2 text-md md:text-lg max-w-xs md:max-w-xl mx-auto text-neutral-600 text-center dark:text-neutral-200">
-          We staan voor je klaar om je te helpen met al je vragen. Kun je niet
-          vinden wat je zoekt? Geef een belletje of neem contact met ons op via
-          &nbsp;
-          <a href="mailto:info@reactly.nl" className="text-blue-500 underline">
-            info@reactly.nl
-          </a>
-        </p>
-      </div>
-
-      <FadeInWhenVisible delay={0.1}>
-        <div className="pt-14 pb-16">
-          <InfinitiveMovingCardsIMG />
-        </div>
-      </FadeInWhenVisible>
-
-      <FadeInWhenVisible delay={0.1}>
-        <div className="pb-14">
-          <ContactForm />
-        </div>
-      </FadeInWhenVisible>
-
-      {/* <FadeInWhenVisible delay={0.1}>
-        <div className="pb-5">
-          <CTAButton />
-        </div>
-      </FadeInWhenVisible> */}
-
-      {/* <FadeInWhenVisible delay={0.1}>
-        <div className="py-20 pt-24 flex">
-          <RolexAdvies />
-        </div>
-      </FadeInWhenVisible> */}
-
-      {/* <div className="relative bg-gradient-to-b w-full from-[#FFF] via-[#e9eeff] to-[#FFF]"> */}
-      {/* <RolexIntro /> */}
-      {/* <ProductShowcase /> */}
-      {/* <div className="pt-12">
-          <h2
-            id="reviews-title"
-            className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"
-          >
-            Bereken jouw offerte op maat
-          </h2>
-          <p className="mt-2 text-md md:text-lg max-w-xs md:max-w-xl mx-auto text-neutral-600 text-center dark:text-neutral-200">
-            We staan voor je klaar om je te helpen met al je vragen. Kun je niet
-            vinden wat je zoekt? Neem contact met ons op via &nbsp;
-            <a
-              href="mailto:info@reactly.nl"
-              className="text-blue-500 underline"
-            >
-              info@reactly.nl
-            </a>
-          </p>
-        </div> */}
-      {/* <div className="flex lg:hidden">
-          <CardComponentTwo />
-        </div> */}
-      {/* <div className="hidden py-10 lg:pt-16 pb-20 lg:flex">
-          <CardComponent />
-        </div> */}
-
-      {/* <FadeInWhenVisible delay={0.1}>
-        <LeaseOptionsGridTwo />
-      </FadeInWhenVisible> */}
-
-      {/* <FadeInWhenVisible delay={0.1}>
-        <div className="mb-20">
-          <FAQSectionTwo />
-        </div>
-      </FadeInWhenVisible> */}
-
-      {/* <FadeInWhenVisible delay={0.1}>
-        <CTA />
-      </FadeInWhenVisible> */}
-
-      <FadeInWhenVisible delay={0.1}>
-        <FooterSectionSM />
-      </FadeInWhenVisible>
-
-      {/* <FadeInWhenVisible>
-        <HomePageIntro />
-      </FadeInWhenVisible> */}
-
-      {/* <FadeInWhenVisible>
-        <ProductShowcase />
-      </FadeInWhenVisible> */}
-
-      {/* <div className="max-w-7xl mx-auto px-4 pb-10">
-        <div className="flex flex-row items-center justify-between gap-4">
-          <div className="text-3xl lg:text-5xl items-center text-center font-medium">
-            Cases
-          </div>
-          <div className="hidden md:block">
-            <button className="relative font-light text-[14px] backdrop-blur-xl outline-1 border-black mt-2 px-6 py-2.5 hover:font-medium hover:tracking-wide transition-all duration-500 ease-in-out whitespace-nowrap bg-[#f0f0f0] overflow-hidden group">
-              <span className="relative z-10 text-black uppercase group-hover:text-white font-medium transition-all duration-500 ease-in-out">
-                Ontdek onze diensten
-              </span>
-              <span className="absolute inset-0 bg-black w-0 group-hover:w-full transition-all duration-500 ease-in-out" />
-            </button>
-          </div>
-        </div>
-      </div> */}
-
-      {/* <FadeInWhenVisible delay={0.1}>
-        <div className=" pb-10">
-          <InfinitiveMovingCardsIMGTwo />
-        </div>
-      </FadeInWhenVisible> */}
-
-      {/* <FadeInWhenVisible delay={0.1}>
-        <div className="pb-20 md:pb-28 pt-8 p-5">
-          <OntdekCollectieFour />
-        </div>
-      </FadeInWhenVisible> */}
-
-      {/* <FadeInWhenVisible delay={0.1}>
-        <div className="hidden pt-20 md:pt-28 py-10 md:flex">
-          <DiagonalSlider />
-        </div>
-      </FadeInWhenVisible> */}
-
-      {/* <FadeInWhenVisible delay={0.1}>
-        <CardsIntro />
-      </FadeInWhenVisible> */}
-
-      {/* <FadeInWhenVisible delay={0.1}>
-        <div className="dark:hidden md:mt-4 flex mb-8 md:mb-2 justify-start w-full mx-auto">
-          <Link className="mx-auto" href={"/aanbod"}>
-            <button className="relative font-light text-[14px] backdrop-blur-xl outline-1 border-black border-1 border-t border-b mt-8 w-fit px-14 mx-auto hover:font-medium hover:tracking-wide transition-all duration-500 ease-in-out whitespace-nowrap pt-2.5 pb-2.5 bg-transparent overflow-hidden group">
-              <span className="relative z-10 text-black uppercase group-hover:text-white font-medium hover:tracking-wide transition-all duration-500 ease-in-out">
-                Bekijk ons volledige aanbod
-              </span>
-              <span className="absolute inset-0 bg-black w-0 group-hover:w-full transition-all duration-500 ease-in-out"></span>
-            </button>
-          </Link>
-        </div>
-
-        <div className="md:mt-4 hidden dark:flex mb-5 md:mb-2 justify-start w-full mx-auto">
-          <Link className="mx-auto" href={"/aanbod"}>
-            <button className="relative font-light text-[14px] backdrop-blur-xl outline-1 border-white border-1 border-t border-b mt-8 w-fit px-14 mx-auto hover:font-medium hover:tracking-wide transition-all duration-500 ease-in-out whitespace-nowrap pt-2.5 pb-2.5 bg-transparent overflow-hidden group">
-              <span className="relative z-10 text-white uppercase group-hover:text-black font-medium hover:tracking-wide transition-all duration-500 ease-in-out">
-                Bekijk ons volledige aanbod
-              </span>
-              <span className="absolute inset-0 bg-white w-0 group-hover:w-full transition-all duration-500 ease-in-out"></span>
-            </button>
-          </Link>
-        </div>
-      </FadeInWhenVisible> */}
-
-      {/* <FadeInWhenVisible delay={0.1}>
-        <div className="hidden pt-20 py-10 md:flex">
-          <DiagonalSliderTwo />
-        </div>
-      </FadeInWhenVisible> */}
-
-      {/* <div>
-        <HeroHeader />
-        <AIDreamTeamSlider />
-
-        <SolutionsSlider />
-
-        <ProductShowcase />
-        <div className="relative bg-gradient-to-b w-full from-[#e9eeff] to-[#e9eeff]">
-          <div className="">
-            <CardComponentTwo />
-          </div>
-        </div>
-      </div> */}
+      <Hero />
+      <TrustBand />
+      <Services />
+      <WhyReactly />
+      <PricingTeaser />
+      <Process />
+      <TechShowcase />
+      <Reviews />
+      <FaqSection items={HOME_FAQ} />
+      <CtaBand />
+      <ContactSection />
     </>
   );
 }

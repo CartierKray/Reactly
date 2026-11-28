@@ -1,120 +1,89 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { CheckCircle } from "lucide-react";
-import { Button } from "@headlessui/react";
-import FooterSectionSM from "@/components/Footer/SWFooter";
-import VideoBannerEleven from "@/components/VideoBanner/VideoBannerEleven";
-import FadeInWhenVisible from "@/components/FadeInWhenVisible/FadeInWhenVisible";
+import type { Metadata } from "next";
 
-function AlgemeneVoorwaardenPage() {
+import LegalLayout from "@/components/site/LegalLayout";
+import { SITE } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Algemene voorwaarden",
+  description: "De algemene voorwaarden en disclaimer van Reactly, webdesign & online marketing bureau.",
+  alternates: { canonical: "/algemene-voorwaarden" },
+};
+
+export default function AlgemeneVoorwaardenPage() {
   return (
-    <>
-      <VideoBannerEleven />
-
-      <FadeInWhenVisible delay={0.1}>
-        <div className="w-full bg-gradient-to-b from-[#171719]  to-[#2d3033] h-fit text-white">
-          <div className="grid lg:grid-cols-2 items-center lg:pt-20 py-16 px-5 md:px-12 lg:px-20">
-            {/* Image Section */}
-            <div className="relative max-h-[100%] lg:gap-y-10 grid pb-8 lg:pb-0 w-full">
-              <Image
-                src="/svg/BeterLeaseSVGTwo.svg" // ✅ Correct pad
-                alt="Algemene Voorwaarden"
-                width={1000}
-                height={1000}
-                className=" object-cover"
-              />
-              <Image
-                src="/images/1920x1080_forest.avif" // ✅ Correct pad
-                alt="Algemene Voorwaarden"
-                width={1000}
-                height={1000}
-                className=" object-cover pt-8 lg:pt-0"
-              />
-            </div>
-
-            {/* Content Section */}
-            <div className="lg:order-2 flex flex-col justify-center items-start lg:items-center bg-transparent">
-              <div className="max-w-2xl lg:max-w-xl flex flex-col justify-center items-start p-5 xl:p-0">
-                <div className="pl-1 pb-5 lg:pl-12 text-white">
-                  <h2 className="text-4xl font-semibold">
-                    <span className="text-[#c2b293]">Algemene Voorwaarden</span>
-                  </h2>
-
-                  <p className="mt-5 max-w-md md:max-w-xl mb-8">
-                    Door gebruik te maken van BeterLease.nl ga je akkoord met
-                    onze algemene voorwaarden en de disclaimer. Deze voorwaarden
-                    zijn van toepassing op alle transacties en diensten.
-                  </p>
-
-                  {/* Bullet Points */}
-                  <div className="space-y-2">
-                    {[
-                      "Toepasselijkheid op alle overeenkomsten",
-                      "Duidelijke annuleringsvoorwaarden",
-                      "Transparante bemiddelingskosten",
-                      "Betalingstermijn en incassoregels",
-                    ].map((point, index) => (
-                      <p key={index} className="flex items-center space-x-2">
-                        <CheckCircle className="text-green-500 w-5 h-5" />
-                        <span>{point}</span>
-                      </p>
-                    ))}
-                  </div>
-
-                  {/* Call to Action */}
-                  <div className="mt-6">
-                    Wil je de volledige voorwaarden lezen? Download hieronder
-                    het document of neem contact met ons op.
-                  </div>
-
-                  {/* CTA Buttons */}
-                  <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mt-6">
-                    <a
-                      href="/docs/Algemene voorwaarden BeterLease.nl B.V..pdf"
-                      download="Algemene_Voorwaarden.pdf"
-                      className="rounded-3xl tracking-wider px-6 py-3 bg-[#c2b293] shadow-inner shadow-[#e3d1ac] hover:shadow-none text-white text-center"
-                    >
-                      Download PDF
-                    </a>
-
-                    <Link href="/contact#contactgegevens">
-                      <Button className="rounded-3xl tracking-wider px-6 py-3 bg-transparent shadow-inner  hover:bg-transparent outline hover:outline-1 hover:outline-[#c2b293] hover:shadow-none w-full">
-                        Contact opnemen
-                      </Button>
-                    </Link>
-                  </div>
-
-                  {/* Disclaimer Section */}
-                  <div className="mt-10 border-t border-gray-700 pt-5">
-                    <h3 className="text-2xl font-semibold text-[#c2b293]">
-                      Disclaimer
-                    </h3>
-                    <p className="mt-4">
-                      Door deze website te bekijken en de daarop geboden
-                      informatie te gebruiken, verklaar je akkoord te zijn met
-                      deze Disclaimer. Het gebruik van deze website is voor
-                      eigen risico.
-                    </p>
-                    <p className="mt-4 text-sm text-gray-400">
-                      BeterLease.nl kan niet aansprakelijk worden gesteld voor
-                      fouten, onvolledige informatie of wijzigingen in de
-                      voorwaarden. Controleer regelmatig de nieuwste versie van
-                      de voorwaarden.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </FadeInWhenVisible>
-
-      <FadeInWhenVisible delay={0.1}>
-        <FooterSectionSM />
-      </FadeInWhenVisible>
-    </>
+    <LegalLayout
+      title="Algemene voorwaarden"
+      lede="Door gebruik te maken van de diensten van Reactly ga je akkoord met onze algemene voorwaarden en de disclaimer. Deze voorwaarden gelden voor alle offertes, overeenkomsten en diensten."
+      updated="25 november 2026"
+      sections={[
+        {
+          id: "toepasselijkheid",
+          title: "Toepasselijkheid",
+          body: (
+            <p>
+              Deze voorwaarden zijn van toepassing op alle offertes, overeenkomsten en diensten van {SITE.name}, tenzij
+              schriftelijk anders is overeengekomen.
+            </p>
+          ),
+        },
+        {
+          id: "offertes",
+          title: "Offertes en overeenkomsten",
+          body: (
+            <p>
+              Offertes zijn vrijblijvend, tenzij anders vermeld. Een overeenkomst komt tot stand zodra je een offerte
+              schriftelijk of per e-mail accepteert. In de offerte staan de afgesproken werkzaamheden, planning en
+              investering.
+            </p>
+          ),
+        },
+        {
+          id: "annulering",
+          title: "Annulering",
+          body: (
+            <p>
+              We hanteren duidelijke annuleringsvoorwaarden. De voorwaarden die voor jouw project gelden, staan in de
+              offerte of overeenkomst.
+            </p>
+          ),
+        },
+        {
+          id: "betaling",
+          title: "Prijzen en betaling",
+          body: (
+            <ul>
+              <li>We werken met transparante prijzen; je weet vooraf waar je aan toe bent.</li>
+              <li>Betalingstermijnen en incassoregels staan op de factuur en in de overeenkomst.</li>
+            </ul>
+          ),
+        },
+        {
+          id: "volledige-voorwaarden",
+          title: "Volledige voorwaarden",
+          body: (
+            <p>
+              Wil je de volledige voorwaarden ontvangen? Mail ons via <a href={`mailto:${SITE.email}`}>{SITE.email}</a>{" "}
+              of bel <a href={SITE.phone.href}>{SITE.phone.display}</a>; we sturen ze je direct toe.
+            </p>
+          ),
+        },
+        {
+          id: "disclaimer",
+          title: "Disclaimer",
+          body: (
+            <>
+              <p>
+                Door deze website te bekijken en de daarop geboden informatie te gebruiken, verklaar je akkoord te zijn
+                met deze disclaimer. Het gebruik van deze website is voor eigen risico.
+              </p>
+              <p>
+                {SITE.name} kan niet aansprakelijk worden gesteld voor fouten, onvolledige informatie of wijzigingen in
+                de voorwaarden. Controleer regelmatig de nieuwste versie van de voorwaarden.
+              </p>
+            </>
+          ),
+        },
+      ]}
+    />
   );
 }
-
-export default AlgemeneVoorwaardenPage;

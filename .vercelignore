@@ -1,0 +1,8 @@
+# Lokale bouwmappen, caches en editorinstellingen horen niet in de upload
+# naar Vercel; Vercel bouwt de site zelf. (.env.local, .next, .git en
+# node_modules laat de Vercel CLI standaard al weg.)
+dist
+.next-check
+.claude
+*.tsbuildinfo
+.env

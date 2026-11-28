@@ -1,559 +1,742 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* ═══════════════════════════════════════════════════════════════════════════
+   Reactly — design system (Tailwind CSS v4)
 
-@layer base {
-  :root {
-    --background: 10 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+   Alle kleur, gloed, radius en beweging komt hiervandaan. Componenten
+   gebruiken uitsluitend de semantische namen (page, surface, ink, line,
+   brand…), dus hetzelfde component werkt in licht én donker.
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+     licht  — wit en koel gebroken wit met diepe inktzwarte vlakken; blauw
+              (#0057FF) alleen in de knoppen en focus, zodat de actie eruit
+              springt. Premium = terughoudend: één accent, verder grafiet,
+              zilver en wit (eerder was alles blauw, ook vlakken en gloed);
+     donker — #0A0A0A met kaarten in #121212, accent zacht champagne-beige
+              (#C2B293, de kleur van de vorige site).
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+   `--brand` is het accentvlak (knop, actieve keuze), `--brand-fg` de
+   accenttekst, `--glow-rgb` de sfeergloed (zilver in licht, beige in donker)
+   en `--btn-glow-rgb` de gloed van de knop.
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+   `.deep` maakt een blok "diep" (footer, CTA-band, menu): inktzwart in
+   licht, bijna zwart in donker, met lichte tekst.
+   ═══════════════════════════════════════════════════════════════════════════ */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+/* Alleen de bestanden die de site echt gebruikt worden gescand: de oude,
+   ongebruikte componenten leveren zo geen CSS meer op. */
+@import "tailwindcss" source(none);
+@import "tw-animate-css";
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+@source "./";
+@source "../components/site";
+@source "../components/dashboard";
+@source "../components/ui";
+@source "../lib";
+@source "../components/CodeShowCase";
+@source "../components/TiltShineCard";
+@source "../components/Stars";
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+@custom-variant dark (&:where(.dark, .dark *));
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+/* ── Tokens ─────────────────────────────────────────────────────────────── */
+:root {
+  /* Accent: Reactly-blauw, alleen voor knoppen, focus en de actieve keuze. */
+  --brand: 220 100% 50%; /* #0057FF */
+  --brand-hover: 220 100% 44%;
+  /* Accenttekst: diep inktblauw in plaats van fel blauw. */
+  --brand-fg: 222 45% 26%;
+  --brand-contrast: 0 0% 100%;
+  --brand-soft: 220 16% 95.5%;
+  --brand-ink: 0 0% 4%;
+  /* Sfeergloed: zacht zilver/grafiet. */
+  --glow-rgb: 100 112 135;
+  --btn-glow-rgb: 0 80 240;
+  --glow-1: 220 14% 60%;
+  --glow-2: 225 12% 72%;
+  --glow-3: 210 12% 66%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+  /* Knop: verloop, tekst en hover */
+  --btn-from: #0034b0;
+  --btn-via: #004ff0;
+  --btn-to: #2f74ff;
+  --btn-from-h: #0040cc;
+  --btn-via-h: #165ffa;
+  --btn-to-h: #4d88ff;
+  --btn-text: #ffffff;
 
-    --radius: 0.5rem;
+  /* Lichtvlek die de muis volgt: zilver, nauwelijks zichtbaar. */
+  --spot-rgb: 90 100 120;
+  --spot-alpha: 0.06;
+
+  /* Diepe vlakken: inktzwart met een vleug koel blauw. */
+  --deep-page: 228 24% 5%; /* #0a0b10 */
+  --deep-surface: 228 18% 8%;
+  --deep-elevated: 228 16% 11%;
+  --deep-sunken: 228 20% 6.5%;
+  --deep-border: 228 12% 17%;
+  --deep-border-strong: 228 10% 25%;
+  --deep-muted: 225 10% 76%;
+  --deep-subtle: 225 8% 62%;
+  --deep-brand-fg: 216 45% 80%;
+  --deep-spot-rgb: 255 255 255;
+  /* Gloed in diepe vlakken: zacht wit licht met een vleug blauw. */
+  --deep-glow-a: rgb(255 255 255 / 0.08);
+  --deep-glow-b: rgb(0 80 240 / 0.14);
+
+  /* Vlakken */
+  --page: 0 0% 100%;
+  --surface: 0 0% 100%;
+  --surface-elevated: 0 0% 100%;
+  --surface-sunken: 220 20% 97%;
+
+  /* Tekst */
+  --foreground: 0 0% 7%;
+  --foreground-muted: 220 9% 34%;
+  --foreground-subtle: 220 7% 46%;
+
+  /* Lijnen */
+  --border: 220 14% 90%;
+  --border-strong: 220 11% 80%;
+
+  /* Status */
+  --success: 152 64% 30%;
+  --success-soft: 152 60% 95%;
+  --destructive: 0 72% 46%;
+  --destructive-soft: 0 85% 97%;
+
+  --ring: 220 100% 50%;
+  --overlay: 0 0% 4%;
+
+  /* Elevatie */
+  --shadow-card: 0 1px 2px hsl(220 30% 10% / 0.04), 0 8px 24px -12px hsl(220 30% 10% / 0.1);
+  --shadow-card-hover: 0 24px 60px -18px rgb(var(--glow-rgb) / 0.35);
+  --shadow-dialog: 0 30px 80px -20px hsl(220 30% 10% / 0.35);
+  --shadow-glow: 0 6px 24px -6px rgb(var(--btn-glow-rgb) / 0.55);
+
+  /* Compatibiliteit met de shadcn-componenten (toast, sheet, accordion). */
+  --background: var(--page);
+  --card: var(--surface);
+  --card-foreground: var(--foreground);
+  --popover: var(--surface-elevated);
+  --popover-foreground: var(--foreground);
+  --primary: var(--brand);
+  --primary-foreground: var(--brand-contrast);
+  --secondary: var(--surface-sunken);
+  --secondary-foreground: 0 0% 15%;
+  --muted: 220 16% 95%;
+  --muted-foreground: var(--foreground-muted);
+  --accent: var(--brand-soft);
+  --accent-foreground: var(--brand-ink);
+  --destructive-foreground: 0 0% 100%;
+  --input: var(--border);
+
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --nav-h: 4rem;
+}
+
+.dark {
+  /* Accent: zacht champagne-beige */
+  --brand: 40 26% 67%; /* #C2B293 */
+  --brand-hover: 40 32% 74%;
+  --brand-fg: 41 38% 76%;
+  --brand-contrast: 36 22% 8%;
+  --brand-soft: 38 16% 11%;
+  --glow-rgb: 194 178 147;
+  --btn-glow-rgb: 194 178 147;
+  --glow-1: 40 30% 62%;
+
+  --btn-from: #9c8862;
+  --btn-via: #c2b293;
+  --btn-to: #e8ddc6;
+  --btn-from-h: #ab976f;
+  --btn-via-h: #cfc0a2;
+  --btn-to-h: #f1e8d6;
+  --btn-text: #16120b;
+
+  --spot-rgb: 194 178 147;
+  --spot-alpha: 0.075;
+
+  --deep-page: 0 0% 3%;
+  --deep-surface: 0 0% 6.5%;
+  --deep-elevated: 0 0% 8.5%;
+  --deep-sunken: 0 0% 5%;
+  --deep-border: 0 0% 14%;
+  --deep-border-strong: 0 0% 22%;
+  --deep-muted: 0 0% 72%;
+  --deep-subtle: 0 0% 58%;
+  --deep-brand-fg: 41 38% 76%;
+  --deep-spot-rgb: 194 178 147;
+  --deep-glow-a: rgb(194 178 147 / 0.1);
+  --deep-glow-b: rgb(255 255 255 / 0.05);
+
+  --page: 0 0% 4%; /* #0A0A0A */
+  --surface: 0 0% 7%; /* #121212 */
+  --surface-elevated: 0 0% 9%;
+  --surface-sunken: 0 0% 9.5%;
+
+  --foreground: 0 0% 98%;
+  --foreground-muted: 0 0% 72%;
+  --foreground-subtle: 0 0% 58%;
+
+  --border: 0 0% 15%;
+  --border-strong: 0 0% 24%;
+
+  --success: 152 55% 52%;
+  --success-soft: 152 40% 12%;
+  --destructive: 0 74% 66%;
+  --destructive-soft: 0 38% 13%;
+
+  --ring: 40 30% 70%;
+  --overlay: 0 0% 0%;
+
+  --shadow-card: 0 1px 0 hsl(0 0% 100% / 0.03) inset;
+  --shadow-card-hover: 0 24px 60px -18px rgb(var(--glow-rgb) / 0.3);
+  --shadow-dialog: 0 30px 80px -20px hsl(0 0% 0% / 0.85);
+
+  --secondary-foreground: 0 0% 95%;
+  --muted: 0 0% 13%;
+}
+
+/* Diep blok: nachtblauw (licht) of bijna zwart (donker), met lichte tekst. */
+.deep {
+  --page: var(--deep-page);
+  --surface: var(--deep-surface);
+  --surface-elevated: var(--deep-elevated);
+  --surface-sunken: var(--deep-sunken);
+  --foreground: 0 0% 98%;
+  --foreground-muted: var(--deep-muted);
+  --foreground-subtle: var(--deep-subtle);
+  --border: var(--deep-border);
+  --border-strong: var(--deep-border-strong);
+  --brand-fg: var(--deep-brand-fg);
+  --brand-soft: 228 14% 14%;
+  --muted: var(--deep-surface);
+  --shadow-card: 0 1px 0 hsl(0 0% 100% / 0.04) inset;
+  --shadow-dialog: 0 30px 80px -20px hsl(230 80% 3% / 0.8);
+  color-scheme: dark;
+  color: hsl(var(--foreground));
+}
+.dark .deep,
+.dark.deep {
+  --brand-soft: 38 16% 11%;
+}
+
+@theme inline {
+  --color-page: hsl(var(--page));
+  --color-surface: hsl(var(--surface));
+  --color-surface-elevated: hsl(var(--surface-elevated));
+  --color-surface-sunken: hsl(var(--surface-sunken));
+  --color-ink: hsl(var(--foreground));
+  --color-ink-muted: hsl(var(--foreground-muted));
+  --color-ink-subtle: hsl(var(--foreground-subtle));
+  --color-line: hsl(var(--border));
+  --color-line-strong: hsl(var(--border-strong));
+  --color-brand: hsl(var(--brand));
+  --color-brand-hover: hsl(var(--brand-hover));
+  --color-brand-fg: hsl(var(--brand-fg));
+  --color-brand-contrast: hsl(var(--brand-contrast));
+  --color-brand-soft: hsl(var(--brand-soft));
+  --color-brand-ink: hsl(var(--brand-ink));
+  --color-glow-1: hsl(var(--glow-1));
+  --color-glow-2: hsl(var(--glow-2));
+  --color-glow-3: hsl(var(--glow-3));
+  --color-success: hsl(var(--success));
+  --color-success-soft: hsl(var(--success-soft));
+  --color-overlay: hsl(var(--overlay));
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-soft: hsl(var(--destructive-soft));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  /* Alles in Poppins: koppen en lopende tekst. */
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-clashdisplay: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-card: var(--shadow-card);
+  --shadow-card-hover: var(--shadow-card-hover);
+  --shadow-dialog: var(--shadow-dialog);
+  --shadow-glow: var(--shadow-glow);
+
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme {
+  --animate-marquee-x: marquee-x var(--marquee-duration, 48s) linear infinite;
+  --animate-marquee-y: marquee-y var(--marquee-duration, 60s) linear infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-spin-slow: spin 14s linear infinite;
+  --animate-glow: glow 4s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 2.4s var(--ease-soft) infinite;
+
+  @keyframes marquee-x {
+    to {
+      transform: translateX(-50%);
+    }
   }
-
-  .dark {
-    /* --background: #e8e8e8; */
-    --background: 0 0% 0%;
-
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+  @keyframes marquee-y {
+    to {
+      transform: translateY(-50%);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+  @keyframes glow {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.9);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1.9);
+      opacity: 0;
+    }
   }
 }
 
+/* ── Basis ──────────────────────────────────────────────────────────────── */
 @layer base {
-  * {
-    @apply border-border;
+  *,
+  ::before,
+  ::after {
+    border-color: hsl(var(--border));
   }
+
+  html {
+    /* Maat "s": tekst, knoppen en alle afstanden in rem een stap kleiner dan
+       de browserstandaard (16px → ±14,7px). In procenten, zodat de
+       lettergrootte-instelling van de bezoeker gewoon blijft werken. */
+    font-size: 92%;
+    color-scheme: light;
+    -webkit-tap-highlight-color: transparent;
+    scroll-padding-top: calc(var(--nav-h) + 1rem);
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  @media (min-width: 768px) {
+    html {
+      scrollbar-gutter: stable;
+    }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--page));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+
+  button,
+  [role="button"],
+  summary {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+
+  ::selection {
+    background: hsl(var(--brand) / 0.85);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  /* Rustige, dunne scrollbalk die met het thema meekleurt. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border-strong)) transparent;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: hsl(var(--foreground-subtle) / 0.8);
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-/* --------------------------------------- ClashDisplay Fonts --------------------------------- */
+/* ── Knoppen ────────────────────────────────────────────────────────────────
+   De knop van BeterLease, in Reactly-blauw: verloop onder 135°, een zachte
+   blauwe gloed, een dun licht randje bovenin. Bij hover komt de knop 2px
+   omhoog, groeit de gloed en loopt er een glans overheen.
+   ──────────────────────────────────────────────────────────────────────── */
+@layer components {
+  .btn {
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    min-height: 2.875rem;
+    padding-inline: 1.5rem;
+    border-radius: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    transition:
+      transform 0.45s var(--ease-premium),
+      box-shadow 0.45s var(--ease-premium),
+      background 0.45s var(--ease-premium),
+      border-color 0.45s var(--ease-premium),
+      color 0.3s ease;
+  }
+  .btn:active {
+    transform: translateY(0) scale(0.985);
+  }
+  .btn-sm {
+    min-height: 2.375rem;
+    padding-inline: 1rem;
+    font-size: 0.6875rem;
+    border-radius: 0.625rem;
+    letter-spacing: 0.14em;
+  }
+  .btn-lg {
+    min-height: 3.375rem;
+    padding-inline: 2rem;
+    font-size: 0.8125rem;
+  }
 
-/* ClashDisplay-Variable.ttf */
-@font-face {
-  font-family: "ClashDisplay";
-  src: url("/fonts/ClashDisplay-Variable.ttf") format("truetype");
-  font-weight: 100 900;
-  font-style: normal;
+  .btn-primary {
+    color: var(--btn-text);
+    background: linear-gradient(135deg, var(--btn-from) 0%, var(--btn-via) 45%, var(--btn-to) 100%);
+    box-shadow:
+      0 6px 24px -6px rgb(var(--btn-glow-rgb) / 0.55),
+      inset 0 1px 0 rgb(255 255 255 / 0.3);
+  }
+  .btn-primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(100deg, transparent 20%, rgb(255 255 255 / 0.34) 50%, transparent 80%);
+    transform: translateX(-120%);
+    transition: transform 0.9s var(--ease-premium);
+    pointer-events: none;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, var(--btn-from-h) 0%, var(--btn-via-h) 45%, var(--btn-to-h) 100%);
+    box-shadow:
+      0 12px 40px -6px rgb(var(--btn-glow-rgb) / 0.6),
+      0 0 30px -6px rgb(var(--btn-glow-rgb) / 0.5),
+      inset 0 1px 0 rgb(255 255 255 / 0.36);
+  }
+  .btn-primary:hover::before {
+    transform: translateX(120%);
+  }
+
+  /* Omlijnd: volgt het thema. */
+  .btn-outline {
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--border-strong));
+    background: hsl(var(--surface) / 0.6);
+    backdrop-filter: blur(8px);
+  }
+  .btn-outline:hover {
+    transform: translateY(-2px);
+    border-color: hsl(var(--foreground) / 0.35);
+    box-shadow: 0 10px 30px -12px rgb(var(--glow-rgb) / 0.45);
+  }
+
+  /* Glas: op foto's, video en donkere vlakken. */
+  .btn-glass {
+    color: #fff;
+    border: 1px solid rgb(255 255 255 / 0.32);
+    background: rgb(255 255 255 / 0.06);
+    backdrop-filter: blur(10px);
+  }
+  .btn-glass:hover {
+    transform: translateY(-2px);
+    border-color: rgb(255 255 255 / 0.7);
+    background: rgb(255 255 255 / 0.12);
+    box-shadow: 0 0 32px rgb(255 255 255 / 0.18);
+  }
+
+  /* Zachte blauwe gloed bij hover voor kaarten — nooit een harde rand. */
+  .glow-hover {
+    transition:
+      transform 0.55s var(--ease-premium),
+      box-shadow 0.55s var(--ease-premium),
+      border-color 0.55s var(--ease-premium),
+      background-color 0.4s ease;
+  }
+  .glow-hover:hover {
+    transform: translateY(-4px);
+    border-color: rgb(var(--glow-rgb) / 0.45);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* Kaart met een dunne, lichtgevende rand in donker. */
+  .card {
+    position: relative;
+    border-radius: 1.5rem;
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--surface));
+    box-shadow: var(--shadow-card);
+  }
+  .dark .card {
+    background: linear-gradient(180deg, hsl(0 0% 100% / 0.035), hsl(0 0% 100% / 0.01)) hsl(var(--surface));
+  }
+
+  /* Bovenschrift: klein, breed gespatieerd, in merkblauw. */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: hsl(var(--foreground-subtle));
+  }
+
+  /* Zilververloop in koppen: wit naar grijs in donker, zwart naar grijs in licht. */
+  .text-gradient {
+    background-image: linear-gradient(180deg, hsl(var(--foreground)) 15%, hsl(var(--foreground) / 0.5) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Raster als achtergrond, uitvloeiend naar de randen. */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--foreground) / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--foreground) / 0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .bg-dots {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.12) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+  /* Stippen in de (altijd donkere) kaarten van de techniek-showcase. */
+  .bg-dot-pattern {
+    background-image: radial-gradient(rgb(255 255 255 / 0.08) 1px, transparent 0);
+    background-size: 10px 10px;
+    background-position: center;
+  }
+  .mask-radial {
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 72%);
+    mask-image: radial-gradient(ellipse at center, #000 20%, transparent 72%);
+  }
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  }
+  .mask-fade-y {
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+  }
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  }
+
+  /* Filmkorrel over donkere vlakken: net genoeg textuur om "premium" te ogen. */
+  .noise::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .scrollbar-hide {
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
-@font-face {
-  font-family: "ClashDisplay";
-  src: url("/fonts/ClashDisplay-Variable.ttf") format("truetype");
-  font-weight: 100 900;
-  font-style: italic;
+/* ── Beweging ───────────────────────────────────────────────────────────────
+   Binnenkomst zoals op BeterLease/khan.nl, in pure CSS: geen JavaScript en
+   geen verspringing. Zonder animatie (reduced motion) staat alles direct.
+
+     .enter          invagen bij het laden; richting via --in-x / --in-y,
+                     volgorde via --i (stap --stagger), extra wachttijd --d
+     .reveal         pas animeren als het blok in beeld komt
+     .reveal-group   alleen de kinderen met .reveal-item, na elkaar (--i)
+     .page-enter     zachte overgang bij elke paginawissel (app/template)
+
+   `animation-fill-mode: backwards`: na afloop blijft er geen transform
+   hangen, dus position: fixed-kinderen en hover-effecten werken gewoon.
+   ──────────────────────────────────────────────────────────────────────── */
+@property --in-x {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --in-y {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 18px;
+}
+@property --in-s {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+@property --in-blur {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --dur {
+  syntax: "<time>";
+  inherits: false;
+  initial-value: 0.8s;
+}
+@property --stagger {
+  syntax: "<time>";
+  inherits: false;
+  initial-value: 80ms;
 }
 
-/* ----------------------------------- Banner ----------------------------------- */
-
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--in-x, 0px), var(--in-y, 18px), 0) scale(var(--in-s, 1));
+    filter: blur(var(--in-blur, 0px));
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+}
 @keyframes fade-in {
-  0% {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-out {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-100%);
-  }
-}
-
-/* ---------------------------- Custom Shadow for Text ------------------------ */
-
-.custom-shadow {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-  /* Adjust the values (horizontal, vertical, blur, color) as needed */
-}
-
-.custom-shadow-small {
-  text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.1);
-  /* Adjust the values (horizontal, vertical, blur, color) as needed */
-}
-
-/* ---------------------------- Underline Animation BLACK ------------------------ */
-
-/* Stijl voor de hoverable link/tekst */
-.hover-underline-animation {
-  display: inline-block;
-  position: relative;
-  color: #000;
-  text-decoration: none;
-}
-
-/* Voegt een pseudo-element toe onder de tekst */
-.hover-underline-animation::after {
-  content: "";
-  border-radius: 30px;
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #000;
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
-}
-
-/* Animeer het pseudo-element wanneer er gehoverd wordt */
-.hover-underline-animation:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
-/* Optioneel: Voeg een fade-out effect toe wanneer de muis weg beweegt */
-.hover-underline-animation::after {
-  transition: transform 0.25s ease-in;
-}
-
-/* ------------------------------------- Underline Nav -----------------------------------*/
-
-.xl-nav-link {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  display: inline-block;
-}
-
-/* Styles for the underline animation in normal mode */
-.xl-nav-link::before {
-  content: "";
-  border-radius: 30px;
-  position: absolute;
-  bottom: 0;
-  left: 50%; /* Set initial left position to the middle */
-  width: 0;
-  height: 2px;
-  background-color: #fff;
-  transition: width 0.2s ease-in, left 0.2s ease-in, right 0.2s ease-in,
-    background-color 0.2s ease-in;
-}
-
-.xl-nav-link:hover::before {
-  left: 0; /* Move left position to 0 */
-  right: 0; /* Move right position to 0 */
-  width: 100%;
-  background-color: #fff; /* Change to your desired underline color in normal mode */
-}
-
-/* Dark mode styles */
-.dark.xl-nav-link::before {
-  background-color: #fff; /* Default underline color in dark mode */
-}
-
-.dark.xl-nav-link:hover::before {
-  background-color: #fff; /* Change to your desired underline color in dark mode */
-}
-
-/* ------------------------------------- Underline Nav -----------------------------------*/
-
-.xl-nav-link-black {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  display: inline-block;
-}
-
-/* Styles for the underline animation in normal mode */
-.xl-nav-link-black::before {
-  content: "";
-  border-radius: 30px;
-  position: absolute;
-  bottom: 0;
-  left: 50%; /* Set initial left position to the middle */
-  width: 0;
-  height: 2px;
-  background-color: #000;
-  transition: width 0.2s ease-in, left 0.2s ease-in, right 0.2s ease-in,
-    background-color 0.2s ease-in;
-}
-
-.xl-nav-link-black:hover::before {
-  left: 0; /* Move left position to 0 */
-  right: 0; /* Move right position to 0 */
-  width: 100%;
-  background-color: #000; /* Change to your desired underline color in normal mode */
-}
-
-/* Dark mode styles */
-.dark.xl-nav-link-black::before {
-  background-color: #000; /* Default underline color in dark mode */
-}
-
-.dark.xl-nav-link-black:hover::before {
-  background-color: #000; /* Change to your desired underline color in dark mode */
-}
-
-/* ------------------------------------- Underline Nav AMBER -----------------------------------*/
-
-.xl-nav-link-amber {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  display: inline-block;
-}
-
-/* Styles for the underline animation in normal mode */
-.xl-nav-link-amber::before {
-  content: "";
-  border-radius: 30px;
-  position: absolute;
-  bottom: 0;
-  left: 50%; /* Set initial left position to the middle */
-  width: 0;
-  height: 2px;
-  background-color: #fff;
-  transition: width 0.2s ease-in, left 0.2s ease-in, right 0.2s ease-in,
-    background-color 0.2s ease-in;
-}
-
-.xl-nav-link-amber:hover::before {
-  left: 0; /* Move left position to 0 */
-  right: 0; /* Move right position to 0 */
-  width: 100%;
-  background-color: #c2b293; /* Change to your desired underline color in normal mode */
-}
-
-/* Dark mode styles */
-.dark.xl-nav-link-amber::before {
-  background-color: #c2b293; /* Default underline color in dark mode */
-}
-
-.dark.xl-nav-link-amber:hover::before {
-  background-color: #c2b293; /* Change to your desired underline color in dark mode */
-}
-
-/* ----------------- IMG Enlarge ------------- */
-
-.image-container {
-  overflow: hidden;
-  display: flex;
-}
-
-.image-enlarge {
-  transition: transform 8s ease-out; /* Duur aangepast naar 5 seconden */
-}
-
-.image-container:hover .image-enlarge {
-  transform: scale(1.2); /* Pas dit aan naar gewenste schaal */
-}
-
-/* ----------------- Cookie Switch ------------- */
-/* CSS for the toggle switches */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 34px;
-  height: 20px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #f39821;
-  transition: 0.4s;
-  border-radius: 34px;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 14px;
-  width: 14px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  transition: 0.4s;
-  border-radius: 50%;
-}
-
-input:checked + .slider {
-  background-color: #07b60a;
-}
-
-input:checked + .slider:before {
-  transform: translateX(14px);
-}
-
-/* Accordion styles */
-.accordion {
-  cursor: pointer;
-  transition: max-height 0.2s ease-out;
-}
-
-/* globals.css */
-
-/* Voeg dit toe om de scrollbaarheid van de modal inhoud te verbeteren */
-.modal-content {
-  max-height: calc(100vh - 4rem); /* Past aan naar de beschikbare hoogte */
-  overflow-y: auto; /* Scrollbaarheid */
-}
-
-/* ----------------------------------- Carousel INFI --------------------------------------- */
-
-.carousel-container {
-  display: flex;
-  background-color: transparent;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding: 0px 0;
-}
-
-.carousel {
-  display: flex;
-  background-color: transparent;
-  overflow: hidden;
-  width: 100%;
-}
-
-.carousel-track {
-  display: flex;
-  margin-bottom: 50px;
-  background-color: transparent;
-  will-change: transform;
-  animation: scroll var(--animation-duration, 40s) linear infinite
-    var(--animation-direction, normal);
-  animation-play-state: var(--animation-play-state, running);
-}
-
-.carousel-item {
-  flex: 0 0 auto;
-  background-color: transaprent;
-  width: 650px;
-  margin: 0;
-  text-align: center;
-  position: relative;
-}
-
-.carousel-item img {
-  cursor: pointer;
-  width: 650px;
-  height: 450px;
-  object-fit: cover;
-  background-color: transparent;
-  transition: opacity 0.3s ease-in-out;
-}
-
-/* Media query voor kleinere schermen */
-@media (max-width: 768px) {
-  .carousel-item img {
-    height: 265px;
-  }
-  .carousel-item {
-    width: 375px;
-  }
-}
-
-.carousel-item img.back {
-  position: absolute;
-  top: 0;
-  background-color: transparent;
-  left: 0;
-  opacity: 0;
-}
-
-.carousel-item:hover img.front {
-  opacity: 0;
-}
-
-.carousel-item:hover img.back {
-  opacity: 1;
-}
-
-@keyframes scroll {
   from {
-    transform: translateX(0);
+    opacity: 0;
+  }
+}
+@keyframes zoom-out-in {
+  from {
+    opacity: 0.5;
+    transform: scale(1.08);
+  }
+}
+@keyframes word-out {
+  to {
+    opacity: 0;
+    transform: translateY(-34px);
+    filter: blur(6px);
+  }
+}
+@keyframes word-in {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+    filter: blur(6px);
+  }
+}
+@keyframes bob {
+  50% {
+    transform: translateY(6px);
+  }
+}
+@keyframes shimmer-text {
+  from {
+    background-position: 120% 0;
   }
   to {
-    transform: translateX(-50%);
+    background-position: -20% 0;
   }
 }
-
-.progress-bar {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 75%;
-  height: 2px;
-  background: #e8e8e8;
-  padding: 0 0px;
-}
-
-.progress {
-  height: 100%;
-  border-radius: 30px;
-  background: #7e7e7e;
-  animation: progress var(--animation-duration, 40s) linear infinite
-    var(--animation-direction, normal);
-  animation-play-state: var(--animation-play-state, running);
-}
-
-@keyframes progress {
+@keyframes progress-glow {
   from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
+    transform: scaleX(0);
   }
 }
-
-/* ---------------------------- End & Footer ------------------------ */
-
-.end-bg-color {
-  background-color: #2d3033;
-}
-
-.footer-bg-color {
-  background-color: #191c1f;
-}
-
-.footer-bg-color-input {
-  background-color: #2d3033;
-}
-
-.footer-text-color {
-  color: #b1b9c5;
-}
-
-/* ---------------------------- BG Header------------------------ */
-
-.custom-bg-image {
-  background-image: url("/images/bg-aspect.jpg");
-}
-
-.custom-bg-image-diensten {
-  background-image: url("/images/bg-header-diensten.jpg");
-}
-
-/* ---------------------------- Car Selector Side Buttons ------------------------ */
-
-.slick-prev,
-.slick-next {
-  display: none !important;
-}
-
-.slick-track div {
-  display: grid;
-  align-items: center; /* Zorgt ervoor dat de items verticaal gecentreerd blijven */
-  height: min-content; /* Minimaliseert de hoogte tot wat nodig is */
-  overflow: hidden; /* Voorkomt onnodige ruimte */
-}
-
-/* ------------------------ Custom Pagination Bullets --------------------------- */
-
-.swiper-pagination-custom {
-  padding-top: 50px;
-  position: relative;
-  bottom: -20px;
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-}
-
-.swiper-pagination-custom .swiper-pagination-bullet {
-  width: 10px;
-  height: 10px;
-  background-color: rgba(154, 152, 152, 0.6);
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-.swiper-pagination-custom .swiper-pagination-bullet-active {
-  background-color: #f6b400; /* Matches your green theme */
-  transform: scale(1.2);
-}
-
-@keyframes fadeDown {
+@keyframes wave {
   0% {
-    opacity: 0;
-    transform: translateY(-10px);
+    transform: rotateZ(0deg) translate3d(0, 10%, 15px) rotateZ(0deg);
   }
   100% {
-    opacity: 1;
-    transform: translateY(0);
+    transform: rotateZ(360deg) translate3d(0, 10%, 15px) rotateZ(-360deg);
   }
 }
-
-.animate-fade-down {
-  animation: fadeDown 0.5s ease-out;
-}
-
-/* ------------------------  STARZ  --------------------------- */
-
 @keyframes twinkle {
-  0% {
+  0%,
+  100% {
     opacity: 0.2;
     transform: scale(1);
   }
@@ -561,56 +744,200 @@ input:checked + .slider:before {
     opacity: 0.9;
     transform: scale(1.5);
   }
-  100% {
-    opacity: 0.2;
-    transform: scale(1);
-  }
 }
-
-.animate-twinkle {
-  animation-name: twinkle;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-}
-
-.star-glow {
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.3),
-    0 0 12px rgba(255, 255, 255, 0.2), 0 0 24px rgba(255, 255, 255, 0.1);
-  transition: opacity 1s ease-in-out;
-}
-
-/* ------------------------  --------------------------- */
-
-/* @layer utilities {
-  .bg-dot-pattern {
-    background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 0);
-    background-size: 10px 10px;
-    background-position: center;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .bg-dot-pattern {
-      background-image: radial-gradient(
-        rgba(255, 255, 255, 0.08) 1px,
-        transparent 0
-      );
-    }
-  }
-} */
-
-/* ------------------------  --------------------------- */
 
 @layer utilities {
-  .bg-dot-pattern {
-    background-image: radial-gradient(rgba(0, 0, 0, 0.12) 1px, transparent 0);
-    background-size: 10px 10px;
-    background-position: center;
+  /* Logo's en badges: bij hover dezelfde blauwe gloed als de CTA-knoppen.
+     In de utilities-laag, zodat ze `opacity-*` en de filters van Tailwind
+     (brightness, invert) kunnen aanvullen in plaats van te overschrijven. */
+  .logo-glow {
+    transition:
+      opacity 0.4s ease,
+      transform 0.5s var(--ease-premium),
+      filter 0.45s ease;
+  }
+  .logo-glow:hover {
+    opacity: 1;
+    transform: scale(1.07);
+    --tw-drop-shadow: drop-shadow(0 0 2px rgb(var(--glow-rgb) / 0.9)) drop-shadow(0 0 14px rgb(var(--glow-rgb) / 0.75));
+  }
+  .logo-glow-group,
+  .badge-glow {
+    transition:
+      transform 0.5s var(--ease-premium),
+      filter 0.45s ease;
+  }
+  .logo-glow-group:hover,
+  .badge-glow:hover {
+    transform: translateY(-3px);
+    filter: drop-shadow(0 0 2px rgb(var(--glow-rgb) / 0.6)) drop-shadow(0 10px 22px rgb(var(--glow-rgb) / 0.45));
   }
 
-  .dark .bg-dot-pattern {
-    background-image: radial-gradient(
-      rgba(255, 255, 255, 0.08) 1px,
-      transparent 0
+  /* Accentvlak met hetzelfde verloop als de CTA-knop: blauw in licht,
+     beige in donker. Voor iconentegels, badges en de actieve keuze. */
+  .accent-fill {
+    background-image: linear-gradient(135deg, var(--btn-from) 0%, var(--btn-via) 50%, var(--btn-to) 100%);
+    color: var(--btn-text);
+  }
+  /* Decoratieve chips en iconen: inktzwart in licht (blauw blijft voor de
+     knoppen), hetzelfde beige accent als de knop in donker. */
+  .accent-ink {
+    background-image: linear-gradient(135deg, #0b0d12 0%, #1c2130 55%, #353c4f 100%);
+    color: #fff;
+    box-shadow:
+      0 8px 22px -10px rgb(10 14 26 / 0.55),
+      inset 0 1px 0 rgb(255 255 255 / 0.14);
+  }
+  .dark .accent-ink {
+    background-image: linear-gradient(135deg, var(--btn-from) 0%, var(--btn-via) 50%, var(--btn-to) 100%);
+    color: var(--btn-text);
+    box-shadow:
+      0 8px 22px -8px rgb(var(--btn-glow-rgb) / 0.6),
+      inset 0 1px 0 rgb(255 255 255 / 0.28);
+  }
+  .accent-glow {
+    box-shadow:
+      0 8px 22px -8px rgb(var(--btn-glow-rgb) / 0.75),
+      inset 0 1px 0 rgb(255 255 255 / 0.28);
+  }
+
+  .enter {
+    animation: enter var(--dur, 0.8s) var(--ease-premium) backwards;
+    animation-delay: calc(var(--i, 0) * var(--stagger, 80ms) + var(--d, 0ms));
+  }
+  .page-enter {
+    animation: page-in 0.55s var(--ease-premium) backwards;
+  }
+  .zoom-in-settle {
+    animation: zoom-out-in 1.4s var(--ease-premium) backwards;
+  }
+  .word-out {
+    animation: word-out 0.4s cubic-bezier(0.4, 0, 1, 1) forwards;
+  }
+  .word-in {
+    animation: word-in 0.55s var(--ease-premium) 0.28s backwards;
+  }
+  .bob {
+    animation: bob 2s ease-in-out infinite;
+  }
+  .animate-twinkle {
+    animation-name: twinkle;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  .star-glow {
+    box-shadow:
+      0 0 6px rgba(255, 255, 255, 0.3),
+      0 0 12px rgba(255, 255, 255, 0.2),
+      0 0 24px rgba(255, 255, 255, 0.1);
+  }
+  .text-shimmer {
+    background-image: linear-gradient(
+      110deg,
+      hsl(var(--foreground)) 40%,
+      hsl(var(--brand-fg)) 50%,
+      hsl(var(--foreground)) 60%
     );
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer-text 2.6s ease-out 0.6s both;
+  }
+}
+
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .reveal:not([data-inview]),
+  .reveal-group:not([data-inview]) .reveal-item {
+    opacity: 0;
+  }
+  .reveal[data-inview],
+  .reveal-group[data-inview] .reveal-item {
+    animation: enter var(--dur, 0.75s) var(--ease-premium) backwards;
+    animation-delay: calc(var(--i, 0) * var(--stagger, 90ms) + var(--d, 0ms));
+  }
+  .reveal,
+  .reveal-item {
+    --in-y: 24px;
+    --dur: 0.8s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enter,
+  .page-enter,
+  .zoom-in-settle,
+  .word-in,
+  .word-out,
+  .bob,
+  .text-shimmer {
+    animation: none;
+  }
+}
+
+/* Themawissel: het nieuwe thema groeit als cirkel over het oude
+   (zie components/site/ThemeToggle). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Details-accordeon: hoogte animeren waar de browser het kan. */
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+  details.faq::details-content {
+    height: 0;
+    overflow: clip;
+    transition:
+      height 0.45s var(--ease-premium),
+      content-visibility 0.45s allow-discrete;
+  }
+  details.faq[open]::details-content {
+    height: auto;
+  }
+}
+details.faq > summary {
+  list-style: none;
+}
+details.faq > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Grote koppen in Poppins Medium in plaats van Semibold: rustiger, strakker,
+   premium. Bewust buiten de cascade-lagen, zodat dit `font-semibold` op h1 en
+   h2 overschrijft zonder elke kop apart aan te passen. */
+h1,
+h2 {
+  font-weight: 500;
+}
+
+/* Lichtrand die rond een element loopt (middenstuk van de techniek-showcase). */
+@property --rd-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes rd-spin-angle {
+  to {
+    --rd-angle: 360deg;
+  }
+}
+.border-aurora {
+  background: conic-gradient(
+    from var(--rd-angle),
+    rgb(255 255 255 / 0.08),
+    rgb(255 255 255 / 0.7) 12%,
+    rgb(150 180 255 / 0.35) 22%,
+    rgb(255 255 255 / 0.08) 38%,
+    rgb(255 255 255 / 0.08)
+  );
+  animation: rd-spin-angle 7s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .border-aurora {
+    animation: none;
   }
 }

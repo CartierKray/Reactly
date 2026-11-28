@@ -1,72 +1,45 @@
-import React from "react";
-import RubikOne from "@/components/Rubik/Rubik";
-import BannerEight from "@/components/Banner/BannerEight";
-import FooterSectionSM from "@/components/Footer/SWFooter";
-import ContactForm from "@/components/ContactForm/ContactForm";
-import NavbarNewSeven from "@/components/Navbar/NavbarNewSeven";
-import VideoBannerEleven from "@/components/VideoBanner/VideoBannerEleven";
-import FadeInWhenVisible from "@/components/FadeInWhenVisible/FadeInWhenVisible";
+import type { Metadata } from "next";
 
-function ContactPage() {
+import { ButtonLink } from "@/components/site/Button";
+import ContactSection from "@/components/site/ContactSection";
+import FaqSection from "@/components/site/FaqSection";
+import PageHero from "@/components/site/PageHero";
+import { FAQ_GROUPS } from "@/lib/content";
+import { SITE } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Neem contact op met Reactly in Velsen-Noord. Bel, mail, WhatsApp of plan een vrijblijvende kennismaking; binnen 24 uur een voorstel op maat.",
+  alternates: { canonical: "/contact" },
+};
+
+export default function ContactPage() {
   return (
     <>
-      <BannerEight />
-      <NavbarNewSeven />
-
-      <div className="w-full">
-        {/* Alleen zichtbaar in light mode */}
-        <div className="block dark:hidden w-full">
-          <VideoBannerEleven />
-        </div>
-
-        {/* Alleen zichtbaar in dark mode */}
-        <div className="hidden dark:block w-full">
-          <RubikOne />
-        </div>
-      </div>
-
-      <FadeInWhenVisible delay={0.1}>
-        <div className="pb-10 md:pb-20">
-          <ContactForm />
-        </div>
-      </FadeInWhenVisible>
-
-      {/* <FadeInWhenVisible delay={0.1}>
-        <div className="flex p-5">
-          <div className="hidden 2xl:block p-8 w-1/3">
-            <DirectAdviesTwo />
-          </div>
-          <div className="w-full 2xl:w-2/3">
-            <ReviewSlider />
-          </div>
-        </div>
-      </FadeInWhenVisible> */}
-
-      {/* <div className="pt-10 pb-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2
-            id="reviews-title"
-            className="text-3xl font-medium tracking-tight text-neutral-900 text-center dark:text-white"
-          >
-            Geliefd door duizenden gebruikers
-          </h2>
-          <p className="mt-2 text-md md:text-lg max-w-xs md:max-w-full mx-auto text-neutral-600 text-center dark:text-neutral-200">
-            Hier is wat sommige van onze klanten te zeggen hebben over Reactly.
-          </p>
-        </div>
-      </div> */}
-
-      {/* <FadeInWhenVisible delay={0.1}>
-        <div className="pb-10 md:pb-20">
-          <Reviews />
-        </div>
-      </FadeInWhenVisible> */}
-
-      <FadeInWhenVisible delay={0.1}>
-        <FooterSectionSM />
-      </FadeInWhenVisible>
+      <PageHero
+        image={{ src: "/images/ams.webp", position: "object-[50%_60%]" }}
+        crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
+        eyebrow="Contact"
+        title={
+          <>
+            Laten we <span className="text-gradient">kennismaken</span>
+          </>
+        }
+        lede="Vertel ons over je plannen. We reageren binnen één werkdag, en binnen 24 uur heb je een voorstel op maat."
+        actions={
+          <>
+            <ButtonLink href={SITE.phone.href} size="lg">
+              Bel {SITE.phone.display}
+            </ButtonLink>
+            <ButtonLink href={SITE.whatsapp.href} variant="outline" size="lg">
+              WhatsApp ons
+            </ButtonLink>
+          </>
+        }
+      />
+      <ContactSection heading={false} className="pt-16 md:pt-20" />
+      <FaqSection items={FAQ_GROUPS[0].items} />
     </>
   );
 }
-
-export default ContactPage;
